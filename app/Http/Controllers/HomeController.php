@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 class HomeController extends Controller
 {
     /**
@@ -21,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //logic of redirect according to user type
-        return view('home');
+
+
+            return view('welcome');
+
     }
 }
