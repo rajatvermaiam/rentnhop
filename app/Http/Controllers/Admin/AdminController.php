@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        $user = User::find(Auth::user()->id)->roles;
+        $user = Auth::user()->role;
 
         //pr($user->alias);die;
         //logic of redirect according to user type
