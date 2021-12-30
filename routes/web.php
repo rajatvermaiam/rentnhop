@@ -10,6 +10,12 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false, 'reset' => false]);
 
-#Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [App\Http\Controllers\admin\AdminController::class, 'index'])->name('admin')->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/admin/dashboard', [App\Http\Controllers\admin\AdminController::class, 'dashboard']);
+
+    Route::get('/vendor/dashboard', [App\Http\Controllers\vendor\VendorController::class, 'dashboard']);
+});
