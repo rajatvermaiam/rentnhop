@@ -1,5 +1,6 @@
-@extends('adminv/admin/layouts.all')
+@extends('adminv/layouts.all')
 
 @section('content')
+
 
 @endsection

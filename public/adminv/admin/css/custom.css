@@ -1,0 +1,17 @@
+.error_popup, .message, .success_popup {
+    position: fixed;
+    top: 60px;
+    max-width: 383px;
+    min-width: 300px;
+    right: 0;
+    background: #6c6f6c;
+    z-index: 999;
+    box-shadow: 0 0 3px 1px #1c1d1d;
+    padding: 13px 20px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.hidden{
+    display: none;
+}

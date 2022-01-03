@@ -20,9 +20,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="{{asset('adminv/admin/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('adminv/admin/css/icons.css')}}" rel="stylesheet">
+    <link href="{{asset('adminv/admin/css/custom.css')}}" rel="stylesheet">
     <!-- Theme Style CSS -->
     <link rel="stylesheet" href="{{asset('adminv/admin/css/dark-theme.css')}}"/>
     <link rel="stylesheet" href="{{asset('adminv/admin/css/semi-dark.css')}}"/>
     <link rel="stylesheet" href="{{asset('adminv/admin/css/header-colors.css')}}"/>
+    <link href="{{asset('adminv/admin/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
     <title>Rentnhop</title>
 </head>

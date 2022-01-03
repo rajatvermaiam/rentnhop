@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Adminv\vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
-class AdminController extends Controller
+class VendorController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,6 +19,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('adminv.admin.dashboard');
+        return view('adminv.vendor.dashboard');
     }
 }

@@ -1,5 +1,3 @@
-
-
 <body>
 <!--wrapper-->
 <div class="wrapper">
@@ -14,18 +12,19 @@
         </div>
         <!--navigation-->
         <ul class="metismenu" id="menu">
-            <li><a href="javascript:;" class="has-arrow">
+            <li><a href="{{ url('admin/dashboard') }}" class="">
                     <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
                     <div class="menu-title">Dashboard</div>
                 </a>
+            </li>
+
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+                    <div class="menu-title">Accounts</div>
+                </a>
                 <ul>
-                    <li><a href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a></li>
-                    <li><a href="dashboard-eCommerce.html"><i class="bx bx-right-arrow-alt"></i>eCommerce</a></li>
-                    <li><a href="dashboard-analytics.html"><i class="bx bx-right-arrow-alt"></i>Analytics</a></li>
-                    <li><a href="dashboard-digital-marketing.html"><i class="bx bx-right-arrow-alt"></i>Digital
-                            Marketing</a></li>
-                    <li><a href="dashboard-human-resources.html"><i class="bx bx-right-arrow-alt"></i>Human
-                            Resources</a></li>
+                    <li><a href="{{ route('user.index') }}"><i class="bx bx-right-arrow-alt"></i>Users list</a></li>
+                    <li><a href="{{ route('user.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Users</a></li>
                 </ul>
             </li>
         </ul>
@@ -46,16 +45,17 @@
                 <div class="user-box dropdown"><a
                         class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false"> <img
-                            src="{{asset('adminv/admin/images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
+                            src="{{asset('adminv/admin/images/avatars/avatar-2.png')}}" class="user-img"
+                            alt="user avatar">
                         <div class="user-info ps-3">
                             <p class="user-name mb-0">{{Auth::user()->name}}</p>
-                           {{-- <p class="designattion mb-0">Web Designer</p>--}}
+                            {{-- <p class="designattion mb-0">Web Designer</p>--}}
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
                         </li>
-                            <div class="dropdown-divider mb-0"></div>
+                        <div class="dropdown-divider mb-0"></div>
                         </li>
                         <li>
 
@@ -76,10 +76,16 @@
     </header>
     <!--end header -->
     <!--start page wrapper -->
+    @if(session('success'))
+        <div class="page-wrapper">
+                <div class="success_popup bg-success " onclick="this.classList.add('hidden');">
+                    <div class="text-white">{{ session('success') }}</div>
+                </div>
+        </div>
+    @endif
+@yield('content')
 
-    @yield('content')
-
-    <!--end page wrapper -->
+<!--end page wrapper -->
 
     <!--start overlay-->
     <div class="overlay toggle-icon"></div>

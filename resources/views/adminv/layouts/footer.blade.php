@@ -107,6 +107,49 @@
 <script src="{{asset('adminv/admin/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/jquery-knob/excanvas.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/jquery-knob/jquery.knob.js')}}"></script>
+
+
+<script src="{{asset('adminv/admin/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('adminv/admin/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+
+<script>
+    //  starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'print']
+        } );
+
+        table.buttons().container()
+            .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+    } );
+</script>
 <script>
     $(function () {
         $(".knob").knob();
