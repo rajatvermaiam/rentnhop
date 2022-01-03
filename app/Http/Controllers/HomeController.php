@@ -26,7 +26,6 @@ class HomeController extends Controller
     {
 
         $user = Auth::user()->role;
-
         //logic of redirect according to user type
         if ($user->alias == 'admin') {
 
