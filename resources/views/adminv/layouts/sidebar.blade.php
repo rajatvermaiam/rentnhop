@@ -23,8 +23,8 @@
                     <div class="menu-title">Accounts</div>
                 </a>
                 <ul>
-                    <li><a href="{{ route('user.index') }}"><i class="bx bx-right-arrow-alt"></i>Users list</a></li>
-                    <li><a href="{{ route('user.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Users</a></li>
+                    <li><a href="{{ route('admin.user.index') }}"><i class="bx bx-right-arrow-alt"></i>Users list</a></li>
+                    <li><a href="{{ route('admin.user.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Users</a></li>
                 </ul>
             </li>
         </ul>

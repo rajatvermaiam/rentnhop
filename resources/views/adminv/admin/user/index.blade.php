@@ -46,9 +46,9 @@
                                                 data-bs-toggle="dropdown"><span class="">Action</span>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
-                                            <a class="dropdown-item" href="{{ route('user.edit',$user->id) }}">Edit</a>
+                                            <a class="dropdown-item" href="{{ route('admin.user.edit',$user->id) }}">Edit</a>
                                             <div class="dropdown-divider"></div>
-                                            <form action="{{ route('user.destroy',$user->id) }}" method="POST">
+                                            <form action="{{ route('admin.user.destroy',$user->id) }}" method="POST">
 
                                                 {{--<a class="dropdown-item" href="javascript:;">Delete</a>
 --}}

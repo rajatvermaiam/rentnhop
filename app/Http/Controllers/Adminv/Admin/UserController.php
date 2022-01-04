@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use function GuzzleHttp\Promise\all;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -55,7 +55,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password'])
             ]);
 
-        return redirect(route('user.index'))->with('success', 'User Has Been created');
+        return redirect(route('admin.user.index'))->with('success', 'User Has Been created');
     }
 
     /**
@@ -92,7 +92,7 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request['email'],'email')],
             'password' => ['required', 'string', 'min:8'],
             'role_id' => 'required',
         ]);
@@ -101,7 +101,7 @@ class UserController extends Controller
         $id->update($request->all());
 
 
-        return redirect(route('user.index'))->with('success', 'User Has Been updated');
+        return redirect(route('admin.user.index'))->with('success', 'User Has Been updated');
     }
 
     /**
@@ -114,6 +114,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect(route('user.index'))->with('success', 'User Has Been deleted');
+        return redirect(route('admin.user.index'))->with('success', 'User Has Been deleted');
     }
 }

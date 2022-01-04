@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form action="{{ route('user.update',$user->id) }}" method="POST" class="row g-3 needs-validation"
+                                <form action="{{ route('admin.user.update',$user->id) }}" method="POST" class="row g-3 needs-validation"
                                       novalidate>
                                     @csrf
                                     @method('PUT')
@@ -49,7 +49,7 @@
 
                                         </div>
                                         @error('email')
-                                        <span class="invalid-feedback">
+                                        <span class="invalid-feedback" style="display: block">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror

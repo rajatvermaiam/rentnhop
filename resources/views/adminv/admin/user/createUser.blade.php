@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form action="{{ route('user.store') }}" method="POST" class="row g-3 needs-validation"
+                                <form action="{{ route('admin.user.store') }}" method="POST" class="row g-3 needs-validation"
                                       novalidate>
                                     @csrf
                                     <div class="col-md-4">
