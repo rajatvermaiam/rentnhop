@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -24,15 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $user = Auth::user()->role;
-        //logic of redirect according to user type
-        if ($user->alias == 'admin') {
-
+        $role = Auth::user()->role;
+        if ($role->alias == 'admin') {
             return redirect('admin/dashboard');
-        }else{
-            return redirect('vendor/dashboard');
         }
 
+        if ($role->alias == 'vendor') {
+            return redirect('vendor/dashboard');
+        }
     }
 }
+
