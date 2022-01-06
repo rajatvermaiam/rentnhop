@@ -1,3 +1,3 @@
 <?php
 
-Route::get('dashboard', [App\Http\Controllers\vendor\VendorController::class, 'dashboard']);
+Route::get('dashboard', [App\Http\Controllers\adminv\vendor\VendorController::class, 'dashboard']);
