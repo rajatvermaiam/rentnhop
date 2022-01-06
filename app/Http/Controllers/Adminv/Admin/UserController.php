@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with('role')->get();
         return view('adminv.admin.user.index', compact('users'));
     }
 
@@ -88,17 +88,17 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $id)
+    public function update(Request $request, User $user)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request['email'],'email')],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request['email'], 'email')],
             'password' => ['required', 'string', 'min:8'],
             'role_id' => 'required',
         ]);
 
 
-        $id->update($request->all());
+        $user->update($request->all());
 
 
         return redirect(route('admin.user.index'))->with('success', 'User Has Been updated');

@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role->alias }}</td>
+                                    <td>{{ $user->role->name }}</td>
                                     <td>{{$user->created_at}}</td>
                                     <td>
                                         <button type="button"

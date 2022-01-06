@@ -57,10 +57,11 @@
 
                                     <div class="col-md-3">
                                         <label for="role_id" class="form-label">Select Role</label>
-                                        <select class="form-select  @error('role_id') is-invalid @enderror" name="role_id" id="role_id" required>
+                                        <select class="form-select  @error('role_id') is-invalid @enderror"
+                                                name="role_id" id="role_id" required>
                                             <option selected disabled value="">Choose role</option>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Vendor</option>
+                                            <option value="1" {{$user->role_id==1 ? 'selected':''}}>Admin</option>
+                                            <option value="2" {{$user->role_id==2 ? 'selected':''}}>Vendor</option>
                                         </select>
                                         @error('role_id')
                                         <span class="invalid-feedback">
