@@ -19,12 +19,22 @@
             </li>
 
             <li><a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+                    <div class="parent-icon"><i class='lni lni-users'></i></div>
                     <div class="menu-title">Accounts</div>
                 </a>
                 <ul>
                     <li><a href="{{ route('admin.user.index') }}"><i class="bx bx-right-arrow-alt"></i>Users list</a></li>
                     <li><a href="{{ route('admin.user.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Users</a></li>
+                </ul>
+            </li>
+
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='lni lni-map-marker'></i></div>
+                    <div class="menu-title">Locations</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.location.index') }}"><i class="bx bx-right-arrow-alt"></i>Location list</a></li>
+                    <li><a href="{{ route('admin.location.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Location</a></li>
                 </ul>
             </li>
         </ul>
@@ -49,7 +59,6 @@
                             alt="user avatar">
                         <div class="user-info ps-3">
                             <p class="user-name mb-0">{{Auth::user()->name}}</p>
-                            {{-- <p class="designattion mb-0">Web Designer</p>--}}
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">

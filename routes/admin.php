@@ -1,5 +1,11 @@
 <?php
 
-Route::get('dashboard', [App\Http\Controllers\adminv\admin\AdminController::class, 'dashboard']);
+use App\Http\Controllers\Adminv\admin\AdminController;
+use App\Http\Controllers\adminv\admin\UserController;
+use App\Http\Controllers\adminv\admin\LocationController;
 
-Route::resource('user',\App\Http\Controllers\adminv\admin\UserController::class);
+Route::get('dashboard', [AdminController::class, 'dashboard']);
+
+Route::resource('user', UserController::class);
+
+Route::resource('location', LocationController::class);
