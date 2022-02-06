@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\adminv\admin;
 
-use App\Models\adminv\admin\Location;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\adminv\admin\Location  $location
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Location $location)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\adminv\admin\Location  $location
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Location $location)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class LocationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\adminv\admin\Location  $location
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class LocationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\adminv\admin\Location  $location
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Location $location)
+    public function destroy($id)
     {
         //
     }

@@ -15,11 +15,19 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->string('city');
             $table->string('location');
+            $table->string('vendor_email');
+            $table->string('vendor_mobile');
             $table->text('map_url');
+            $table->bigInteger('vehicle_id');
+            $table->bigInteger('user_id');
+            $table->string('role');
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.
@@ -30,4 +38,6 @@ class CreateLocationsTable extends Migration
     {
         Schema::dropIfExists('locations');
     }
+
+
 }

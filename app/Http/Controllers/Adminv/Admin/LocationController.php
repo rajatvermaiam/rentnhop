@@ -16,7 +16,7 @@ class LocationController extends Controller
     public function index()
     {
 
-        $locations = Location::all()->sortByDesc('id');
+        $locations = Location::latest()->get();
         return view('adminv.admin.location.index',compact('locations'));
     }
 
@@ -45,10 +45,7 @@ class LocationController extends Controller
 
         ]);
 
-        Location::create([
-            'location' => $request['location'],
-            'map_url' => $request['map_url'],
-        ]);
+        Location::create($request->all());
 
         return redirect(route('admin.location.index'))->with('success', 'Location Has Been created');
     }
