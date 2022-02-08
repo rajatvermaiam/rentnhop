@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\adminv\admin;
 
 use App\Http\Controllers\Controller;
+
+use App\Models\adminv\admin\Cities;
 use App\Models\adminv\admin\Location;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -16,7 +19,9 @@ class LocationController extends Controller
     public function index()
     {
 
-        $locations = Location::latest()->get();
+
+        $locations = Location::with('city')->latest()->get();
+
         return view('adminv.admin.location.index',compact('locations'));
     }
 
@@ -27,8 +32,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-
-        return view('adminv.admin.location.createLocation');
+        $city = Cities::latest()->get();
+        return view('adminv.admin.location.createLocation',compact('city'));
     }
 
     /**
@@ -40,12 +45,21 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'location' => ['required', 'string', 'max:255'],
-            'map_url' => ['required', 'string', 'max:555'],
+            'name' => ['required', 'string', 'max:255'],
+            'city_id' => ['required', 'numeric'],
+            'map_url' => ['required', 'string'],
 
-        ]);
+        ],
+            [ 'city_id.required' => 'The city field is required.']
 
-        Location::create($request->all());
+        );
+        $user_id = $role = Auth::user()->id;
+
+        $data = $request->all();
+        $data['user_id'] = $user_id;
+
+
+        Location::create($data);
 
         return redirect(route('admin.location.index'))->with('success', 'Location Has Been created');
     }
@@ -69,7 +83,8 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        return view('adminv.admin.location.editLocation',compact('location'));
+        $city = Cities::latest()->get();
+        return view('adminv.admin.location.editLocation',compact('location','city'));
     }
 
     /**
@@ -82,10 +97,14 @@ class LocationController extends Controller
     public function update(Request $request, Location $location)
     {
         $validated = $request->validate([
-            'location' => ['required', 'string', 'max:255'],
-            'map_url' => ['required', 'string', 'max:555'],
+            'name' => ['required', 'string', 'max:255'],
+            'city_id' => ['required', 'numeric'],
+            'map_url' => ['required', 'string'],
 
-        ]);
+        ],
+            [ 'city_id.required' => 'The city field is required.']
+
+        );
         $location->update($request->all());
 
 

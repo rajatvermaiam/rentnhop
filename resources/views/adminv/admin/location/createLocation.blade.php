@@ -30,16 +30,32 @@
                                       novalidate>
                                     @csrf
                                     <div class="col-md-4">
+                                        <label for="name" class="form-label">City*</label>
+                                        <select class="form-select  @error('city_id') is-invalid @enderror" name="city_id" aria-label="city">
+                                            <option value="" selected>select city</option>
+                                            @if($city)
+                                                @foreach ($city as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('city_id')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-8">
                                         <label for="name" class="form-label">Location*</label>
-                                        <input type="text" name="location"   value="{{ old('location') }}"  class="form-control @error('location') is-invalid @enderror" id="location" required>
-                                        @error('location')
+                                        <input type="text" name="name"   value="{{ old('name') }}"  class="form-control @error('name') is-invalid @enderror" id="name" required>
+                                        @error('name')
                                             <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <label for="email" class="form-label">Map Url*</label>
                                         <div class="input-group has-validation">
                                             <input type="text" name="map_url"    class="form-control  @error('map_url') is-invalid @enderror" id="map_url"
@@ -70,5 +86,4 @@
     <!--end page wrapper -->
 
 @endsection
-
 

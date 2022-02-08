@@ -15,7 +15,14 @@ class Location extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'location',
+        'name',
         'map_url',
+        'city_id',
+        'user_id'
     ];
+
+    public function city()
+    {
+        return $this->hasOne(Cities::class, 'id', 'city_id');
+    }
 }

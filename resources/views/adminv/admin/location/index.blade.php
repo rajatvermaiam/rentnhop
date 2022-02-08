@@ -26,6 +26,7 @@
                         <table id="user" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                             <tr>
+                                <th>City</th>
                                 <th>Location</th>
                                 <th>Map Url</th>
                                 <th>Created</th>
@@ -35,8 +36,10 @@
                             <tbody>
                             @if($locations)
                             @foreach ($locations as $data)
+
                                 <tr>
-                                    <td>{{ $data->location }}</td>
+                                    <td>{{ $data->city->name }}</td>
+                                    <td>{{ $data->name }}</td>
                                     <td>{{ $data->map_url }}</td>
                                     <td>{{$data->created_at}}</td>
                                     <td>

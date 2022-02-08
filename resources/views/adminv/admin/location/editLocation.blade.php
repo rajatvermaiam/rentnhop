@@ -31,9 +31,24 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="col-md-4">
+                                        <label for="name" class="form-label">City*</label>
+                                        <select class="form-select  @error('city_id') is-invalid @enderror" name="city_id" aria-label="city">
+                                            @if($city)
+                                                @foreach ($city as $data)
+                                                    <option value="{{ $data->id }}" {{$data->id==$location->city_id ? 'selected':''}} >{{ $data->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('city_id')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
                                         <label for="name" class="form-label">name*</label>
-                                        <input type="text" name="location"   value="{{ $location->location }}"  class="form-control @error('location') is-invalid @enderror" id="location" required>
-                                        @error('location')
+                                        <input type="text" name="name"   value="{{ $location->name }}"  class="form-control @error('name') is-invalid @enderror" id="name" required>
+                                        @error('name')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
                                             </span>

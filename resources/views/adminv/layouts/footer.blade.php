@@ -111,21 +111,21 @@
 
 <script src="{{asset('adminv/admin/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+{{--
+
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
     } );
-</script>
+</script>--}}
+
 
 <script>
-    //  starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    /*(function () {
+        'use strict'
         var forms = document.querySelectorAll('.needs-validation')
 
-        // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
@@ -137,10 +137,10 @@
                     form.classList.add('was-validated')
                 }, false)
             })
-    })()
+    })()*/
 </script>
 <script>
-    $(document).ready(function() {
+   /* $(document).ready(function() {
         var table = $('#example2').DataTable( {
             lengthChange: false,
             buttons: [ 'copy', 'excel', 'pdf', 'print']
@@ -148,7 +148,7 @@
 
         table.buttons().container()
             .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
-    } );
+    } );*/
 </script>
 <script>
     $(function () {
@@ -158,6 +158,7 @@
 <!--<script src="assets/index.js"></script>-->
 <!--app JS-->
 <script src="{{ asset('adminv/admin/js/app.js') }}"></script>
+
+<input type="hidden" id="site_url" value="{{ url('admin') }}">
 </body>
 </html>
-

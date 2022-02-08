@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocationsTable extends Migration
+class CreateVehicleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,21 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('vehicle', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('city_id');
             $table->string('name');
-            $table->longText('map_url');
+            $table->string('model');
+            $table->longText('images');
+            $table->longText('description');
+            $table->longText('terms_conditions');
             $table->bigInteger('user_id');
+            $table->string('meta_robots');
+            $table->string('meta_title');
+            $table->longText('meta_keyword');
+            $table->longText('meta_description');
             $table->timestamps();
         });
     }
-
-
 
     /**
      * Reverse the migrations.
@@ -32,8 +36,6 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('vehicle');
     }
-
-
 }
