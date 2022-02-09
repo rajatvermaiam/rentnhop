@@ -37,6 +37,15 @@
                     <li><a href="{{ route('admin.location.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Location</a></li>
                 </ul>
             </li>
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='lni lni-motorcycle'></i></div>
+                    <div class="menu-title">Vehicle</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.vehicle.index') }}"><i class="bx bx-right-arrow-alt"></i>Vehicle list</a></li>
+                    <li><a href="{{ route('admin.vehicle.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Vehicle</a></li>
+                </ul>
+            </li>
         </ul>
         <!--end navigation-->
     </div>

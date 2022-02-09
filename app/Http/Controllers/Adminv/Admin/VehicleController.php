@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\adminv\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\adminv\admin\Vehicle;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -14,7 +15,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicle = Vehicle::latest()->get();
+        return view('adminv.admin.vehicle.index',compact('vehicle'));
     }
 
     /**
