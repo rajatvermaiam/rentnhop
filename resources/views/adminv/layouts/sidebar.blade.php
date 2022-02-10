@@ -38,7 +38,7 @@
                 </ul>
             </li>
             <li><a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class='lni lni-motorcycle'></i></div>
+                    <div class="parent-icon"><i class='lni lni-bus'></i></div>
                     <div class="menu-title">Vehicle</div>
                 </a>
                 <ul>
