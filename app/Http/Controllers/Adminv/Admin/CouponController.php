@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adminv\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\adminv\admin\Coupon;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -14,7 +15,10 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+
+        $coupon = Coupon::latest()->get();
+
+        return view('adminv.admin.coupon.index',compact('coupon'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminv.admin.coupon.createCoupon');
     }
 
     /**
@@ -35,7 +39,25 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'coupon_code' => ['required', 'string', 'max:12'],
+            'coupon_expire_date' => ['required'],
+            'coupon_type' => 'required',
+            'status' => ['required'],
+            'coupon_times_used' => ['required','numeric'],
+            'coupon_times_used' => ['required','numeric'],
+            'amount' => ['required','numeric'],
+            'minimum_booking_amount' => ['required','numeric'],
+            'maximum_booking_amount' => ['required','numeric'],
+
+        ]);
+
+
+        $data = $request->all();
+
+        Coupon::create($data);
+
+        return redirect(route('admin.coupon.index'))->with('success', 'Coupon Has Been created');
     }
 
     /**
@@ -75,11 +97,13 @@ class CouponController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $Coupon
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Coupon $Coupon)
     {
-        //
+        $Coupon->delete();
+
+        return redirect(route('admin.coupon.index'))->with('success', 'Coupon Has Been deleted');
     }
 }

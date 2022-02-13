@@ -95,10 +95,10 @@ class BlogCategeoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $category
+     * @param  int  $BlogCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,BlogCategory $category)
+    public function update(Request $request,BlogCategory $BlogCategory)
     {
 
         $request->validate([
@@ -116,7 +116,7 @@ class BlogCategeoryController extends Controller
         $data = $request->all();
         $data['category_img']='rentnhop';
 
-       $update_data= $category->update($data);
+       $update_data= $BlogCategory->update($data);
 
         return redirect(route('admin.blog-category.index'))->with('success', 'Blog Category Has Been updated');
     }

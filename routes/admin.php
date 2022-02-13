@@ -7,7 +7,6 @@ use App\Http\Controllers\Adminv\Admin\CouponController;
 use App\Http\Controllers\adminv\admin\UserController;
 use App\Http\Controllers\adminv\admin\LocationController;
 use App\Http\Controllers\adminv\admin\VehicleController;
-use App\Http\Controllers\Adminv\Admin\WebsiteSettingController;
 
 Route::get('dashboard', [AdminController::class, 'dashboard']);
 
@@ -22,5 +21,3 @@ Route::resource('blog-category', BlogCategeoryController::class);
 Route::resource('blog-posts', BlogPostController::class);
 
 Route::resource('coupon', CouponController::class);
-
-Route::resource('coupon', WebsiteSettingController::class);

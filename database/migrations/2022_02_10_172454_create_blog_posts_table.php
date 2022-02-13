@@ -16,7 +16,8 @@ class CreateBlogPostsTable extends Migration
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
             $table->string('post_title');
-            $table->string('post_slug');
+            $table->string('post_slug')->unique();
+            $table->bigInteger('user_id');
             $table->longText('post_images');
             $table->longText('description');
             $table->string('status')->nullable();
