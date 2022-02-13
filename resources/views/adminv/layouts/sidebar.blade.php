@@ -46,6 +46,26 @@
                     <li><a href="{{ route('admin.vehicle.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Vehicle</a></li>
                 </ul>
             </li>
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='lni lni-offer'></i></div>
+                    <div class="menu-title">Coupon</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.coupon.index') }}"><i class="bx bx-right-arrow-alt"></i>Coupon list</a></li>
+                    <li><a href="{{ route('admin.coupon.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Coupon</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='lni lni-blogger'></i></div>
+                    <div class="menu-title">Blog</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.blog-posts.index') }}"><i class="bx bx-right-arrow-alt"></i>Blog list</a></li>
+                    <li><a href="{{ route('admin.blog-posts.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Blog</a></li>
+                    <li><a href="{{ route('admin.blog-category.index') }}"><i class="bx bx-right-arrow-alt"></i>Blog Category list</a></li>
+                    <li><a href="{{ route('admin.blog-category.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Blog Category</a></li>
+                </ul>
+            </li>
         </ul>
         <!--end navigation-->
     </div>

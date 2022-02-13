@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adminv\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Adminv\Admin\BlogCategory;
 use Illuminate\Http\Request;
 
 class BlogCategeoryController extends Controller
@@ -14,7 +15,9 @@ class BlogCategeoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = BlogCategory::latest()->get();
+
+        return view('adminv.admin.blog.category.index',compact('category'));
     }
 
     /**
@@ -24,7 +27,7 @@ class BlogCategeoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminv.admin.blog.category.createCategory');
     }
 
     /**
@@ -35,7 +38,30 @@ class BlogCategeoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $request->validate([
+            'category_name' => ['required', 'string', 'max:255'],
+            'category_slug' => ['required', 'string', 'max:255'],
+            'description' => 'required',
+            'status' => ['required'],
+            'meta_robots' => ['required'],
+            'meta_title' => ['required'],
+            'meta_keyword' => ['required'],
+            'meta_description' => ['required'],
+
+        ]);
+
+
+        $data = $request->all();
+
+
+        $data['category_img']='rentnhop';
+
+
+        BlogCategory::create($data);
+
+        return redirect(route('admin.blog-category.index'))->with('success', 'Blog Category Has Been created');
     }
 
     /**
@@ -57,29 +83,54 @@ class BlogCategeoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = BlogCategory::find($id);
+
+        return view('adminv.admin.blog.category.editCategory',compact('category'));
+
     }
+
+
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,BlogCategory $category)
     {
-        //
+
+        $request->validate([
+            'category_name' => ['required', 'string', 'max:255'],
+            'category_slug' => ['required', 'string', 'max:255'],
+            'description' => 'required',
+            'status' => ['required'],
+            'meta_robots' => ['required'],
+            'meta_title' => ['required'],
+            'meta_keyword' => ['required'],
+            'meta_description' => ['required'],
+
+        ]);
+
+        $data = $request->all();
+        $data['category_img']='rentnhop';
+
+       $update_data= $category->update($data);
+
+        return redirect(route('admin.blog-category.index'))->with('success', 'Blog Category Has Been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BlogCategory  $category)
     {
-        //
+        $category->delete();
+
+        return redirect(route('admin.blog-category.index'))->with('success', 'Blog Category Has Been deleted');
     }
 }
