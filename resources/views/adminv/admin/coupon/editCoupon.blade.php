@@ -13,7 +13,7 @@
                             <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}"><i
                                         class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Create Coupon</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Coupon</li>
                         </ol>
                     </nav>
                 </div>
@@ -21,22 +21,22 @@
             <!--end breadcrumb-->
             <div class="row">
                 <div class="col-xl-12 mx-auto">
-                    <h6 class="mb-0 text-uppercase">Create Coupon</h6>
+                    <h6 class="mb-0 text-uppercase">Edit Coupon</h6>
                     <hr/>
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form action="{{ route('admin.coupon.store') }}" method="POST"
+                                <form action="{{ route('admin.coupon.update',$coupon->id) }}" method="POST"
                                       class="row g-3 needs-validation"
                                       novalidate>
                                     @csrf
-
+                                    @method('PUT')
                                     <div class="col-md-3">
                                         <label for="coupon_type" class="form-label">Coupon Type *</label>
                                         <select class="form-select  @error('coupon_type') is-invalid @enderror"
                                                 name="coupon_type" aria-label="coupon_type">
-                                            <option value="Fixed" selected="">Fixed</option>
-                                            <option value="Percent">Percent</option>
+                                            <option value="Fixed" {{$coupon->coupon_type == "Fixed" ? 'selected':''}}>Fixed</option>
+                                            <option value="Percent" {{$coupon->Percent == "Fixed" ? 'selected':''}}>Percent</option>
                                         </select>
                                         @error('coupon_type')
                                         <span class="invalid-feedback">
@@ -47,7 +47,7 @@
 
                                     <div class="col-md-3">
                                         <label for="amount" class="form-label">Amount*</label>
-                                        <input type="number" name="amount"   value="{{ old('amount') }}"  class="form-control @error('amount') is-invalid @enderror" id="name" required>
+                                        <input type="number" name="amount"   value="{{ $coupon->amount }}"  class="form-control @error('amount') is-invalid @enderror" id="name" required>
                                         @error('amount')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
 
                                     <div class="col-md-3">
                                         <label for="minimum_booking_amount" class="form-label">Minimum Booking Amount*</label>
-                                        <input type="number" name="minimum_booking_amount"   value="{{ old('minimum_booking_amount') }}"  class="form-control @error('minimum_booking_amount') is-invalid @enderror" id="name" required>
+                                        <input type="number" name="minimum_booking_amount"   value="{{ $coupon->minimum_booking_amount }}"  class="form-control @error('minimum_booking_amount') is-invalid @enderror" id="name" required>
                                         @error('minimum_booking_amount')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
 
                                     <div class="col-md-3">
                                         <label for="maximum_booking_amount" class="form-label">Maximum Booking Amount*</label>
-                                        <input type="number" name="maximum_booking_amount"   value="{{ old('maximum_booking_amount') }}"  class="form-control @error('maximum_booking_amount') is-invalid @enderror" id="maximum_booking_amount" required>
+                                        <input type="number" name="maximum_booking_amount"   value="{{ $coupon->maximum_booking_amount }}"  class="form-control @error('maximum_booking_amount') is-invalid @enderror" id="maximum_booking_amount" required>
                                         @error('maximum_booking_amount')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
 
                                     <div class="col-md-3">
                                         <label for="coupon_code" class="form-label">Code*</label>
-                                        <input type="text" name="coupon_code"   value="{{ rand(0, 10000000) }}"  class="form-control @error('coupon_code') is-invalid @enderror" id="coupon_code" required>
+                                        <input type="text" name="coupon_code"   value="{{ $coupon->coupon_code }}"  class="form-control @error('coupon_code') is-invalid @enderror" id="coupon_code" required>
                                         @error('coupon_code')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
 
                                     <div class="col-md-3">
                                         <label for="coupon_expire_date" class="form-label">Expire Date*</label>
-                                        <input type="text" name="coupon_expire_date"   value="{{ old('coupon_expire_date') }}"  class="form-control @error('coupon_expire_date') is-invalid @enderror" id="coupon_expire_date" readonly>
+                                        <input type="text" name="coupon_expire_date"   value="{{ $coupon->coupon_expire_date }}"  class="form-control @error('coupon_expire_date') is-invalid @enderror" id="coupon_expire_date" readonly>
                                         @error('coupon_expire_date')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -99,7 +99,7 @@
 
                                     <div class="col-md-3">
                                         <label for="coupon_times_used" class="form-label">Use Limit*</label>
-                                        <input type="text" name="coupon_times_used"   value="{{ old('coupon_times_used') }}"  class="form-control @error('coupon_times_used') is-invalid @enderror" id="coupon_times_used" required>
+                                        <input type="text" name="coupon_times_used"   value="{{ $coupon->coupon_times_used }}"  class="form-control @error('coupon_times_used') is-invalid @enderror" id="coupon_times_used" required>
                                         @error('coupon_times_used')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -112,8 +112,8 @@
                                         <label for="status" class="form-label">Status *</label>
                                         <select class="form-select  @error('status') is-invalid @enderror"
                                                 name="status" aria-label="status">
-                                            <option value="Active" selected="">Active</option>
-                                            <option value="Inactive">Inactive</option>
+                                            <option value="Active" {{$coupon->status=="Active" ? 'selected':''}}>Active</option>
+                                            <option value="Inactive" {{$coupon->status=="Inactive" ? 'selected':''}}>Inactive</option>
                                         </select>
                                         @error('status')
                                         <span class="invalid-feedback">
@@ -121,9 +121,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
-
-
 
 
                                     <div class="col-12">

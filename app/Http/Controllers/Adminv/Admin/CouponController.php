@@ -74,24 +74,42 @@ class CouponController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Coupon $coupon)
     {
-        //
+        return view('adminv.admin.coupon.editCoupon',compact('coupon'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Coupon $coupon)
     {
-        //
+        $request->validate([
+            'coupon_code' => ['required', 'string', 'max:12'],
+            'coupon_expire_date' => ['required'],
+            'coupon_type' => 'required',
+            'status' => ['required'],
+            'coupon_times_used' => ['required','numeric'],
+            'coupon_times_used' => ['required','numeric'],
+            'amount' => ['required','numeric'],
+            'minimum_booking_amount' => ['required','numeric'],
+            'maximum_booking_amount' => ['required','numeric'],
+
+        ]);
+
+
+        $data = $request->all();
+
+        $coupon->update($data);
+
+        return redirect(route('admin.coupon.index'))->with('success', 'Coupon Has Been updated');
     }
 
     /**
