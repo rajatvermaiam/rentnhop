@@ -29,7 +29,7 @@
                                 <form action="{{ route('admin.location.store') }}" method="POST" class="row g-3 needs-validation"
                                       novalidate>
                                     @csrf
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="name" class="form-label">City*</label>
                                         <select class="form-select  @error('city_id') is-invalid @enderror" name="city_id" aria-label="city">
                                             <option value="" selected>select city</option>
@@ -45,7 +45,23 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Vendor*</label>
+                                        <select class="form-select  @error('user_id') is-invalid @enderror" name="user_id" aria-label="user_id">
+                                            <option value="" selected>select vendor</option>
+                                            @if($user)
+                                                @foreach ($user as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('user_id')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-12">
                                         <label for="name" class="form-label">Location*</label>
                                         <input type="text" name="name"   value="{{ old('name') }}"  class="form-control @error('name') is-invalid @enderror" id="name" required>
                                         @error('name')

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\adminv\admin\Cities;
 use App\Models\adminv\admin\Location;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,8 @@ class LocationController extends Controller
     public function create()
     {
         $city = Cities::latest()->get();
-        return view('adminv.admin.location.createLocation',compact('city'));
+        $user = User::latest()->get();
+        return view('adminv.admin.location.createLocation',compact('city','user'));
     }
 
     /**
@@ -47,17 +49,17 @@ class LocationController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'city_id' => ['required', 'numeric'],
+            'user_id'=> ['required', 'numeric'],
             'map_url' => ['required', 'string'],
 
         ],
-            [ 'city_id.required' => 'The city field is required.']
-
+            [
+                'city_id.required' => 'The city field is required.',
+                'user_id.required' => 'The vendor field is required.'
+            ]
         );
-        $user_id = $role = Auth::user()->id;
 
         $data = $request->all();
-        $data['user_id'] = $user_id;
-
 
         Location::create($data);
 
@@ -84,7 +86,8 @@ class LocationController extends Controller
     public function edit(Location $location)
     {
         $city = Cities::latest()->get();
-        return view('adminv.admin.location.editLocation',compact('location','city'));
+        $user = User::latest()->get();
+        return view('adminv.admin.location.editLocation',compact('location','city','user'));
     }
 
     /**
@@ -99,10 +102,14 @@ class LocationController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'city_id' => ['required', 'numeric'],
+            'user_id' => ['required', 'numeric'],
             'map_url' => ['required', 'string'],
 
         ],
-            [ 'city_id.required' => 'The city field is required.']
+            [
+                'city_id.required' => 'The city field is required.',
+                'user_id.required' => 'The vendor field is required.'
+            ]
 
         );
         $location->update($request->all());

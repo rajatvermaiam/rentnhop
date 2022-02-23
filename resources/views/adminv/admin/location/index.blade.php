@@ -27,6 +27,7 @@
                             <thead>
                             <tr>
                                 <th>City</th>
+                                <th>Vendor</th>
                                 <th>Location</th>
                                 <th>Map Url</th>
                                 <th>Created</th>
@@ -38,7 +39,8 @@
                             @foreach ($locations as $data)
 
                                 <tr>
-                                    <td>{{ $data->city->name }}</td>
+                                    <td>{{ ucfirst($data->city->name) }}</td>
+                                    <td>{{ ucfirst($data->user->name) }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->map_url }}</td>
                                     <td>{{$data->created_at}}</td>

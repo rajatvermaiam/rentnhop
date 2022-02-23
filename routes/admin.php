@@ -23,5 +23,5 @@ Route::resource('blog-posts', BlogPostController::class);
 
 Route::resource('coupon', CouponController::class);
 
-//Route::resource('cities', CitiesController::class);
-Route::get('cities', [CitiesController::class, 'cities']);
+Route::resource('cities', CitiesController::class);
+
