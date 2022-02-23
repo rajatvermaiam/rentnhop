@@ -27,6 +27,15 @@
                     <li><a href="{{ route('admin.user.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Users</a></li>
                 </ul>
             </li>
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='lni lni-map-marker'></i></div>
+                    <div class="menu-title">Cities</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.cities.index') }}"><i class="bx bx-right-arrow-alt"></i>Cities list</a></li>
+                    <li><a href="{{ route('admin.cities.create') }}"><i class="bx bx-right-arrow-alt"></i>Create City</a></li>
+                </ul>
+            </li>
 
             <li><a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class='lni lni-map-marker'></i></div>

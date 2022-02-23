@@ -15,7 +15,9 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        //
+        $cities = Cities::latest()->get();
+
+        return view('adminv.admin.cities.index',compact('cities'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CitiesController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminv.admin.cities.createCities');
     }
 
     /**
@@ -36,7 +38,19 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ],
+            [
+                'name.required' => 'The city name field is required.',
+            ]
+        );
+
+        $data = $request->all();
+
+        Cities::create($data);
+
+        return redirect(route('admin.cities.index'))->with('success', 'City Has Been created');
     }
 
     /**
@@ -53,34 +67,50 @@ class CitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Adminv\admin\Cities  $cities
+     * @param  \App\Models\Adminv\admin\Cities  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cities $cities)
+    public function edit($id)
     {
-        //
+        $cities = Cities::findOrFail($id);
+        return view('adminv.admin.cities.editCities',compact('cities'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Adminv\admin\Cities  $cities
+     * @param  \App\Models\Adminv\admin\Cities  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cities $cities)
+    public function update(Request $request,$id)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ],
+            [
+                'name.required' => 'The city name field is required.',
+            ]
+        );
+        $cities = Cities::findOrFail($id);
+
+        $cities->update($request->all());
+
+        return redirect(route('admin.cities.index'))->with('success', 'City Has Been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Adminv\admin\Cities  $cities
+     * @param  \App\Models\Adminv\admin\Cities  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cities $cities)
+    public function destroy($id)
     {
-        //
+        $cities = Cities::findOrFail($id);
+        $cities->delete();
+
+        return redirect(route('admin.cities.index'))->with('success', 'City Has Been deleted');
     }
+
 }
