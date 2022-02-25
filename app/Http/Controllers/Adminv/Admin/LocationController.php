@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\adminv\admin;
+namespace App\Http\Controllers\adminv\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\adminv\admin\Cities;
 use App\Models\adminv\admin\Location;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
