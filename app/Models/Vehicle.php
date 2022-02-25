@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Adminv\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogCategory extends Model
+class Vehicle extends Model
 {
     use HasFactory;
 
@@ -15,14 +15,15 @@ class BlogCategory extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'category_name',
-        'category_slug',
-        'category_img',
+        'name',
+        'model',
+        'images',
         'description',
-        'status',
+        'terms_conditions',
+        'user_id',
         'meta_robots',
         'meta_title',
         'meta_keyword',
-        'meta_description'
+        'meta_description',
     ];
 }

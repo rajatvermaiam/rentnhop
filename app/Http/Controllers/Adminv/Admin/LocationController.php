@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\adminv\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\adminv\admin\Cities;
-use App\Models\adminv\admin\Location;
+use App\Models\Cities;
+use App\Models\Location;
 use App\Models\User;
 use Illuminate\Http\Request;
 

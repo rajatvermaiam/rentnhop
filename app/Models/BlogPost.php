@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models\adminv\admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vehicle extends Model
+class BlogPost extends Model
 {
     use HasFactory;
+
 
     /**
      * The attributes that are mass assignable.
@@ -15,15 +16,14 @@ class Vehicle extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'model',
-        'images',
+        'post_title',
+        'post_slug',
+        'post_images',
         'description',
-        'terms_conditions',
-        'user_id',
+        'status',
         'meta_robots',
         'meta_title',
         'meta_keyword',
-        'meta_description',
+        'meta_description'
     ];
 }

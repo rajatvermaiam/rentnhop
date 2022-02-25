@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\adminv\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\adminv\admin\Vehicle;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models\Adminv\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogPost extends Model
+class Coupon extends Model
 {
     use HasFactory;
-
 
     /**
      * The attributes that are mass assignable.
@@ -16,14 +15,14 @@ class BlogPost extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'post_title',
-        'post_slug',
-        'post_images',
-        'description',
+        'coupon_code',
+        'coupon_expire_date',
+        'coupon_type',
         'status',
-        'meta_robots',
-        'meta_title',
-        'meta_keyword',
+        'coupon_times_used',
+        'amount',
+        'minimum_booking_amount',
+        'maximum_booking_amount',
         'meta_description'
     ];
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Adminv\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Adminv\Admin\BlogPost;
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller

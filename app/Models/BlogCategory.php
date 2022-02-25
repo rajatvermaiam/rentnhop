@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\adminv\admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coupon extends Model
+class BlogCategory extends Model
 {
     use HasFactory;
 
@@ -15,14 +15,14 @@ class Coupon extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'coupon_code',
-        'coupon_expire_date',
-        'coupon_type',
+        'category_name',
+        'category_slug',
+        'category_img',
+        'description',
         'status',
-        'coupon_times_used',
-        'amount',
-        'minimum_booking_amount',
-        'maximum_booking_amount',
+        'meta_robots',
+        'meta_title',
+        'meta_keyword',
         'meta_description'
     ];
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Adminv\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Adminv\Admin\BlogCategory;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 
 class BlogCategeoryController extends Controller
