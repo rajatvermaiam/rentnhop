@@ -2,10 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes(['register' => false, 'reset' => false]);
 
