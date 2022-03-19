@@ -313,8 +313,9 @@
                 class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a></div>
     <!-- /.carousel -->
 
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    @if($coupon)
+        @foreach ($coupon as $key=>$data)
+    <div class="modal fade" id="couponModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="couponModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background: #f1f4f8;">
@@ -323,24 +324,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;"><strong>Flat 15% Off </strong>
+                    <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;"><strong>Flat {{$data->amount}} @if($data->coupon_type =='percent')% @endif Off </strong>
                     </h4>
-                    <p>Use code RENTAL15 and get flat 15% off</p>
+                    <p>Use code {{$data->coupon_code}} and get flat {{$data->amount}} @if($data->coupon_type=="percent")%@endif off</p>
                     <div class="jp_blog_right_search_wrapper">
-                        <input type="text" placeholder="RENTAL13" style="border-radius:50px;width: calc(110% - 45px);">
+                        <input type="text" placeholder="{{$data->coupon_code}}" style="border-radius:50px;width: calc(110% - 45px);">
                         </button>
                     </div>
                     <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;"><strong>Terms and
                             Conditions</strong></h4>
                     <br>
-                    <div class="bult"> <span> &nbsp; Applicable on bookings with minimum duration of<br>
-          &nbsp;&nbsp;&nbsp;10 days / 240 hours</span><br>
-                        <span>&nbsp; Not applicable on bookings where fuel is included</span><br>
-                        <span>&nbsp; Applicable on Rental bookings only</span></div>
+                    <div class="bult">{{$data->description}}</div>
                 </div>
             </div>
         </div>
     </div>
+    @endforeach
+    @endif
 
     <div class="modal fade" id="exampleModalD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -356,24 +356,26 @@
                     <p>Top Cities</p>
 
                     <ul class="topcity">
-
-                        <li>Bangalore</li>
-                        <li>Bangalore</li>
-                        <li>Bangalore</li>
-                        <li>Bangalore</li>
-                        <li>Bangalore</li>
+                        @if($cities)
+                            @foreach ($cities as $data)
+                                @if($data->is_top =='yes')
+                                <li>{{$data->name}}</li>
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
 
 
                     <hr>
                     <p>Other Cities</p>
                     <ul class="othercity">
-
-                        <li>Mumbai</li>
-                        <li>Mumbai</li>
-                        <li>Mumbai</li>
-                        <li>Mumbai</li>
-                        <li>Mumbai</li>
+                        @if($cities)
+                            @foreach ($cities as $data)
+                                @if($data->is_top !='yes')
+                                    <li>{{$data->name}}</li>
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
 
                 </div>
@@ -381,7 +383,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="    background: no-repeat; border-radius: 10px; border: none;">
@@ -394,19 +396,34 @@
                         <div class="myCard">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="myLeftCtn">
-                                        <form class="myForm text-center">
+                                    <div class="myLeftCtn" id="loginForm">
+                                        <form class="myForm text-center"  name="loginForm"  rent-form="true" method="POST" action="{{ url('store/login') }}">
+                                            @csrf
                                             <header>Login</header>
                                             <div class="form-group">
-                                                <select
-                                                    style="height: 36px; border-right: 4px solid; width: 55px; background: transparent;">
-                                                    <option value="India">+91</option>
-                                                    <option value="India">+92</option>
-                                                    <option value="India">+93</option>
-                                                    <option value="India">+94</option>
-                                                    <option value="India">+01</option>
+                                                <select name="country_code" style="height: 36px; border-right: 4px solid; width: 55px; background: transparent;">
+                                                    <option value="+91">+91</option>
+                                                    <option value="+92">+92</option>
+                                                    <option value="+93">+93</option>
+                                                    <option value="+93">+94</option>
+                                                    <option value="+01">+01</option>
                                                 </select>
-                                                <input class="myInput" placeholder="Email" type="text" id="email" required>
+                                                <input class="myInput" name="mobile" placeholder="Mobile No" type="text" id="mobile" required>
+                                            </div>
+                                            <input type="submit" class="butt" value="Submit">
+                                        </form>
+                                    </div>
+
+                                    <div class="myLeftCtn hide" id="otpForm">
+                                        <form class="myForm text-center"  name="otpForm"  rent-form="true" method="POST" action="{{ url('store/otp-login') }}">
+                                            @csrf
+                                            <header>Login</header>
+                                            <div class="form-group">
+                                                <label for="OTP" class="form-label pr-4 float-right" style="cursor: pointer;"><a href="#" rent-back="true"> Back </a></label>
+                                                <input class="myInput" name="OTP" placeholder="Please Enter OTP" type="text" id="otp" required>
+                                                <label for="OTP" class="form-label pr-4 float-right" style="cursor: pointer;">
+                                                    <a href="#" rent-resent="true" id="resend">Resend OTP</a>
+                                                </label>
                                             </div>
                                             <input type="submit" class="butt" value="Submit">
                                         </form>
@@ -520,7 +537,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="myLeftCtn">
-                                        <form class="myForm text-center">
+                                        <form class="myForm text-center" >
+                                            @csrf
                                             <header> Login Details</header>
                                             <div class="form-group">
                                                 <input class="myInput mynput1" placeholder="Name" type="text" id="name"
@@ -571,27 +589,17 @@
                 <div class="col-md-12">
                     <div class="btc_ln_slider_wrapper">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="btc_team_slider_cont_main_wrapper">
-                                    <div class="btc_ln_img_wrapper float_left"><img
-                                            src="https://revvselfdrivecar.s3.us-west-2.amazonaws.com/5+days.png"
-                                            alt="team_img1" data-toggle="modal" data-target="#exampleModal"></div>
+                            @if($coupon)
+                                @foreach ($coupon as $key=>$data)
+                                <div class="item">
+                                    <div class="btc_team_slider_cont_main_wrapper">
+                                        <div class="btc_ln_img_wrapper float_left"><img
+                                                src="https://revvselfdrivecar.s3.us-west-2.amazonaws.com/5+days.png"
+                                                alt="team_img1" data-toggle="modal" data-target="{{'#couponModal'.$key}}"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="btc_team_slider_cont_main_wrapper">
-                                    <div class="btc_ln_img_wrapper float_left"><img
-                                            src="https://revvselfdrivecar.s3.us-west-2.amazonaws.com/5+days.png"
-                                            alt="team_img1"></div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="btc_team_slider_cont_main_wrapper">
-                                    <div class="btc_ln_img_wrapper float_left"><img
-                                            src="https://revvselfdrivecar.s3.us-west-2.amazonaws.com/5+days.png"
-                                            alt="team_img1"></div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -802,7 +810,7 @@
                             <div>
                                 <div class="card  valign-wrapper">
                                     <!-- Client's image -->
-                                    <div class="card-image"><img src="{{asset('front/images/client_3.jpg')}}" alt="img">
+                                    <div class="card-image"><img src="{{asset('front/images/client_1.jpg')}}" alt="img">
                                     </div>
                                     <!-- /Client's image -->
                                     <div class="card-content center-align valign">
@@ -822,7 +830,7 @@
                             <div>
                                 <div class="card  valign-wrapper">
                                     <!-- Client's image -->
-                                    <div class="card-image"><img src="{{asset('front/images/client_4.')}}'" alt="img"></div>
+                                    <div class="card-image"><img src="{{asset('front/images/client_4.jpg')}}" alt="img"></div>
                                     <!-- /Client's image -->
                                     <div class="card-content center-align valign">
                                         <div class="testi_slide_star"><i class="fa fa-star"></i> <i class="fa fa-star"></i>

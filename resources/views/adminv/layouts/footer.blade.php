@@ -100,17 +100,36 @@
 <script src="{{asset('adminv/admin/plugins/simplebar/js/simplebar.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
-<script src="{{asset('adminv/admin/plugins/chartjs/js/Chart.min.js')}}"></script>
+{{--<script src="{{asset('adminv/admin/plugins/chartjs/js/Chart.min.js')}}"></script>--}}
 <script src="{{asset('adminv/admin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-<script src="{{asset('adminv/admin/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
-<script src="{{asset('adminv/admin/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
+{{--<script src="{{asset('adminv/admin/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
+<script src="{{asset('adminv/admin/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>--}}
 <script src="{{asset('adminv/admin/plugins/jquery-knob/excanvas.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/jquery-knob/jquery.knob.js')}}"></script>
 
 
 <script src="{{asset('adminv/admin/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('adminv/admin/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="{{asset('adminv/admin/js/dataTables.bootstrap5.min.js')}}"></script>
+
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+
+
+        $(document).on("focus", "[nolim-calendor]", function () {
+            $("[nolim-calendor]").datepicker({
+                dateFormat: 'dd M yy',
+                changeMonth: false,
+                changeYear: false,
+                yearRange: "-80:+10",
+                minDate: 0,
+
+            });
+        });
+
+
+</script>
+
 {{--
 
 <script>

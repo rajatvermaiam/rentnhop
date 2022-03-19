@@ -49,11 +49,17 @@ class CouponController extends Controller
             'amount' => ['required','numeric'],
             'minimum_booking_amount' => ['required','numeric'],
             'maximum_booking_amount' => ['required','numeric'],
+            'description' =>  ['required', 'string', 'max:5000'],
+            /*'title' => 'required',
+            'sub_title' => 'required',*/
 
         ]);
 
 
         $data = $request->all();
+
+        $d=strtotime($data['coupon_expire_date']);
+        $data['coupon_expire_date'] =  date("Y-m-d", $d);
 
         Coupon::create($data);
 
@@ -101,11 +107,16 @@ class CouponController extends Controller
             'amount' => ['required','numeric'],
             'minimum_booking_amount' => ['required','numeric'],
             'maximum_booking_amount' => ['required','numeric'],
+            'description' => 'required',
+           /* 'title' => 'required',
+            'sub_title' => 'required',*/
 
         ]);
 
 
         $data = $request->all();
+
+
 
         $coupon->update($data);
 

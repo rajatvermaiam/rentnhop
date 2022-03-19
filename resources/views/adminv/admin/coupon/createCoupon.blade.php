@@ -89,7 +89,7 @@
 
                                     <div class="col-md-3">
                                         <label for="coupon_expire_date" class="form-label">Expire Date*</label>
-                                        <input type="text" name="coupon_expire_date"   value="{{ old('coupon_expire_date') }}"  class="form-control @error('coupon_expire_date') is-invalid @enderror" id="coupon_expire_date" readonly>
+                                        <input type="text" name="coupon_expire_date" nolim-calendor="true"  value="{{ old('coupon_expire_date') }}"  class="form-control @error('coupon_expire_date') is-invalid @enderror" id="coupon_expire_date" readonly>
                                         @error('coupon_expire_date')
                                         <span class="invalid-feedback" >
                                                 <strong>{{ $message }}</strong>
@@ -122,7 +122,35 @@
                                         @enderror
                                     </div>
 
+                                   {{-- <div class="col-md-6">
+                                        <label for="coupon_times_used" class="form-label">Title*</label>
+                                        <input type="text" name="title"   value="{{ old('title') }}"  class="form-control @error('title') is-invalid @enderror" id="title" required>
+                                        @error('title')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
+                                    <div class="col-md-6">
+                                        <label for="coupon_times_used" class="form-label">Sub Title*</label>
+                                        <input type="text" name="sub_title"   value="{{ old('sub_title') }}"  class="form-control @error('sub_title') is-invalid @enderror" id="sub_title" required>
+                                        @error('sub_title')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>--}}
+
+                                    <div class="col-md-12">
+                                        <label for="coupon_times_used" class="form-label">Description*</label>
+                                        <textarea name="description" class="form-control rent-editornote @error('description') is-invalid @enderror" id="summernote" rows="3">{{ old('description') }}</textarea>
+                                        @error('description')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
 
 

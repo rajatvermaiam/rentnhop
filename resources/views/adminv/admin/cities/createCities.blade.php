@@ -38,6 +38,12 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="is_top" type="checkbox" value="yes" id="isTop">
+                                        <label class="form-check-label" for="isTop">
+                                            Top City
+                                        </label>
+                                    </div>
                                     <div class="col-12">
                                         <button class="btn btn-primary" type="submit">Submit form</button>
                                     </div>

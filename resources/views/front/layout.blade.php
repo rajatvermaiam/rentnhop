@@ -11,52 +11,46 @@
     <meta name="MobileOptimized" content="320"/>
 
 
-    <link href="{{asset('front/css/xpedia1.css')}}" rel="stylesheet"/>
+    <link href="{{asset('front/css/xpedia.css')}}" rel="stylesheet"/>
+    <link href="{{asset('front/css/rdx.css')}}" rel="stylesheet"/>
 
-    <link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/style.css')}}" rel="stylesheet"/>
+   {{-- <link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet"/>--}}
+    {{--<link href="{{asset('front/css/style.css')}}" rel="stylesheet"/>
     <link href="{{asset('front/css/responsive.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/reset.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/owl.carousel.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/owl.theme.default.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/nice-select.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/magnific-popup.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/fonts.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/font-awesome.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/flaticon.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/animate.css')}}" rel="stylesheet"/>
-    <link href="{{asset('front/css/bootstrap-datetimepicker.min.css')}}" media="screen"/>
+    <link href="{{asset('front/css/reset.css')}}" rel="stylesheet"/>--}}
+    {{--<link href="{{asset('front/css/owl.carousel.css')}}" rel="stylesheet"/>
+    <link href="{{asset('front/css/owl.theme.default.css')}}" rel="stylesheet"/>--}}
+    {{--<link href="{{asset('front/css/nice-select.css')}}" rel="stylesheet"/>--}}
+   {{-- <link href="{{asset('front/css/magnific-popup.css')}}" rel="stylesheet"/>--}}
+    {{--<link href="{{asset('front/css/fonts.css')}}" rel="stylesheet"/>--}}
+    {{--<link href="{{asset('front/css/font-awesome.css')}}" rel="stylesheet"/>--}}
+    {{--<link href="{{asset('front/css/flaticon.css')}}" rel="stylesheet"/>--}}
+   {{-- <link href="{{asset('front/css/animate.css')}}" rel="stylesheet"/>--}}
+    <link href="{{asset('front/dist/bootstrap-datetimepicker.min.css')}}" media="screen"/>
 
 
     <!--favicon-->
     <link rel="shortcut icon" href="{{asset('front/images/fevicon1.png')}}" type="image/png"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/6.0.0-beta2/css/tempus-dominus.min.css" />
 
 
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+
+
+    <style>
+
+        .plp-value-prop-card {
+            padding-left: 0;
+            padding-top: 20px;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
 <!-- preloader Start -->
-
-<style>
-
-</style>
-<script>
-    // When the user scrolls down 20px from the top of the document, slide down the navbar
-    window.onscroll = function () {
-        scrollFunction()
-    };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("navbar1").style.top = "64px";
-        } else {
-            document.getElementById("navbar1").style.top = "0px";
-        }
-    }
-</script>
 
 <!-- hs Navigation Start -->
 <div class="hs_navigation_header_wrapper">
@@ -113,7 +107,7 @@
 
                         </li>
                         <li><a href="#" style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"
-                               data-toggle="modal" data-target="#exampleModalL"> <strong>&nbsp; Login </strong></a></li>
+                               data-toggle="modal" data-target="#loginModal"> <strong>&nbsp; Login </strong></a></li>
                     </ul>
                 </nav>
                 <header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
@@ -334,6 +328,11 @@
 
 @yield('content')
 
+@if(session('Message'))
+    <div class="message {{ $message = session('Message')['Class']  }}" onclick="this.classList.add('hide');">{{ $message = session('Message')['Message'] }}</div>
+@endif
+<div data-message="true"></div>
+
 <!-- x booking Wrapper Start -->
 <div class="x_booking_main_wrapper float_left">
     <div class="container">
@@ -541,16 +540,13 @@
     </div>
 </div>
 
-<style>
-
-
-</style>
+<input type="hidden" id="url" value="<?php echo url('/');?>">
 
 <script src="{{ asset('front/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('front/js/modernizr.js') }}"></script>
 <script src="{{ asset('front/js/select2.min.js') }}"></script>
-<script src="{{ asset('front/js/select2.min.js') }}"></script>
+
 
 
 <script type="text/javascript" src="{{ asset('front/dist/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
@@ -563,6 +559,7 @@
 <script src="{{ asset('front/js/jquery.magnific-popup.js') }}"></script>
 <script src="{{ asset('front/js/xpedia.js') }}"></script>
 
+<script src="{{ asset('front/js/custom.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 

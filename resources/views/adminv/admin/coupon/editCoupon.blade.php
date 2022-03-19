@@ -122,6 +122,36 @@
                                         @enderror
                                     </div>
 
+                                    {{--<div class="col-md-6">
+                                        <label for="coupon_times_used" class="form-label">Title*</label>
+                                        <input type="text" name="title"    value="{{ $coupon->title }}"  class="form-control @error('title') is-invalid @enderror" id="title" required>
+                                        @error('title')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="coupon_times_used" class="form-label">Sub Title*</label>
+                                        <input type="text" name="sub_title"    value="{{ $coupon->sub_title }}"  class="form-control @error('sub_title') is-invalid @enderror" id="sub_title" required>
+                                        @error('sub_title')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>--}}
+
+                                    <div class="col-md-12">
+                                        <label for="coupon_times_used" class="form-label">Description*</label>
+                                        <textarea name="description" class="form-control rent-editornote @error('description') is-invalid @enderror" id="summernote" rows="3">{{ $coupon->description }}</textarea>
+                                        @error('description')
+                                        <span class="invalid-feedback" >
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
 
                                     <div class="col-12">
                                         <button class="btn btn-primary" type="submit">Submit form</button>

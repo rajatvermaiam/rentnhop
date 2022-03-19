@@ -27,6 +27,7 @@
                             <thead>
                             <tr>
                                 <th>City</th>
+                                <th>Top City</th>
                                 <th>Created</th>
                                 <th style="width: 12%;">Action</th>
                             </tr>
@@ -37,6 +38,7 @@
 
                                     <tr>
                                         <td>{{ ucfirst($data->name) }}</td>
+                                        <td>{{ ucfirst($data->is_top) }}</td>
                                         <td>{{$data->created_at}}</td>
                                         <td>
                                             <button type="button"

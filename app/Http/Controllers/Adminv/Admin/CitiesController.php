@@ -93,8 +93,15 @@ class CitiesController extends Controller
             ]
         );
         $cities = Cities::findOrFail($id);
+        $data = $request->all();
 
-        $cities->update($request->all());
+        if (isset($data['is_top']) and $data['is_top'] == "yes") {
+            $data['is_top'] = "yes";
+        } else {
+            $data['is_top'] = "";
+        }
+
+        $cities->update($data);
 
         return redirect(route('admin.cities.index'))->with('success', 'City Has Been updated');
     }

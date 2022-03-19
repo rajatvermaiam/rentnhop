@@ -1,0 +1,53 @@
+.error_popup {
+    background: #af0909;
+}
+
+.success_popup {
+    background: green !important
+}
+
+.error_popup, .success_popup {
+    position: fixed;
+    top: 76px;
+    max-width: 349px;
+    min-width: 300px;
+    background: #af0909;
+    border-radius: 5px 0 0 5px;
+    min-height: 28px;
+    right: 0;
+    z-index: 999;
+    box-shadow: 0 0 5px 0px #00000099;
+    padding: 14px 20px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.error-message {
+    background-color: #af0909;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 10px;
+    position: absolute;
+    box-shadow: 0 0 2px 0 grey;
+    /*top: 59px;*/
+    /*z-index: 998;*/
+    display: block;
+}
+
+.error-message::after {
+    width: 0;
+    height: 0;
+    border-bottom: 5px solid #af0909;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    content: '';
+    left: 10px;
+    position: absolute;
+    top: -5px
+}
+
+.hide {
+    display: none
+}

@@ -23,6 +23,9 @@ class CreateCouponsTable extends Migration
             $table->bigInteger('amount');
             $table->bigInteger('minimum_booking_amount');
             $table->bigInteger('maximum_booking_amount');
+            $table->longText('description');
+           /* $table->string('title');
+            $table->string('sub_title');*/
             $table->timestamps();
         });
     }

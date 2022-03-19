@@ -23,6 +23,6 @@ class Coupon extends Model
         'amount',
         'minimum_booking_amount',
         'maximum_booking_amount',
-        'meta_description'
+        'description'
     ];
 }

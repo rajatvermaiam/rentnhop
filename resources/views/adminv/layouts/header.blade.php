@@ -26,5 +26,8 @@
     <link rel="stylesheet" href="{{asset('adminv/admin/css/semi-dark.css')}}"/>
     <link rel="stylesheet" href="{{asset('adminv/admin/css/header-colors.css')}}"/>
     <link href="{{asset('adminv/admin/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
     <title>Rentnhop</title>
 </head>

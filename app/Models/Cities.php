@@ -17,5 +17,6 @@ class Cities extends Model
      */
     protected $fillable = [
         'name',
+        'is_top'
     ];
 }

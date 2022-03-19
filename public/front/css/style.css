@@ -1654,7 +1654,7 @@ width:100%;
 }
 .x_slider_checkbox{
 	padding-top:20px;
-	border-bottom:1px solid #eeeeee;
+	/*border-bottom:1px solid #eeeeee;*/
 	padding-bottom:10px;
 }
 .x_slider_checkbox input[type="checkbox"] {
@@ -4201,24 +4201,25 @@ width:100%;
 }
 .x_car_access_right_price_main_box_inner_left_wrapper{
 	float:left;
-	width:60%;
+	width:80%;
 }
 .x_car_access_right_price_main_box_inner_right_wrapper{
 	float:left;
-	width:40%;
+	width:20%;
+	padding-top: 5px;
 }
 .x_car_access_right_price_img_wrapper{
 	float:left;
 	width:155px;
-	    padding: 30px;
+	    padding: 15px;
 }
 .x_car_access_right_price_img_cont_wrapper{
-	float:left;
-	width:calc(100% - 155px);
-	border-left:1px solid #eeeeee;
-	border-right:1px solid #eeeeee;
-	    padding: 30px;
-		padding-right:10px;
+	float: left;
+    width: calc(100% - 155px);
+    /* border-left: 1px solid #eeeeee; */
+    /* border-right: 1px solid #eeeeee; */
+    padding: 10px;
+    padding-right: 10px;
 }
 .x_car_access_right_price_img_cont_wrapper h3{
 	font-size:16px;
@@ -4234,11 +4235,11 @@ width:100%;
     border-right: 1px solid #eeeeee;
     padding-bottom: 38px;
 }
-.x_car_acc_price_dollar_count_wrapper{
-	float:left;
-	width:50%;
-	    text-align: center;
-		    padding-top: 35px;
+.x_car_acc_price_dollar_count_wrapper {
+    /* float: left; */
+    /* width: 50%; */
+    text-align: center;
+    /* padding-top: 35px; */
 }
 .x_car_acc_price_dollar_wrapper h3{
 	font-family: 'Lato', sans-serif;
