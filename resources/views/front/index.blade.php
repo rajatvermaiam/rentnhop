@@ -16,82 +16,94 @@
 
                             <nav style="padding-top:20px;">
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                       href="#nav-home"
                                        role="tab" aria-controls="nav-home" aria-selected="true">Daily Rental</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                                       role="tab" aria-controls="nav-profile" aria-selected="false">Monthly Subscription</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                       href="#nav-profile"
+                                       role="tab" aria-controls="nav-profile" aria-selected="false">Monthly
+                                        Subscription</a>
 
                                 </div>
                             </nav>
-                            <div class="inst ">
-
+                            <div class="inst">
                                 <h1>Instant Confirmation! </h1>
                                 <h4 class="">Bike Rental in Delhi-NCR </h4></div>
                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                      aria-labelledby="nav-home-tab">
-                                    <div class="row mobp" style="padding:20px;">
-                                        <div class="col-md-12" style="padding:0;">
-                                            <div class="x_slider_form_input_wrapper float_left">
-
-                                                <input type="text" city-value="true" name="city" placeholder="Select City" data-toggle="modal"
-                                                       data-target="#cityModal" readonly>
+                                    <form method="get" action="{{url('store/result')}}">
+                                        <div class="row mobp" style="padding:20px;">
+                                            <div class="col-md-12" style="padding:0;">
+                                                <div class="x_slider_form_input_wrapper float_left">
+                                                    <input type="text" city-value="true" name="city"
+                                                           placeholder="Select City" data-toggle="modal"
+                                                           data-target="#cityModal" readonly>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-6" style="padding:0;">
-                                            <div class="form-sec-header">
-                                                <label class="cal-icon">
-                                                    <div class="input-group date-group">
-                                                        <div class="form-group">
-                                                            <div class="input-group date form_datetime fleet-filter-select"
-                                                                 data-date="1979-09-16T05:25:07Z"
-                                                                 data-date-format="dd MM yyyy - HH:ii p"
-                                                                 data-link-field="dtp_input1">
-                                                                <input class="form-control" size="" name="from" type="text"
-                                                                       value="" placeholder="Start Date" readonly="">
-                                                                <span class="input-group-addon"><span
-                                                                        class="glyphicon glyphicon-calendar"></span></span>
+                                            <div class="col-md-6 col-6" style="padding:0;">
+                                                <div class="form-sec-header">
+                                                    <label class="cal-icon">
+                                                        <div class="input-group date-group">
+                                                            <div class="form-group">
+                                                                <div
+                                                                    class="input-group date form_datetime fleet-filter-select"
+                                                                    data-date="1979-09-16T05:25:07Z"
+                                                                    data-date-format="dd MM yyyy - HH:ii p"
+                                                                    data-link-field="dtp_input1">
+                                                                    <input class="form-control" size="" name="from"
+                                                                           type="text"
+                                                                           value="" placeholder="Start Date"
+                                                                           readonly="">
+                                                                    <span class="input-group-addon"><span
+                                                                            class="glyphicon glyphicon-calendar"></span></span>
+                                                                </div>
+                                                                <input type="hidden" id="dtp_input1"
+                                                                       value="2022-03-10 10:00:00">
                                                             </div>
-                                                            <input type="hidden" id="dtp_input1"
-                                                                   value="2022-03-10 10:00:00">
                                                         </div>
-                                                    </div>
-                                                </label>
+                                                    </label>
 
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-6" style="padding:0;">
-                                            <div class="form-sec-header">
-                                                <label class="cal-icon">
-                                                    <div class="input-group date-group">
-                                                        <div class="form-group">
-                                                            <div class="input-group date form_datetime fleet-filter-select"
-                                                                 data-date="1979-09-16T05:25:07Z"
-                                                                 data-date-format="dd MM yyyy - HH:ii p"
-                                                                 data-link-field="dtp_input1">
-                                                                <input class="form-control" size="" name="from" type="text"
-                                                                       value="" placeholder="Start Date" readonly="">
-                                                                <span class="input-group-addon"><span
-                                                                        class="glyphicon glyphicon-calendar"></span></span>
+                                            <div class="col-md-6 col-6" style="padding:0;">
+                                                <div class="form-sec-header">
+                                                    <label class="cal-icon">
+                                                        <div class="input-group date-group">
+                                                            <div class="form-group">
+                                                                <div
+                                                                    class="input-group date form_datetime fleet-filter-select"
+                                                                    data-date="1979-09-16T05:25:07Z"
+                                                                    data-date-format="dd MM yyyy - HH:ii p"
+                                                                    data-link-field="dtp_input1">
+                                                                    <input class="form-control" size="" name="to"
+                                                                           type="text"
+                                                                           value="" placeholder="Start Date"
+                                                                           readonly="">
+                                                                    <span class="input-group-addon"><span
+                                                                            class="glyphicon glyphicon-calendar"></span></span>
+                                                                </div>
+                                                                <input type="hidden" id="dtp_input1"
+                                                                       value="2022-03-10 10:00:00">
                                                             </div>
-                                                            <input type="hidden" id="dtp_input1"
-                                                                   value="2022-03-10 10:00:00">
                                                         </div>
-                                                    </div>
-                                                </label>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
 
 
-                                        <div class="col-md-12 text-center">
-                                            <div class="x_slider_checkbox_bottom float_left">
-                                                <div class="x_slider_btn">
-                                                    <a href="#">Search </a>
+                                            <div class="col-md-12 text-center">
+                                                <div class="x_slider_checkbox_bottom float_left">
+
+                                                    <div class="x_slider_btn">
+                                                        {{--<a href="#" >Search </a>--}}
+                                                        <button type="submit" >Search </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="tab-pane fade" id="nav-home-tab" role="tabpanel"
                                      aria-labelledby="nav-profile-tab">
@@ -162,7 +174,8 @@
                                             <div class="x_slider_checkbox_bottom float_left">
                                                 <div class="x_slider_checout_right">
                                                     <ul>
-                                                        <li><a href="#">search <i class="fa fa-arrow-right"></i></a></li>
+                                                        <li><a href="#">search <i class="fa fa-arrow-right"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -279,7 +292,8 @@
         C A R O U S E L
         ####################################################
         -->
-    <div id="carousel-2" class="carousel slide carousel-fade d-none d-sm-block d-sm-none d-md-block" data-ride="carousel"
+    <div id="carousel-2" class="carousel slide carousel-fade d-none d-sm-block d-sm-none d-md-block"
+         data-ride="carousel"
          data-interval="6000">
         <ol class="carousel-indicators">
             <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
@@ -288,7 +302,8 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active"><a href="#"> <img src="{{asset('front/img/slider3.jpg')}}"
-                                                                alt="responsive image" class="d-block img-fluid"> </a></div>
+                                                                alt="responsive image" class="d-block img-fluid"> </a>
+            </div>
             <!-- /.carousel-item -->
 
             <div class="carousel-item"><a href="#"> <img src="{{asset('front/img/slider2.jpg')}}" alt="responsive image"
@@ -302,38 +317,45 @@
 
         <!-- /.carousel-inner -->
         <a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev"> <span
-                class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a
+                class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+        <a
             class="carousel-control-next" href="#carousel-2" role="button" data-slide="next"> <span
-                class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a></div>
+                class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    </div>
     <!-- /.carousel -->
 
     @if($coupon)
         @foreach ($coupon as $key=>$data)
-    <div class="modal fade" id="couponModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="couponModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content" style="background: #f1f4f8;">
-                <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;"><strong>Flat {{$data->amount}} @if($data->coupon_type =='percent')% @endif Off </strong>
-                    </h4>
-                    <p>Use code {{$data->coupon_code}} and get flat {{$data->amount}} @if($data->coupon_type=="percent")%@endif off</p>
-                    <div class="jp_blog_right_search_wrapper">
-                        <input type="text" placeholder="{{$data->coupon_code}}" style="border-radius:50px;width: calc(110% - 45px);">
-                        </button>
+            <div class="modal fade" id="couponModal{{$key}}" tabindex="-1" role="dialog"
+                 aria-labelledby="couponModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="background: #f1f4f8;">
+                        <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;">
+                                <strong>Flat {{$data->amount}} @if($data->coupon_type =='percent')% @endif Off </strong>
+                            </h4>
+                            <p>Use code {{$data->coupon_code}} and get
+                                flat {{$data->amount}} @if($data->coupon_type=="percent")%@endif off</p>
+                            <div class="jp_blog_right_search_wrapper">
+                                <input type="text" placeholder="{{$data->coupon_code}}"
+                                       style="border-radius:50px;width: calc(110% - 45px);">
+                                </button>
+                            </div>
+                            <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;"><strong>Terms and
+                                    Conditions</strong></h4>
+                            <br>
+                            <div class="bult">{{$data->description}}</div>
+                        </div>
                     </div>
-                    <h4 class="modal-title" id="exampleModalLabel" style="color: #98a6b3;"><strong>Terms and
-                            Conditions</strong></h4>
-                    <br>
-                    <div class="bult">{{$data->description}}</div>
                 </div>
             </div>
-        </div>
-    </div>
-    @endforeach
+        @endforeach
     @endif
 
     <div class="modal fade" id="cityModal" tabindex="-1" role="dialog" aria-labelledby="cityModalLabel"
@@ -341,7 +363,8 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content" style="background: #fff;    border-radius: 10px;">
                 <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" style="overflow-y: scroll; height: 500px;">
@@ -353,7 +376,7 @@
                         @if($cities)
                             @foreach ($cities as $data)
                                 @if($data->is_top =='yes')
-                                <li onclick="get_city('{{$data->name}}');">{{$data->name}}</li>
+                                    <li onclick="get_city('{{$data->name}}');">{{$data->name}}</li>
                                 @endif
                             @endforeach
                         @endif
@@ -380,7 +403,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="    background: no-repeat; border-radius: 10px; border: none;">
                 <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -389,31 +413,38 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="myLeftCtn" id="loginForm">
-                                        <form class="myForm text-center"  name="loginForm"  rent-form="true" method="POST" action="{{ url('store/login') }}">
+                                        <form class="myForm text-center" name="loginForm" rent-form="true" method="POST"
+                                              action="{{ url('store/login') }}">
                                             @csrf
                                             <header>Login</header>
                                             <div class="form-group">
-                                                <select name="country_code" style="height: 36px; border-right: 4px solid; width: 55px; background: transparent;">
+                                                <select name="country_code"
+                                                        style="height: 36px; border-right: 4px solid; width: 55px; background: transparent;">
                                                     <option value="+91">+91</option>
                                                     <option value="+92">+92</option>
                                                     <option value="+93">+93</option>
                                                     <option value="+93">+94</option>
                                                     <option value="+01">+01</option>
                                                 </select>
-                                                <input class="myInput" name="mobile" placeholder="Mobile No" type="text" id="mobile" required>
+                                                <input class="myInput" name="mobile" placeholder="Mobile No" type="text"
+                                                       id="mobile" required>
                                             </div>
                                             <input type="submit" class="butt" value="Submit">
                                         </form>
                                     </div>
 
                                     <div class="myLeftCtn hide" id="otpForm">
-                                        <form class="myForm text-center"  name="otpForm"  rent-form="true" method="POST" action="{{ url('store/otp-login') }}">
+                                        <form class="myForm text-center" name="otpForm" rent-form="true" method="POST"
+                                              action="{{ url('store/otp-login') }}">
                                             @csrf
                                             <header>Login</header>
                                             <div class="form-group">
-                                                <label for="OTP" class="form-label pr-4 float-right" style="cursor: pointer;"><a href="#" rent-back="true"> Back </a></label>
-                                                <input class="myInput" name="OTP" placeholder="Please Enter OTP" type="text" id="otp" required>
-                                                <label for="OTP" class="form-label pr-4 float-right" style="cursor: pointer;">
+                                                <label for="OTP" class="form-label pr-4 float-right"
+                                                       style="cursor: pointer;"><a href="#" rent-back="true"> Back </a></label>
+                                                <input class="myInput" name="OTP" placeholder="Please Enter OTP"
+                                                       type="text" id="otp" required>
+                                                <label for="OTP" class="form-label pr-4 float-right"
+                                                       style="cursor: pointer;">
                                                     <a href="#" rent-resent="true" id="resend">Resend OTP</a>
                                                 </label>
                                             </div>
@@ -447,7 +478,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="    background: no-repeat; border-radius: 10px; border: none;">
                 <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -461,13 +493,15 @@
                                             <header> OTP Verification</header>
                                             <div class="form-group">
                                                 <div class="card p-2 text-center">
-                                                    <h6>Please enter the one time password <br> to verify your account</h6>
+                                                    <h6>Please enter the one time password <br> to verify your account
+                                                    </h6>
                                                     <br>
                                                     <div><span>A code has been sent to</span> <small>*******9897</small>
                                                     </div>
                                                     <br>
                                                     <div id="otp"
-                                                         class="inputs d-flex flex-row justify-content-center mt-2"><input
+                                                         class="inputs d-flex flex-row justify-content-center mt-2">
+                                                        <input
                                                             class="m-2 text-center form-control rounded" type="text"
                                                             id="first" maxlength="1"/> <input
                                                             class="m-2 text-center form-control rounded" type="text"
@@ -476,7 +510,8 @@
                                                             id="third" maxlength="1"/> <input
                                                             class="m-2 text-center form-control rounded" type="text"
                                                             id="fourth" maxlength="1"/></div>
-                                                    <div class="mt-4"><input type="submit" class="butt" value="Validate">
+                                                    <div class="mt-4"><input type="submit" class="butt"
+                                                                             value="Validate">
                                                     </div>
                                                     <div class="card-2" style="padding-top:20px;">
                                                         <div
@@ -519,7 +554,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="    background: no-repeat; border-radius: 10px; border: none;">
                 <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -529,7 +565,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="myLeftCtn">
-                                        <form class="myForm text-center" >
+                                        <form class="myForm text-center">
                                             @csrf
                                             <header> Login Details</header>
                                             <div class="form-group">
@@ -537,7 +573,8 @@
                                                        required>
                                             </div>
                                             <div class="form-group">
-                                                <input class="myInput mynput1" placeholder="Email" type="text" id="email"
+                                                <input class="myInput mynput1" placeholder="Email" type="text"
+                                                       id="email"
                                                        required>
 
                                             </div>
@@ -583,13 +620,14 @@
                         <div class="owl-carousel owl-theme">
                             @if($coupon)
                                 @foreach ($coupon as $key=>$data)
-                                <div class="item">
-                                    <div class="btc_team_slider_cont_main_wrapper">
-                                        <div class="btc_ln_img_wrapper float_left"><img
-                                                src="https://revvselfdrivecar.s3.us-west-2.amazonaws.com/5+days.png"
-                                                alt="team_img1" data-toggle="modal" data-target="{{'#couponModal'.$key}}"></div>
+                                    <div class="item">
+                                        <div class="btc_team_slider_cont_main_wrapper">
+                                            <div class="btc_ln_img_wrapper float_left"><img
+                                                    src="https://revvselfdrivecar.s3.us-west-2.amazonaws.com/5+days.png"
+                                                    alt="team_img1" data-toggle="modal"
+                                                    data-target="{{'#couponModal'.$key}}"></div>
+                                        </div>
                                     </div>
-                                </div>
                                 @endforeach
                             @endif
                         </div>
@@ -617,8 +655,9 @@
                                         <div class="fleet_card">
                                             <div class="fleet_card-subContainer">
                                                 <div class="fleet_card--bikeName">Honda Activa 3G</div>
-                                                <img src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
-                                                     class="fleet_card--bikeImage lozad">
+                                                <img
+                                                    src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
+                                                    class="fleet_card--bikeImage lozad">
                                                 <input type="hidden" name="Honda Activa 3G">
                                             </div>
                                             <p class="fleet_card--bikePrice"> ₹19/hour</p>
@@ -634,8 +673,9 @@
                                         <div class="fleet_card">
                                             <div class="fleet_card-subContainer">
                                                 <div class="fleet_card--bikeName">Honda Activa 3G</div>
-                                                <img src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
-                                                     class="fleet_card--bikeImage lozad">
+                                                <img
+                                                    src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
+                                                    class="fleet_card--bikeImage lozad">
                                                 <input type="hidden" name="Honda Activa 3G">
                                             </div>
                                             <p class="fleet_card--bikePrice"> ₹19/hour</p>
@@ -651,8 +691,9 @@
                                         <div class="fleet_card">
                                             <div class="fleet_card-subContainer">
                                                 <div class="fleet_card--bikeName">Honda Activa 3G</div>
-                                                <img src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
-                                                     class="fleet_card--bikeImage lozad">
+                                                <img
+                                                    src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
+                                                    class="fleet_card--bikeImage lozad">
                                                 <input type="hidden" name="Honda Activa 3G">
                                             </div>
                                             <p class="fleet_card--bikePrice"> ₹19/hour</p>
@@ -668,8 +709,9 @@
                                         <div class="fleet_card">
                                             <div class="fleet_card-subContainer">
                                                 <div class="fleet_card--bikeName">Honda Activa 3G</div>
-                                                <img src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
-                                                     class="fleet_card--bikeImage lozad">
+                                                <img
+                                                    src="https://www.rentnhop.com/uploads/product/new-honda-dio-dlx.jpeg"
+                                                    class="fleet_card--bikeImage lozad">
                                                 <input type="hidden" name="Honda Activa 3G">
                                             </div>
                                             <p class="fleet_card--bikePrice"> ₹19/hour</p>
@@ -766,11 +808,13 @@
                                     </div>
                                     <!-- /Client's image -->
                                     <div class="card-content center-align valign">
-                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
                                                 class="fa fa-star-o"></i></div>
                                         <!-- Client's Feedback -->
-                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't understand
+                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't
+                                            understand
                                             how we've been living without Sella. "</p>
                                         <!-- /Client's Feedback -->
                                         <!-- Client's Name -->
@@ -786,11 +830,13 @@
                                     </div>
                                     <!-- /Client's image -->
                                     <div class="card-content center-align valign">
-                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
                                                 class="fa fa-star-o"></i></div>
                                         <!-- Client's Feedback -->
-                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't understand
+                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't
+                                            understand
                                             how we've been living without Sella. "</p>
                                         <!-- /Client's Feedback -->
                                         <!-- Client's Name -->
@@ -806,11 +852,13 @@
                                     </div>
                                     <!-- /Client's image -->
                                     <div class="card-content center-align valign">
-                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
                                                 class="fa fa-star-o"></i></div>
                                         <!-- Client's Feedback -->
-                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't understand
+                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't
+                                            understand
                                             how we've been living without Sella. "</p>
                                         <!-- /Client's Feedback -->
                                         <!-- Client's Name -->
@@ -822,14 +870,17 @@
                             <div>
                                 <div class="card  valign-wrapper">
                                     <!-- Client's image -->
-                                    <div class="card-image"><img src="{{asset('front/images/client_4.jpg')}}" alt="img"></div>
+                                    <div class="card-image"><img src="{{asset('front/images/client_4.jpg')}}" alt="img">
+                                    </div>
                                     <!-- /Client's image -->
                                     <div class="card-content center-align valign">
-                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <div class="testi_slide_star"><i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
                                                 class="fa fa-star-o"></i></div>
                                         <!-- Client's Feedback -->
-                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't understand
+                                        <p>" I don't always clap, but when I do, it's because of Sella. We can't
+                                            understand
                                             how we've been living without Sella. "</p>
                                         <!-- /Client's Feedback -->
                                         <!-- Client's Name -->
@@ -855,10 +906,12 @@
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                     <div class="x_cou_main_box_wrapper">
-                        <div class="x_icon"><img src="https://www.rentnhop.com/images/booking-1.png" style="width:70px;">
+                        <div class="x_icon"><img src="https://www.rentnhop.com/images/booking-1.png"
+                                                 style="width:70px;">
                         </div>
                         <h5><span>1.</span> <a href="#">Find your Ride</a></h5>
-                        <p>Select your Favorite Bike, Pickup/Drop Date & Time and get ready to Hop! Hassle free discovery
+                        <p>Select your Favorite Bike, Pickup/Drop Date & Time and get ready to Hop! Hassle free
+                            discovery
                             and guaranteed best deals.</p>
                     </div>
                 </div>
@@ -874,7 +927,8 @@
                     <div class="x_cou_main_box_wrapper x_cou_main_box_wrapper_last">
                         <div class="x_icon"><i class="flaticon-emoticon-square-smiling-face-with-closed-eyes"></i></div>
                         <h5><span>3.</span> <a href="#">Pickup & Return</a></h5>
-                        <p>Complete your e-KYC and pay remaining amount and you are ready to go.On Return just handover the
+                        <p>Complete your e-KYC and pay remaining amount and you are ready to go.On Return just handover
+                            the
                             keys and take your security deposit back. </p>
                     </div>
                 </div>

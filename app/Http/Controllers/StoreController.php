@@ -7,6 +7,7 @@ use App\Models\Cities;
 use App\Models\Coupon;
 use App\Models\User;
 
+use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -35,8 +36,14 @@ class StoreController extends Controller
         return view('front.index',compact('cities','coupon'));
     }
 
-    public function result(){
-        return view('front.product-list');
+    public function result(Request $request){
+
+        $city = $request->input('city');
+        $from = $request->input('from');
+        $to = $request->input('to');
+
+        $Vehicle = Vehicle::latest()->get();
+        return view('front.product-list',compact('Vehicle'));
     }
 
     public function login(Request $request){
@@ -111,7 +118,6 @@ class StoreController extends Controller
 
 
                 if (Auth::attempt($credentials)) {
-                    $request->session()->regenerate();
 
                     $message = [
                         "StatusCode" => 0,

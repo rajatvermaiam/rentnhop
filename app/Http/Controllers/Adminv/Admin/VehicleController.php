@@ -39,8 +39,11 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
        $request->validate([
+           'images' => 'required|image|mimes:jpg,png,jpeg,svg|max:1024',
             'name' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],
+           'engine_cc' => ['required', 'numeric'],
+           'gears' => ['required', 'numeric'],
             'description' => 'required',
             'terms_conditions' => 'required',
            'meta_robots' => ['required'],
@@ -54,7 +57,12 @@ class VehicleController extends Controller
         $data = $request->all();
         $data['user_id'] = $user_id;
 
-        $data['images']='rentnhop';
+        $imageName = $request->file('images')->getClientOriginalName();
+        $imageName = time().$imageName;
+        $request->images->move(public_path('images'), $imageName);
+
+
+        $data['images']=$imageName;
 
 
         Vehicle::create($data);
@@ -96,6 +104,8 @@ class VehicleController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],
+            'engine_cc' => ['required', 'numeric'],
+            'gears' => ['required', 'numeric'],
             'description' => 'required',
             'terms_conditions' => 'required',
             'meta_robots' => ['required'],
@@ -104,8 +114,18 @@ class VehicleController extends Controller
             'meta_description' => ['required'],
 
         ]);
+
         $data = $request->all();
-        $data['images']='rentnhop';
+
+        if (isset($data['images'])) {
+            $imageName = $request->file('images')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->images->move(public_path('images'), $imageName);
+            $data['images']=$imageName;
+        }else{
+            $data['images']=$vehicle['images'];
+        }
+
         $vehicle->update($data);
 
 

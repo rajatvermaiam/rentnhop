@@ -38,7 +38,7 @@
                                 @foreach ($vehicles as $data)
 
                                     <tr>
-                                        <td>{{ $data->images }}</td>
+                                        <td><img src="/images/{{$data->images}}" width="130" height="120"></td>
                                         <td>{{ $data->name }}</td>
                                         <td>{{ $data->model }}</td>
                                         <td>{{$data->created_at}}</td>

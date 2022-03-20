@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form action="{{ route('admin.vehicle.update',$vehicle->id) }}" method="POST"
-                                      class="row g-3 needs-validation"
+                                      class="row g-3 needs-validation" enctype="multipart/form-data"
                                       novalidate>
                                     @csrf
                                     @method('PUT')
@@ -57,6 +57,37 @@
                                             </span>
                                         @enderror
                                     </div>
+
+                                    <div class="col-md-4">
+                                        <label for="model" class="form-label">Engine CC*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="number" name="engine_cc" value="{{ $vehicle->engine_cc }}"
+                                                   class="form-control  @error('engine_cc') is-invalid @enderror" id="engine_cc"
+                                                   required>
+
+                                        </div>
+                                        @error('engine_cc')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="model" class="form-label">Gears*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="number" name="gears" value="{{ $vehicle->gears }}"
+                                                   class="form-control  @error('gears') is-invalid @enderror" id="gears"
+                                                   required>
+
+                                        </div>
+                                        @error('gears')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
                                     <div class="col-md-4">
                                         <label for="images" class="form-label">Vehicle Image*</label>
                                         <div class="input-group has-validation">
