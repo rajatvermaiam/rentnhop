@@ -34,16 +34,13 @@
                                         <div class="col-md-12" style="padding:0;">
                                             <div class="x_slider_form_input_wrapper float_left">
 
-
-                                                <input type="text" placeholder="Select City" data-toggle="modal"
-                                                       data-target="#exampleModalD">
+                                                <input type="text" city-value="true" name="city" placeholder="Select City" data-toggle="modal"
+                                                       data-target="#cityModal" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-6" style="padding:0;">
                                             <div class="form-sec-header">
                                                 <label class="cal-icon">
-
-
                                                     <div class="input-group date-group">
                                                         <div class="form-group">
                                                             <div class="input-group date form_datetime fleet-filter-select"
@@ -66,10 +63,7 @@
                                         </div>
                                         <div class="col-md-6 col-6" style="padding:0;">
                                             <div class="form-sec-header">
-
                                                 <label class="cal-icon">
-
-
                                                     <div class="input-group date-group">
                                                         <div class="form-group">
                                                             <div class="input-group date form_datetime fleet-filter-select"
@@ -342,7 +336,7 @@
     @endforeach
     @endif
 
-    <div class="modal fade" id="exampleModalD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="cityModal" tabindex="-1" role="dialog" aria-labelledby="cityModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content" style="background: #fff;    border-radius: 10px;">
@@ -351,7 +345,7 @@
                     </button>
                 </div>
                 <div class="modal-body" style="overflow-y: scroll; height: 500px;">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color: #000; ">Select City </h5>
+                    <h5 class="modal-title" id="cityModalLabel" style="color: #000; ">Select City </h5>
                     <hr>
                     <p>Top Cities</p>
 
@@ -359,20 +353,18 @@
                         @if($cities)
                             @foreach ($cities as $data)
                                 @if($data->is_top =='yes')
-                                <li>{{$data->name}}</li>
+                                <li onclick="get_city('{{$data->name}}');">{{$data->name}}</li>
                                 @endif
                             @endforeach
                         @endif
                     </ul>
-
-
                     <hr>
                     <p>Other Cities</p>
                     <ul class="othercity">
                         @if($cities)
                             @foreach ($cities as $data)
                                 @if($data->is_top !='yes')
-                                    <li>{{$data->name}}</li>
+                                    <li onclick="get_city('{{$data->name}}');">{{$data->name}}</li>
                                 @endif
                             @endforeach
                         @endif
@@ -950,3 +942,4 @@
     </div>
     <!-- btc team Wrapper End -->
 @endsection
+

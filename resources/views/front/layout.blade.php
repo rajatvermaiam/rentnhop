@@ -106,8 +106,12 @@
                         <!-- <li class="sub"><a href="#"> Login </a> </li>-->
 
                         </li>
-                        <li><a href="#" style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"
-                               data-toggle="modal" data-target="#loginModal"> <strong>&nbsp; Login </strong></a></li>
+                        <li>
+
+                                <a href="#" style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"
+                                   data-toggle="modal" data-target="#loginModal"> <strong>&nbsp; Login </strong></a>
+
+                        </li>
                     </ul>
                 </nav>
                 <header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">

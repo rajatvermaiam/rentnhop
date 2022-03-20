@@ -159,3 +159,9 @@ $(document).on("click", "[rent-resent='true']", function(e) {
     });
 
 });
+
+function get_city(city){
+    $("[city-value]").val(city);
+
+    //$("#cityModal").hide();
+}

@@ -116,7 +116,7 @@ class StoreController extends Controller
                     $message = [
                         "StatusCode" => 0,
                         "Message" => 'Logged in successfully',
-                        "Class" => "error_popup", "Reload" => "false",
+                        "Class" => "error_popup", "Reload" => "true0",
                         "OtpField" => "true",
                         "otp" => $otp
                     ];
