@@ -31,10 +31,6 @@ class HomeController extends Controller
         if ($role->alias == 'vendor') {
             return redirect('vendor/dashboard');
         }
-
-        if (!$role->alias){
-            return redirect('/');
-        }
     }
 }
 
