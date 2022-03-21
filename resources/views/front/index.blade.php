@@ -40,6 +40,7 @@
                                                            placeholder="Select City" data-toggle="modal"
                                                            data-target="#cityModal" readonly>
                                                 </div>
+                                                <input type="hidden" name="city_id" city-id="true">
                                             </div>
                                             <div class="col-md-6 col-6" style="padding:0;">
                                                 <div class="form-sec-header">
@@ -376,7 +377,7 @@
                         @if($cities)
                             @foreach ($cities as $data)
                                 @if($data->is_top =='yes')
-                                    <li onclick="get_city('{{$data->name}}');">{{$data->name}}</li>
+                                    <li onclick="get_city('{{$data->name.'-'.$data->id}}');">{{$data->name}}</li>
                                 @endif
                             @endforeach
                         @endif
@@ -387,7 +388,7 @@
                         @if($cities)
                             @foreach ($cities as $data)
                                 @if($data->is_top !='yes')
-                                    <li onclick="get_city('{{$data->name}}');">{{$data->name}}</li>
+                                    <li onclick="get_city('{{$data->name.'-'.$data->id}}');">{{$data->name}}</li>
                                 @endif
                             @endforeach
                         @endif
@@ -414,7 +415,7 @@
                                 <div class="col-md-6">
                                     <div class="myLeftCtn" id="loginForm">
                                         <form class="myForm text-center" name="loginForm" rent-form="true" method="POST"
-                                              action="{{ url('store/login') }}">
+                                              action="{{ url('customer/login') }}">
                                             @csrf
                                             <header>Login</header>
                                             <div class="form-group">
@@ -435,7 +436,7 @@
 
                                     <div class="myLeftCtn hide" id="otpForm">
                                         <form class="myForm text-center" name="otpForm" rent-form="true" method="POST"
-                                              action="{{ url('store/otp-login') }}">
+                                              action="{{ url('customer/otp-login') }}">
                                             @csrf
                                             <header>Login</header>
                                             <div class="form-group">

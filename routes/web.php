@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index']);
 Route::get('/store/result', [\App\Http\Controllers\StoreController::class, 'result']);
-Route::post('/store/login', [\App\Http\Controllers\StoreController::class, 'login']);
 
-Route::post('/store/otp-login', [\App\Http\Controllers\StoreController::class, 'otp_login']);
-Route::post('/store/resend-otp', [\App\Http\Controllers\StoreController::class, 'resend_otp']);
+
+Route::post('/customer/login', [\App\Http\Controllers\StoreController::class, 'login']);
+Route::post('/customer/otp-login', [\App\Http\Controllers\StoreController::class, 'otp_login']);
+Route::post('/customer/resend-otp', [\App\Http\Controllers\StoreController::class, 'resend_otp']);
 
 
 Auth::routes(['register' => false, 'reset' => false]);

@@ -96,7 +96,7 @@ $(document).on("click", "[rent-resent='true']", function(e) {
     $("#resend").attr('disabled', true).val('Loading...');
     let url = $("#url").val();
 
-    let site_url =  url+'/store/resend-otp';
+    let site_url =  url+'/customer/resend-otp';
 
     $.ajax({
         url: site_url,
@@ -161,7 +161,11 @@ $(document).on("click", "[rent-resent='true']", function(e) {
 });
 
 function get_city(city){
-    $("[city-value]").val(city);
+
+    const cityArray = city.split("-");
+
+    $("[city-value]").val(cityArray[0]);
+    $("[city-id]").val(cityArray[1]);
 
     //$("#cityModal").hide();
 }
