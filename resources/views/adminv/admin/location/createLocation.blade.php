@@ -74,7 +74,7 @@
                                     <div class="col-md-12">
                                         <label for="email" class="form-label">Map Url*</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" name="map_url"    class="form-control  @error('map_url') is-invalid @enderror" id="map_url"
+                                            <input type="text" name="map_url"  value="{{ old('map_url') }}"   class="form-control  @error('map_url') is-invalid @enderror" id="map_url"
                                                     required>
 
                                         </div>
@@ -84,6 +84,79 @@
                                             </span>
                                         @enderror
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Weekday Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="weekday_price"  value="{{ old('weekday_price')}}"  class="form-control  @error('weekday_price') is-invalid @enderror" id="weekday_price"
+                                                   required>
+
+                                        </div>
+                                        @error('weekday_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Weekend Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="weekend_price"  value="{{ old('weekend_price')}}"  class="form-control  @error('weekend_price') is-invalid @enderror" id="weekend_price"
+                                                   required>
+
+                                        </div>
+                                        @error('weekend_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Security Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="security_price"  value="{{ old('security_price')}}"  class="form-control  @error('security_price') is-invalid @enderror" id="security_price"
+                                                   required>
+
+                                        </div>
+                                        @error('security_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Monthly Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="monthly_price"  value="{{ old('monthly_price')}}"  class="form-control  @error('monthly_price') is-invalid @enderror" id="monthly_price"
+                                                   required>
+
+                                        </div>
+                                        @error('monthly_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Quantity*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="quantity"  value="{{ old('quantity')}}"  class="form-control  @error('quantity') is-invalid @enderror" id="quantity"
+                                                   required>
+
+                                        </div>
+                                        @error('quantity')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+
 
 
                                     <div class="col-12">

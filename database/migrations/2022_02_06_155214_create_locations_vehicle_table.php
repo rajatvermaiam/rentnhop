@@ -13,10 +13,10 @@ class CreateLocationsVehicleTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations_vehicle', function (Blueprint $table) {
+        Schema::create('location_vehicle', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('vehicle_id');
-            $table->bigInteger('locations_id');
+            $table->foreignId('vehicle_id')->constrained();
+            $table->foreignId('location_id')->constrained();
             $table->timestamps();
         });
     }

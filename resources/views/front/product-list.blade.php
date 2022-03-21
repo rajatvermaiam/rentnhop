@@ -46,7 +46,10 @@
                                                     <div class="x_car_offer_price float_left">
                                                         <div class="x_car_offer_price_inner">
                                                             <!--<h6><i class="fa fa-tag"></i> &nbsp;15% off Deal</h6>-->
-                                                            <h3>From ₹ 7500/day</h3>
+                                                            @foreach($data->locations as $location)
+                                                            <h3>From ₹ {{$location->weekday_price}}/day</h3>
+                                                                @break
+                                                            @endforeach
                                                             <!-- <p><span>from</span> <br>
                                                                / day</p>-->
                                                         </div>
@@ -59,9 +62,9 @@
                                                             <li>
                                                                 <div class="nice-select" tabindex="0"> <span class="current"> Location &nbsp; </span>
                                                                     <ul class="list">
-                                                                        <li class="dpopy_li"><a href="#"> Karol Bagh S : &nbsp;<b>2</b> </a> </li>
-                                                                        <li class="dpopy_li"><a href="#"> INA Metro Station : &nbsp;<b>3</b></a> </li>
-                                                                        <li class="dpopy_li"><a href="#"> Janakpuri East : &nbsp;<b>4</b></a> </li>
+                                                                        @foreach($data->locations as $location)
+                                                                        <li class="dpopy_li"><a href="#">{{$location->name}} : &nbsp;<b>{{$location->quantity}}</b> </a> </li>
+                                                                        @endforeach
                                                                     </ul>
                                                                 </div>
                                                             </li>

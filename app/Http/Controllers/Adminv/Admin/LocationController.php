@@ -32,7 +32,7 @@ class LocationController extends Controller
     public function create()
     {
         $city = Cities::latest()->get();
-        $user = User::latest()->get();
+        $user = User::latest()->whereIn('role_id',[1, 2])->get();
         return view('adminv.admin.location.createLocation',compact('city','user'));
     }
 
@@ -49,6 +49,12 @@ class LocationController extends Controller
             'city_id' => ['required', 'numeric'],
             'user_id'=> ['required', 'numeric'],
             'map_url' => ['required', 'string'],
+
+            'weekday_price' => ['required', 'numeric'],
+            'weekend_price' => ['required', 'numeric'],
+            'security_price' => ['required', 'numeric'],
+            'monthly_price' => ['required', 'numeric'],
+            'quantity' => ['required', 'numeric'],
 
         ],
             [
@@ -84,7 +90,7 @@ class LocationController extends Controller
     public function edit(Location $location)
     {
         $city = Cities::latest()->get();
-        $user = User::latest()->get();
+        $user = User::latest()->whereIn('role_id',[1, 2])->get();
         return view('adminv.admin.location.editLocation',compact('location','city','user'));
     }
 
@@ -102,6 +108,12 @@ class LocationController extends Controller
             'city_id' => ['required', 'numeric'],
             'user_id' => ['required', 'numeric'],
             'map_url' => ['required', 'string'],
+
+            'weekday_price' => ['required', 'numeric'],
+            'weekend_price' => ['required', 'numeric'],
+            'security_price' => ['required', 'numeric'],
+            'monthly_price' => ['required', 'numeric'],
+            'quantity' => ['required', 'numeric'],
 
         ],
             [

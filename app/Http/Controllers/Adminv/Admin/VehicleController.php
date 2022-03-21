@@ -16,7 +16,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::latest()->get();
+        $vehicles = Vehicle::with('locations')->get();
         return view('adminv.admin.vehicle.index',compact('vehicles'));
     }
 

@@ -85,6 +85,79 @@
                                             </span>
                                         @enderror
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Weekday Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="weekday_price" value="{{ $location->weekday_price }}"    class="form-control  @error('weekday_price') is-invalid @enderror" id="weekday_price"
+                                                   required>
+
+                                        </div>
+                                        @error('weekday_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Weekend Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="weekend_price" value="{{ $location->weekend_price }}"   class="form-control  @error('weekend_price') is-invalid @enderror" id="weekend_price"
+                                                   required>
+
+                                        </div>
+                                        @error('weekend_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Security Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="security_price"   value="{{ $location->security_price }}"  class="form-control  @error('security_price') is-invalid @enderror" id="security_price"
+                                                   required>
+
+                                        </div>
+                                        @error('security_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Monthly Price*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="monthly_price" value="{{ $location->monthly_price}}"   class="form-control  @error('monthly_price') is-invalid @enderror" id="monthly_price"
+                                                   required>
+
+                                        </div>
+                                        @error('monthly_price')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Quantity*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" name="quantity" value="{{ $location->quantity}}"   class="form-control  @error('quantity') is-invalid @enderror" id="quantity"
+                                                   required>
+
+                                        </div>
+                                        @error('quantity')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+
                                     <div class="col-12">
                                         <button class="btn btn-primary" type="submit">Submit form</button>
                                     </div>

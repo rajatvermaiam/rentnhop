@@ -41,7 +41,7 @@ class StoreController extends Controller
         ];
         $request->session()->put('search_data', $search_data);
 
-        $Vehicle = Vehicle::latest()->get();
+        $Vehicle = Vehicle::with('locations')->get();
         return view('front.product-list',compact('Vehicle'));
     }
 

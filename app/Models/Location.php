@@ -19,7 +19,12 @@ class Location extends Model
         'name',
         'map_url',
         'city_id',
-        'user_id'
+        'user_id',
+        'weekday_price',
+        'weekend_price',
+        'security_price',
+        'monthly_price',
+        'quantity',
     ];
 
     public function city()

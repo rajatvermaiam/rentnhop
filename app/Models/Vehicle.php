@@ -26,4 +26,9 @@ class Vehicle extends Model
         'meta_keyword',
         'meta_description',
     ];
+
+    public function locations()
+    {
+        return $this->belongsToMany(Location::class);
+    }
 }

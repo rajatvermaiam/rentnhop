@@ -19,6 +19,11 @@ class CreateLocationsTable extends Migration
             $table->string('name');
             $table->longText('map_url');
             $table->bigInteger('user_id');
+            $table->bigInteger('weekday_price');
+            $table->bigInteger('weekend_price');
+            $table->bigInteger('security_price');
+            $table->bigInteger('quantity');
+            $table->bigInteger('monthly_price');
             $table->timestamps();
         });
     }
