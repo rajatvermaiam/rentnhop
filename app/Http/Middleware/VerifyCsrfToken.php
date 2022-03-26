@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-            'store/resend-otp'
+            'store/resend-otp',
+        'store/product-list-modal'
     ];
 }

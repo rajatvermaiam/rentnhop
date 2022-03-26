@@ -9,6 +9,7 @@ use App\Models\Coupon;
 use App\Models\Vehicle;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class StoreController extends Controller
 {
@@ -42,7 +43,26 @@ class StoreController extends Controller
         $request->session()->put('search_data', $search_data);
 
         $Vehicle = Vehicle::with('locations')->get();
+
+        //dd($Vehicle);
         return view('front.product-list',compact('Vehicle'));
+    }
+
+    public function product_list_modal(Request $request){
+
+        $vehicle_id = $request->input('vehicle_id');
+        $Vehicle = Vehicle::with('locations')->where('id',$vehicle_id)->get();
+
+        $data = view('front.product-list-page-modal',compact('Vehicle'));
+        $data =  View::make('front.product-list-page-modal', $Vehicle);
+        $message = [
+            "StatusCode" => 0,
+            'data'=>$data,
+            "Message" => "Data fetched successfully",
+        ];
+
+
+        return response()->json($message)->withCallback($request->input('callback'));
     }
 
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index']);
 Route::get('/store/result', [\App\Http\Controllers\StoreController::class, 'result']);
+Route::post('/store/product-list-modal', [\App\Http\Controllers\StoreController::class, 'product_list_modal']);
 
 
 Route::post('/customer/login', [\App\Http\Controllers\StoreController::class, 'login']);

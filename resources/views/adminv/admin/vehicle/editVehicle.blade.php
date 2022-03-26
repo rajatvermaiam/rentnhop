@@ -89,6 +89,92 @@
                                     </div>
 
                                     <div class="col-md-4">
+                                        <label for="fuel_capacity" class="form-label">Fuel Capacity*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="number" name="fuel_capacity" value="{{ $vehicle->fuel_capacity }}"
+                                                   class="form-control  @error('fuel_capacity') is-invalid @enderror"
+                                                   id="fuel_capacity"
+                                                   required>
+
+                                        </div>
+                                        @error('fuel_capacity')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="top_speed" class="form-label">Top Speed*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="number" name="top_speed" value="{{ $vehicle->top_speed }}"
+                                                   class="form-control  @error('top_speed') is-invalid @enderror"
+                                                   id="top_speed"
+                                                   required>
+
+                                        </div>
+                                        @error('top_speed')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="type" class="form-label">Vehicle Type*</label>
+                                        <select class="form-select  @error('type') is-invalid @enderror"
+                                                name="type" aria-label="type">
+                                            <option value="" selected>vehicle type</option>
+
+                                            <option value="With Gear" {{$vehicle->type=="With Gear" ? 'selected':''}}>With Gear</option>
+                                            <option value="With Gear" {{$vehicle->type=="With Gear" ? 'selected':''}}>Gear less</option>
+
+                                        </select>
+                                        @error('type')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="category" class="form-label">Bike Category*</label>
+                                        <select class="form-select  @error('category') is-invalid @enderror"
+                                                name="category" aria-label="category">
+                                            <option value="" selected>bike category</option>
+
+                                            <option value="Sports" {{$vehicle->category=="Sports" ? 'selected':''}}>Sports</option>
+                                            <option value="Commute"{{$vehicle->category=="Commute" ? 'selected':''}}>Commute</option>
+                                            <option value="Cruise" {{$vehicle->category=="Commute" ? 'selected':''}}>Cruise</option>
+                                            <option value="Super Bike" {{$vehicle->category=="Super Bike" ? 'selected':''}}>Super Bike</option>
+
+                                        </select>
+                                        @error('category')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="inclusions" class="form-label">Inclusion</label>
+                                        <select class="form-select  @error('inclusions') is-invalid @enderror"
+                                                name="inclusions" aria-label="inclusions">
+                                            <option value="" selected>select inclusions</option>
+
+                                            <option value="1 Complimentary Helmet" {{$vehicle->inclusions=="1 Complimentary Helmet" ? 'selected':''}}>1 Complimentary Helmet</option>
+
+                                        </select>
+                                        @error('inclusions')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+
+
+                                    <div class="col-md-4">
                                         <label for="images" class="form-label">Vehicle Image*</label>
                                         <div class="input-group has-validation">
                                             <input type="file" name="images"

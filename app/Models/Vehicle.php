@@ -25,6 +25,11 @@ class Vehicle extends Model
         'meta_title',
         'meta_keyword',
         'meta_description',
+        'category',
+        'top_speed',
+        'fuel_capacity',
+        'type',
+        'inclusions'
     ];
 
     public function locations()

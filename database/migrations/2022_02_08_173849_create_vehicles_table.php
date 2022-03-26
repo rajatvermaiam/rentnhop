@@ -17,7 +17,12 @@ class CreateVehiclesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('model');
+            $table->string('category')->nullable();
+            $table->string('top_speed')->nullable();
+            $table->string('fuel_capacity')->nullable();
+            $table->string('type')->nullable();
             $table->longText('images');
+            $table->longText('inclusions')->nullable();
             $table->longText('description');
             $table->longText('terms_conditions');
             $table->bigInteger('user_id');

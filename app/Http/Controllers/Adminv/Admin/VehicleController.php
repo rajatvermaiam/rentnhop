@@ -42,6 +42,10 @@ class VehicleController extends Controller
            'images' => 'required|image|mimes:jpg,png,jpeg,svg|max:1024',
             'name' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],
+           'category' => ['required', 'string', 'max:255'],
+           'top_speed' => ['required', 'numeric'],
+           'fuel_capacity' => ['required', 'numeric'],
+           'type' => ['required', 'string', 'max:255'],
            'engine_cc' => ['required', 'numeric'],
            'gears' => ['required', 'numeric'],
             'description' => 'required',
@@ -104,6 +108,12 @@ class VehicleController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],
+            'category' => ['required', 'string', 'max:255'],
+            'top_speed' => ['required', 'numeric'],
+            'fuel_capacity' => ['required', 'numeric'],
+            'type' => ['required', 'string', 'max:255'],
+
+
             'engine_cc' => ['required', 'numeric'],
             'gears' => ['required', 'numeric'],
             'description' => 'required',
