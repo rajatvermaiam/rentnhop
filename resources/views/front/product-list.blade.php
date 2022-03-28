@@ -615,22 +615,8 @@
         height: 300px;
     }
 </style>
-<div class="modal fade" id="bikeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalotp" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" style="">
-            <div class="modal-header" style="border-bottom:none; ">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        style="    padding: 0px 15px;"><span aria-hidden="true">&times;</span></button>
-            </div>
-        </div>
-    </div>
-    <div class="modal-body">
-        <div class="container scrol">
-            <div class="row boxb" rentn-modal="true">
+<div rentn-modal="true" class="modal fade" id="bikeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalotp" aria-hidden="true">
 
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -725,7 +711,7 @@
 
 <script>
     function get_modal(id) {
-
+        $("[rentn-modal]").html('');
         let url = $("#url").val();
 
         let site_url =  url+'/store/product-list-modal';
@@ -739,7 +725,11 @@
             cache: false,
             processData: false,
             success: function (resp) {
-
+                if (resp.StatusCode == 0) {
+                    $("[rentn-modal]").html(resp.data);
+                    let bikeModal = new bootstrap.Modal(document.getElementById('bikeModal'));
+                    bikeModal.show();
+                }
             },
             error: function (res) {
                 alert("Unexpected error! Try again.");
