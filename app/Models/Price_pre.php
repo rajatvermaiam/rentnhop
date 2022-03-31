@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Price_pre extends Model
 {
     use HasFactory;
 
@@ -16,8 +15,6 @@ class Location extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'map_url',
         'city_id',
         'user_id',
         'weekday_price',

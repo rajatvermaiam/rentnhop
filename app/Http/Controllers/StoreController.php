@@ -23,7 +23,7 @@ class StoreController extends Controller
 
     public function index()
     {
-        $cities = Cities::latest()->get();
+        $cities = Cities::latest()->where('parent_id',null)->get();
         $coupon = Coupon::latest()->where('status', 'active')->get();
         return view('front.index', compact('cities', 'coupon'));
     }
@@ -44,9 +44,9 @@ class StoreController extends Controller
         ];
         $request->session()->put('search_data', $search_data);
 
-        $Vehicle = Vehicle::with('locations')->get();
+        $Vehicle = Vehicle::with('prices')->get();
 
-        //dd($Vehicle);
+
         return view('front.product-list', compact('Vehicle'));
     }
 

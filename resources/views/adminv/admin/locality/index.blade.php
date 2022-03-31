@@ -36,30 +36,31 @@
                             </thead>
                             <tbody>
                             @if($locations)
-                            @foreach ($locations as $data)
+                                @foreach ($locations as $key=>$data)
 
-                                <tr>
-                                    <td>{{ ucfirst($data->city->name) }}</td>
-                                    <td>{{ ucfirst($data->user->name) }}</td>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->map_url }}</td>
-                                    <td>{{$data->created_at}}</td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-primary btn-sm split-bg-primary dropdown-toggle dropdown-toggle-split"
-                                                data-bs-toggle="dropdown"><span class="">Action</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
-                                            <a class="dropdown-item" href="{{ route('admin.location.edit',$data->id) }}">Edit</a>
-                                            <div class="dropdown-divider"></div>
-                                            <form action="{{ route('admin.location.destroy',$data->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="dropdown-item">Delete</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+
+                                    <tr>
+                                        <td>{{ ucfirst($data->locations->name) }}</td>
+                                        <td>{{ ucfirst($data->user->name) }}</td>
+                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->map_url }}</td>
+                                        <td>{{$data->created_at}}</td>
+                                        <td>
+                                            <button type="button"
+                                                    class="btn btn-primary btn-sm split-bg-primary dropdown-toggle dropdown-toggle-split"
+                                                    data-bs-toggle="dropdown"><span class="">Action</span>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
+                                                <a class="dropdown-item" href="{{ route('admin.locality.edit',$data->id) }}">Edit</a>
+                                                <div class="dropdown-divider"></div>
+                                                <form action="{{ route('admin.locality.destroy',$data->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
                             @endforeach
                             @endif
                         </table>

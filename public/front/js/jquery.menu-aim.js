@@ -86,7 +86,7 @@ jQuery(document).ready(function($){
 
 	//on mobile - open submenu
 	$('.has-children').children('a').on('click', function(event){
-		//prevent default clicking on direct children of .has-children 
+		//prevent default clicking on direct children of .has-children
 		event.preventDefault();
 		var selected = $(this);
 		selected.next('ul').removeClass('is-hidden').end().parent('.has-children').parent('ul').addClass('move-out');
@@ -99,7 +99,7 @@ jQuery(document).ready(function($){
 		var selected = $(this),
 			visibleNav = $(this).parent('ul').parent('.has-children').parent('ul');
 		selected.parent('ul').addClass('is-hidden').parent('.has-children').parent('ul').removeClass('move-out');
-	}); 
+	});
 
 	function toggleNav(){
 		var navIsVisible = ( !$('.cd-dropdown').hasClass('dropdown-is-active') ) ? true : false;
@@ -110,7 +110,7 @@ jQuery(document).ready(function($){
 				$('.has-children ul').addClass('is-hidden');
 				$('.move-out').removeClass('move-out');
 				$('.is-active').removeClass('is-active');
-			});	
+			});
 		}
 	}
 
@@ -282,7 +282,7 @@ jQuery(document).ready(function($){
 
                 if (prevLoc.x < offset.left || prevLoc.x > lowerRight.x ||
                     prevLoc.y < offset.top || prevLoc.y > lowerRight.y) {
-                    // If the previous mouse location was outside of the entire
+                    // If the previous mouse price was outside of the entire
                     // menu's bounds, immediately activate.
                     return 0;
                 }
@@ -303,9 +303,9 @@ jQuery(document).ready(function($){
                 // elsewhere, we can immediately activate a new row.
                 //
                 // We detect this by calculating the slope formed between the
-                // current mouse location and the upper/lower right points of
-                // the menu. We do the same for the previous mouse location.
-                // If the current mouse location's slopes are
+                // current mouse price and the upper/lower right points of
+                // the menu. We do the same for the previous mouse price.
+                // If the current mouse price's slopes are
                 // increasing/decreasing appropriately compared to the
                 // previous's, we know the user is moving toward the submenu.
                 //
@@ -345,7 +345,7 @@ jQuery(document).ready(function($){
 
                 if (decreasingSlope < prevDecreasingSlope &&
                         increasingSlope > prevIncreasingSlope) {
-                    // Mouse is moving from previous location towards the
+                    // Mouse is moving from previous price towards the
                     // currently activated submenu. Delay before activating a
                     // new menu row, because user may be moving into submenu.
                     lastDelayLoc = loc;

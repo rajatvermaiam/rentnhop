@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cities extends Model
+class Price extends Model
 {
     use HasFactory;
-
 
     /**
      * The attributes that are mass assignable.
@@ -16,23 +15,18 @@ class Cities extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'is_top',
-        'parent_id',
+        'city_id',
         'user_id',
-        'map_url'
+        'weekday_price',
+        'weekend_price',
+        'security_price',
+        'monthly_price',
+        'quantity',
     ];
 
-
-
-    public function locations()
+    public function city()
     {
-        return $this->hasOne(Cities::class,'id','parent_id');
-    }
-
-    public function childrens()
-    {
-        return $this->hasMany(Cities::class,'parent_id');
+        return $this->hasOne(Cities::class, 'id', 'city_id');
     }
 
     public function user()

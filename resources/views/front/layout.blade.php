@@ -57,7 +57,7 @@
     <div class="container">
         <div class="row">
             <div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block"><a href="index-2.html"> <img
+                <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block"><a href="{{url('store')}}"> <img
                             src="{{asset('front/img/logo.png')}}" class="img-responsive" alt="logo" title="Logo"/> </a>
                 </div>
             </div>
@@ -342,7 +342,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <div class="x_book_logo_wrapper float_left"><img src="https://www.rentnhop.com/images/logo.png"
+                <div class="x_book_logo_wrapper float_left"><img src="{{asset('front/img/logo.png')}}"
                                                                  alt="logo" style="width:120px;"></div>
             </div>
             <div class="col-md-6">
@@ -543,6 +543,89 @@
         </div>
     </div>
 </div>
+
+
+{{--login modal start--}}
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="    background: no-repeat; border-radius: 10px; border: none;">
+            <div class="modal-header" style="border-bottom:none;    padding: 9px 20px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="myCard">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="myLeftCtn" id="loginForm">
+                                    <form class="myForm text-center" name="loginForm" rent-form="true" method="POST"
+                                          action="{{ url('customer/login') }}">
+                                        @csrf
+                                        <header>Login</header>
+                                        <div class="form-group">
+                                            <select name="country_code"
+                                                    style="height: 36px; border-right: 4px solid; width: 55px; background: transparent;">
+                                                <option value="+91">+91</option>
+                                                <option value="+92">+92</option>
+                                                <option value="+93">+93</option>
+                                                <option value="+93">+94</option>
+                                                <option value="+01">+01</option>
+                                            </select>
+                                            <input class="myInput" name="mobile" placeholder="Mobile No" type="text"
+                                                   id="mobile" required>
+                                        </div>
+                                        <input type="submit" class="butt" value="Submit">
+                                    </form>
+                                </div>
+
+                                <div class="myLeftCtn hide" id="otpForm">
+                                    <form class="myForm text-center" name="otpForm" rent-form="true" method="POST"
+                                          action="{{ url('customer/otp-login') }}">
+                                        @csrf
+                                        <header>Login</header>
+                                        <div class="form-group">
+                                            <label for="OTP" class="form-label pr-4 float-right"
+                                                   style="cursor: pointer;"><a href="#" rent-back="true"> Back </a></label>
+                                            <input class="myInput" name="OTP" placeholder="Please Enter OTP"
+                                                   type="text" id="otp" required>
+                                            <label for="OTP" class="form-label pr-4 float-right"
+                                                   style="cursor: pointer;">
+                                                <a href="#" rent-resent="true" id="resend">Resend OTP</a>
+                                            </label>
+                                        </div>
+                                        <input type="submit" class="butt" value="Submit">
+                                    </form>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="myRightCtn">
+                                    <div class="box">
+                                        <header>Hello World!</header>
+                                        <br>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua. Ut enim ad minim veniam.
+                                        </p><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{--login model end--}}
 
 <input type="hidden" id="url" value="<?php echo url('/');?>">
 

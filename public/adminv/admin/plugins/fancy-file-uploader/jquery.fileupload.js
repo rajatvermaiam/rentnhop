@@ -134,13 +134,13 @@
       limitConcurrentUploads: undefined,
       // Set the following option to true to force iframe transport uploads:
       forceIframeTransport: false,
-      // Set the following option to the location of a redirect url on the
+      // Set the following option to the price of a redirect url on the
       // origin server, for cross-domain iframe transport uploads:
       redirect: undefined,
       // The parameter name for the redirect url, sent as part of the form
       // data and set to 'redirect' if this option is empty:
       redirectParamName: undefined,
-      // Set the following option to the location of a postMessage window,
+      // Set the following option to the price of a postMessage window,
       // to enable postMessage transport uploads:
       postMessage: undefined,
       // By default, XHR file uploads are sent as multipart/form-data.

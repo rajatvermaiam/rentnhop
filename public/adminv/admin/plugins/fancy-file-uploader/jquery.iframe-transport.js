@@ -144,7 +144,7 @@
                 });
               }
               // Appending the file input fields to the hidden form
-              // removes them from their original location:
+              // removes them from their original price:
               form
                 .append(options.fileInput)
                 .prop('enctype', 'multipart/form-data')
@@ -154,7 +154,7 @@
               options.fileInput.removeAttr('form');
             }
             form.submit();
-            // Insert the file input fields at their original location
+            // Insert the file input fields at their original price
             // by replacing the clones with the originals:
             if (fileInputClones && fileInputClones.length) {
               options.fileInput.each(function (index, input) {

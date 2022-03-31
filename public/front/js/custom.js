@@ -78,7 +78,7 @@ $(document).on("submit", "[rent-form='true']", function(e) {
         },
         error: function(res) {
             alert("Unexpected error! Try again.");
-            // location.reload();
+            // price.reload();
         }
     });
 
@@ -154,7 +154,7 @@ $(document).on("click", "[rent-resent='true']", function(e) {
         },
         error: function(res) {
             alert("Unexpected error! Try again.");
-            // location.reload();
+            // price.reload();
         }
     });
 
@@ -168,4 +168,7 @@ function get_city(city){
     $("[city-id]").val(cityArray[1]);
 
     //$("#cityModal").hide();
+
+    let cityModal = new bootstrap.Modal(document.getElementById('cityModal'));
+    cityModal.hide();
 }

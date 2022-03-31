@@ -29,11 +29,13 @@ class Vehicle extends Model
         'top_speed',
         'fuel_capacity',
         'type',
-        'inclusions'
+        'inclusions',
+        'gears',
+        'engine_cc',
     ];
 
-    public function locations()
+    public function prices()
     {
-        return $this->belongsToMany(Location::class);
+        return $this->belongsToMany(Price::class,'price_vehicles');
     }
 }

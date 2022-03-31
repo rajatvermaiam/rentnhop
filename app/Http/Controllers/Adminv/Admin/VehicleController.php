@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\adminv\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Price;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::with('locations')->get();
+
+        $vehicles = Vehicle::with('prices')->get();
         return view('adminv.admin.vehicle.index',compact('vehicles'));
     }
 
@@ -57,6 +59,7 @@ class VehicleController extends Controller
 
         ]);
         $user_id = $role = Auth::user()->id;
+
 
         $data = $request->all();
         $data['user_id'] = $user_id;

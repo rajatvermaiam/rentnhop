@@ -39,11 +39,21 @@
 
             <li><a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class='lni lni-map-marker'></i></div>
-                    <div class="menu-title">Locations</div>
+                    <div class="menu-title">Location</div>
                 </a>
                 <ul>
-                    <li><a href="{{ route('admin.location.index') }}"><i class="bx bx-right-arrow-alt"></i>Location list</a></li>
-                    <li><a href="{{ route('admin.location.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Location</a></li>
+                    <li><a href="{{ route('admin.locality.index') }}"><i class="bx bx-right-arrow-alt"></i>Location list</a></li>
+                    <li><a href="{{ route('admin.locality.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Location</a></li>
+                </ul>
+            </li>
+
+            <li><a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='lni lni-map-marker'></i></div>
+                    <div class="menu-title">Prices</div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('admin.price.index') }}"><i class="bx bx-right-arrow-alt"></i>Location list</a></li>
+                    <li><a href="{{ route('admin.price.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Location</a></li>
                 </ul>
             </li>
             <li><a href="javascript:;" class="has-arrow">

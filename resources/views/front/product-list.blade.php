@@ -445,20 +445,20 @@
                                                                 <div class="SM_6aefeecf2"><span>8.3 </span></div>
                                                             </div>
                                                             <div class="col-xl-8 col-8 fitem2"><span>Lowest Price for 1 Day </span>
-                                                                @foreach($data->locations as $location)
+                                                                @foreach($data->prices as $price)
                                                                     <div class="x_car_offer_price_inner">
 
-                                                                        <h3>₹{{$location->weekday_price}} </h3>
+                                                                        <h3>₹{{$price->weekday_price}} </h3>
 
                                                                     </div>
-                                                                    <h5>Pay Just {{$location->minimum_price}}</h5>
+                                                                    <h5>Pay Just {{$price->minimum_price}}</h5>
                                                                     @break
                                                                 @endforeach
                                                                 <h6><i>for Instant Booking Confirmation! </i></h6>
                                                                 @if($data->inclusions)
                                                                     <p>🗸 {{$data->inclusions}} </p>
                                                                 @endif
-                                                                <p>🗸 {{$data->locations->count()}} Pickup Location
+                                                                <p>🗸 {{$data->prices->count()}} Pickup Location
                                                                     Available </p>
                                                             </div>
                                                         </div>
@@ -615,7 +615,8 @@
         height: 300px;
     }
 </style>
-<div rentn-modal="true" class="modal fade" id="bikeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalotp" aria-hidden="true">
+<div rentn-modal="true" class="modal fade" id="bikeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalotp"
+     aria-hidden="true">
 
 </div>
 
@@ -714,7 +715,7 @@
         $("[rentn-modal]").html('');
         let url = $("#url").val();
 
-        let site_url =  url+'/store/product-list-modal';
+        let site_url = url + '/store/product-list-modal';
         $.ajax({
             url: site_url,
             method: 'post',
@@ -733,7 +734,7 @@
             },
             error: function (res) {
                 alert("Unexpected error! Try again.");
-                // location.reload();
+                // price.reload();
             }
         });
     }

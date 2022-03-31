@@ -16,7 +16,10 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->bigInteger('user_id')->nullable();
             $table->string('is_top')->nullable();
+            $table->longText('map_url')->nullable();
+            $table->bigInteger('parent_id')->nullable();
             $table->timestamps();
         });
     }
