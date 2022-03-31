@@ -52,8 +52,8 @@
                     <div class="menu-title">Prices</div>
                 </a>
                 <ul>
-                    <li><a href="{{ route('admin.price.index') }}"><i class="bx bx-right-arrow-alt"></i>Location list</a></li>
-                    <li><a href="{{ route('admin.price.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Location</a></li>
+                    <li><a href="{{ route('admin.price.index') }}"><i class="bx bx-right-arrow-alt"></i>Price list</a></li>
+                    <li><a href="{{ route('admin.price.create') }}"><i class="bx bx-right-arrow-alt"></i>Create Price</a></li>
                 </ul>
             </li>
             <li><a href="javascript:;" class="has-arrow">
