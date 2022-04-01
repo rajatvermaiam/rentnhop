@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\adminv\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Cities;
-use App\Models\Price;
-use App\Models\User;
+namespace App\Http\Controllers;
+
+use App\Models\Inquiry;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 
-class PriceController_pre extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,12 @@ class PriceController_pre extends Controller
      */
     public function index()
     {
+        header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        header("Pragma: no-cache"); // HTTP 1.0.
+        header("Expires: 0 ");
 
-
-        $prices = Price::with('city')->latest()->get();
-dd($prices);
-        return view('adminv.admin.price.index',compact('prices'));
+        $cartProducts = session('cartProducts');
+        return view('cart', compact('cartProducts'));
     }
 
     /**
@@ -31,50 +32,69 @@ dd($prices);
      */
     public function create()
     {
-        $city =  Cities::with('childrens')->where('parent_id',null)->get();
-
-        $user = User::latest()->whereIn('role_id',[1, 2])->get();
-        return view('adminv.admin.price.createprice',compact('city','user'));
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'city_id' => ['required', 'numeric'],
-            'user_id'=> ['required', 'numeric'],
-            'map_url' => ['required', 'string'],
+        $curl = curl_init();
 
-            'weekday_price' => ['required', 'numeric'],
-            'weekend_price' => ['required', 'numeric'],
-            'security_price' => ['required', 'numeric'],
-            'monthly_price' => ['required', 'numeric'],
-            'quantity' => ['required', 'numeric'],
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://technet.rapaport.com/HTTP/JSON/RetailFeed/GetSingleDiamond.aspx",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "{'request': {'header': {'username': 'qdbdnqadbx6bzgbaz6fpxe8xdiqigp', 'password': 'RymHpjqT'}, 'body': {'diamond_id': $request->product_id }}}",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/x-www-form-urlencoded",
+                "Cookie: ASP.NET_SessionId=52ppz1o12zoph5jh421mrk4y"
+            ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $response = json_decode($response);
+        $response = $response->response->body;
 
-        ],
-            [
-                'city_id.required' => 'The city field is required.',
-                'user_id.required' => 'The vendor field is required.'
-            ]
-        );
+        $request['product'] = $response->diamond;
+        $request['seller'] = $response->seller;
 
-        $data = $request->all();
+        $data = $request->only('product_id', 'qty', 'product', 'seller', 'product_image');
+        $found = false;
 
-        Price::create($data);
+        $products = session()->pull('cartProducts', []);
+        foreach ($products as $key => $product) {
+            if ($product['product_id'] == $request['product_id']) {
+                $products[$key]['qty'] = $request['qty'] + $products[$key]['qty'];
+                $found = true;
+            }
+        }
+        if (!$found) {
+            array_push($products, $data);
+            session()->put('cartProducts', $products);
+        } else {
+            session()->put('cartProducts', $products);
+        }
+        $request->session()->save();
+        $cartProducts = session('cartProducts');
 
-        return redirect(route('admin.price.index'))->with('success', 'Price Has Been created');
+        return redirect()->back()->with('success', 'Product added in cart !');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -85,59 +105,95 @@ dd($prices);
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Price $price
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Price $price)
+    public function edit($id)
     {
-        $city =  Cities::with('childrens')->where('parent_id',null)->get();
-        $user = User::latest()->whereIn('role_id',[1, 2])->get();
-        return view('adminv.admin.price.editprice',compact('price','city','user'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param Price $price
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Price $price)
+    public function update(Request $request, $id)
     {
+        $products = session()->pull('cartProducts', []);
+        foreach ($products as $key => $product) {
+            $products[$key]['qty'] = $request[$key];
+        }
+        session()->put('cartProducts', $products);
 
-        $validated = $request->validate([
-            'city_id' => ['required', 'numeric'],
-            'user_id' => ['required', 'numeric'],
-            'weekday_price' => ['required', 'numeric'],
-            'weekend_price' => ['required', 'numeric'],
-            'security_price' => ['required', 'numeric'],
-            'monthly_price' => ['required', 'numeric'],
-            'quantity' => ['required', 'numeric'],
+        return redirect()->route('cart.index');
 
-        ],
-            [
-                'city_id.required' => 'The city field is required.',
-                'user_id.required' => 'The vendor field is required.'
-            ]
-
-        );
-
-        $price->update($request->all());
-
-
-        return redirect(route('admin.price.index'))->with('success', 'Price Has Been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Price $price
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Price $price)
+    public function destroy($id, Request $request)
     {
-        $price->delete();
+        $request->session()->forget('cartProducts');
+        return redirect()->to('/');
+    }
 
-        return redirect(route('admin.price.index'))->with('success', 'Loction Has Been deleted');
+    public function deleteItem($id, Request $request)
+    {
+        $products = session()->pull('cartProducts', []);
+        unset($products[$id]);
+//        dd($products);
+        session()->put('cartProducts', $products);
+
+        return redirect()->route('cart.index');
+    }
+
+    public function checkout()
+    {
+        $cartProducts = session('cartProducts');
+        if (empty($cartProducts))
+            return redirect()->back();
+        return view('checkout', compact('cartProducts'));
+    }
+
+    public function postCheckout(Request $request)
+    {
+        $cartProducts = session('cartProducts');
+
+        if ($cartProducts) {
+            $subtotal = 0;
+            foreach ($cartProducts as $cartProduct) {
+                $subtotal += $cartProduct['product']->total_sales_price_in_currency * $cartProduct['qty'];
+            }
+            $request['total'] = $subtotal + 15;
+            $order = Order::create($request->except('shipping_method', 'terms_and_conditions'));
+
+            foreach ($cartProducts as $key => $cartProduct) {
+                $orderProudct = new OrderProduct();
+                $orderProudct->order_id = $order->id;
+                $orderProudct->product_id = $cartProduct['product_id'];
+                $orderProudct->quantity = $cartProduct['qty'];
+                $orderProudct->seller_detail = json_encode($cartProducts[$key]['seller']);
+                $orderProudct->price = $cartProduct['product']->total_sales_price_in_currency * $cartProduct['qty'];
+                $orderProudct->save();
+            }
+            $request->session()->forget('cartProducts');
+
+            return view('common.thankyou', compact('order'));
+        } else {
+            print "invalid action";
+        }
+    }
+
+    public function postEnquiry(Request $request)
+    {
+        Inquiry::create($request->all());
+        return view('common.inquiry-thank');
     }
 }

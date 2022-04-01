@@ -48,9 +48,9 @@ class PriceController extends Controller
     {
         $validated = $request->validate([
 
-            'city_id' => ['required', ''],
+            'city_id' => ['required', 'numeric'],
             'user_id'=> ['required', 'numeric'],
-
+            'status'=> ['required'],
             'vehicle_id'=> ['required', 'numeric'],
             'weekday_price' => ['required', 'numeric'],
             'weekend_price' => ['required', 'numeric'],
@@ -69,16 +69,21 @@ class PriceController extends Controller
         $data = $request->all();
 
         $vehicle_id = $data['vehicle_id'];
-        $city_data = $data['city_id'];
+        $location_id = $data['city_id'];
 
-        $city_data = explode('-',$city_data);
+        $location_data =  Cities::where('id',$location_id)->first();
 
-        $city_id = $city_data[0];
-        $location_id = $city_data[1];
+        $city_data =  Cities::where('id',$location_data->parent_id)->first();
+
+        $city_id = $city_data->id;
 
 
+        $data['city_name']=$city_data->name;
         $data['city_id']=$city_id;
         $data['locality_id']=$location_id;
+        $data['locality_name']=$location_data->name;
+        $data['vehicle_id']=$vehicle_id;
+        $data['is_monthly']=false;
         $price_insert = Price::create($data);
 
         $price_vehicle = [
@@ -111,9 +116,10 @@ class PriceController extends Controller
      */
     public function edit(Price $price)
     {
+        $vehicles = Vehicle::latest()->get();
         $city =  Cities::with('childrens')->where('parent_id',null)->get();
         $user = User::latest()->whereIn('role_id',[1, 2])->get();
-        return view('adminv.admin.price.editprice',compact('price','city','user'));
+        return view('adminv.admin.price.editprice',compact('price','city','user','vehicles'));
     }
 
     /**

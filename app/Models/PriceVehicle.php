@@ -15,4 +15,9 @@ class PriceVehicle extends Model
         'vehicle_id',
     ];
 
+    public function city()
+    {
+        return $this->hasOne(Cities::class, 'id', 'city_id');
+    }
+
 }

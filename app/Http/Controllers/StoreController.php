@@ -44,7 +44,7 @@ class StoreController extends Controller
         ];
         $request->session()->put('search_data', $search_data);
 
-        $Vehicle = Vehicle::with('prices')->get();
+        $Vehicle = Vehicle::with('prices')->where('status', 'Active')->get();
 
 
         return view('front.product-list', compact('Vehicle'));

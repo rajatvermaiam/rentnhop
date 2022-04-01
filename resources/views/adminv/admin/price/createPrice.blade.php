@@ -58,7 +58,7 @@
                                                             disabled>{{ $data->name }}</option>
                                                     @if($data->childrens)
                                                         @foreach($data->childrens as $child)
-                                                            <option value="{{$data->id.'-'.$child->id}}" {{$child->id==old('city_id') ? 'selected':''}}>{{ $child->name }}</option>
+                                                            <option value="{{$child->id}}" {{$child->id==old('city_id') ? 'selected':''}}>{{ $child->name }}</option>
                                                         @endforeach
                                                     @endif
                                                 @endforeach
@@ -163,6 +163,20 @@
 
                                         </div>
                                         @error('quantity')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="status" class="form-label">Status *</label>
+                                        <select class="form-select  @error('status') is-invalid @enderror"
+                                                name="status" aria-label="status">
+                                            <option value="Active" selected="">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
+                                        @error('status')
                                         <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>
                                             </span>

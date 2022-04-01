@@ -16,11 +16,18 @@ class Price extends Model
      */
     protected $fillable = [
         'city_id',
+        'city_name',
+        'locality_id',
+        'locality_name',
+        'vehicle_id',
+        'status',
         'user_id',
         'weekday_price',
         'weekend_price',
         'security_price',
+        'minimum_price',
         'monthly_price',
+        'is_monthly',
         'quantity',
     ];
 

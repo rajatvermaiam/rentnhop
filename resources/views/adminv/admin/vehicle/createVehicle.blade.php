@@ -224,6 +224,20 @@
                                         @enderror
                                     </div>
 
+                                    <div class="col-md-4">
+                                        <label for="status" class="form-label">Status *</label>
+                                        <select class="form-select  @error('status') is-invalid @enderror"
+                                                name="status" aria-label="status">
+                                            <option value="Active" selected="">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
+                                        @error('status')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
                                     <div class="col-md-6">
                                         <label for="meta_robots" class="form-label">Meta Robots *</label>
                                         <select class="form-select  @error('meta_robots') is-invalid @enderror"

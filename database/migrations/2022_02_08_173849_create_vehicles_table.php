@@ -20,6 +20,7 @@ class CreateVehiclesTable extends Migration
             $table->string('category')->nullable();
             $table->string('top_speed')->nullable();
             $table->string('fuel_capacity')->nullable();
+            $table->string('status')->nullable();
             $table->string('type')->nullable();
             $table->longText('images');
             $table->longText('inclusions')->nullable();

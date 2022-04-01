@@ -6,12 +6,12 @@
         </div>
         <div class="modal-body">
             <div class="container scrol">
-                @if($vehicle->prices)
+                @if($vehicle->prices && $vehicle->prices->count()!=0)
                     @foreach($vehicle->prices as $data)
                         <div class="row boxb">
                             <div class="col-md-6  text-center loc">
                                 <div class="main2">
-                                    <h3>Karol Bagh </h3>
+                                    <h3>{{$data->locality_name}}</h3>
                                     <p>Mon-Thur - ₹{{$data->weekday_price}} | Fri-Sun - ₹{{$data->weekend_price}} </p>
                                     <p style="padding-bottom:10px;"> Security Deposit - ₹{{$data->security_price}}</p>
                                     <span>Extra 20% off, Use Coupon : KAROL20</span></div>

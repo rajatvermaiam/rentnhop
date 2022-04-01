@@ -32,6 +32,23 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="col-md-6">
+                                        <label for="vehicle_id" class="form-label">Select Vehicle*</label>
+                                        <select class="form-select  @error('vehicle_id') is-invalid @enderror"
+                                                name="vehicle_id" aria-label="vehicle_id">
+                                            <option value="" selected>select vehicle</option>
+                                            @if($vehicles)
+                                                @foreach ($vehicles as $data)
+                                                    <option value="{{ $data->id }}" {{$data->id==$price->vehicle_id ? 'selected':''}}>{{ $data->name }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('vehicle_id')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
                                         <label for="name" class="form-label">Select Location*</label>
                                         <select class="form-select  @error('city_id') is-invalid @enderror"
                                                 name="city_id" aria-label="city">
@@ -41,7 +58,7 @@
                                                             disabled>{{ $data->name }}</option>
                                                     @if($data->childrens)
                                                         @foreach($data->childrens as $child)
-                                                            <option value="{{ $data->id.'-'.$child->id }}" {{$child->id==$price->city_id ? 'selected':''}} >{{ $child->name }}</option>
+                                                            <option value="{{$child->id }}" {{$child->id==$price->city_id ? 'selected':''}} >{{ $child->name }}</option>
                                                         @endforeach
                                                     @endif
                                                 @endforeach
@@ -158,7 +175,19 @@
                                             </span>
                                         @enderror
                                     </div>
-
+                                    <div class="col-md-4">
+                                        <label for="status" class="form-label">Status *</label>
+                                        <select class="form-select  @error('status') is-invalid @enderror"
+                                                name="status" aria-label="status">
+                                            <option value="Active" {{$price->status=="Active" ? 'selected':''}}>Active</option>
+                                            <option value="Inactive" {{$price->status=="Inactive" ? 'selected':''}}>Inactive</option>
+                                        </select>
+                                        @error('status')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
                                     <div class="col-12">
                                         <button class="btn btn-primary" type="submit">Submit form</button>

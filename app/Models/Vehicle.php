@@ -32,10 +32,13 @@ class Vehicle extends Model
         'inclusions',
         'gears',
         'engine_cc',
+        'status'
     ];
+
+
 
     public function prices()
     {
-        return $this->belongsToMany(Price::class,'price_vehicles');
+        return $this->belongsToMany(Price::class,'price_vehicles')->where('status', 'Active');
     }
 }

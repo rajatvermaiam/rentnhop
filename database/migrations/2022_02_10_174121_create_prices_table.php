@@ -16,14 +16,19 @@ class CreatePricesTable extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('city_id');
+            $table->string('city_name')->nullable();
             $table->bigInteger('locality_id');
+            $table->string('locality_name')->nullable();
+            $table->bigInteger('vehicle_id')->nullable();;
             $table->string('status')->nullable();
             $table->bigInteger('user_id');
             $table->bigInteger('weekday_price');
             $table->bigInteger('weekend_price');
             $table->bigInteger('security_price');
-            $table->bigInteger('quantity');
             $table->bigInteger('monthly_price');
+            $table->bigInteger('minimum_price')->nullable();
+            $table->bigInteger('quantity');
+            $table->boolean('is_monthly');
             $table->timestamps();
         });
     }
