@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Adminv\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogPostController extends Controller
 {
@@ -39,6 +40,7 @@ class BlogPostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'post_images' => 'required|image|mimes:jpg,png,jpeg,svg|max:1024',
             'post_title' => ['required', 'string', 'max:255'],
             'post_slug' => ['required', 'string', 'max:255'],
             'description' => 'required',
@@ -53,10 +55,17 @@ class BlogPostController extends Controller
 
         $data = $request->all();
 
+        $imageName = $request->file('post_images')->getClientOriginalName();
+        $imageName = time().$imageName;
+        $request->post_images->move(public_path('images'), $imageName);
 
-        $data['post_images']='rentnhop';
+
+        $data['post_images']=$imageName;
 
 
+        $user_id = $role = Auth::user()->id;
+
+        $data['user_id'] = $user_id;
         BlogPost::create($data);
 
         return redirect(route('admin.blog-posts.index'))->with('success', 'Blog Posts Has Been created');
@@ -110,8 +119,14 @@ class BlogPostController extends Controller
 
         $data = $request->all();
 
-
-        $data['post_images']='rentnhop';
+        if (isset($data['post_images'])) {
+            $imageName = $request->file('post_images')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->post_images->move(public_path('images'), $imageName);
+            $data['post_images']=$imageName;
+        }else{
+            $data['post_images']=$BlogPost['post_images'];
+        }
 
         $update_data= $BlogPost->update($data);
 

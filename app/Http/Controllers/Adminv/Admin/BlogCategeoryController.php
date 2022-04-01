@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Adminv\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogCategeoryController extends Controller
 {
@@ -41,6 +42,7 @@ class BlogCategeoryController extends Controller
 
 
         $request->validate([
+            'category_img' => 'required|image|mimes:jpg,png,jpeg,svg|max:1024',
             'category_name' => ['required', 'string', 'max:255'],
             'category_slug' => ['required', 'string', 'max:255'],
             'description' => 'required',
@@ -54,9 +56,15 @@ class BlogCategeoryController extends Controller
 
 
         $data = $request->all();
+        $imageName = $request->file('category_img')->getClientOriginalName();
+        $imageName = time().$imageName;
+        $request->category_img->move(public_path('images'), $imageName);
 
+        $data['category_img']=$imageName;
 
-        $data['category_img']='rentnhop';
+        $user_id = $role = Auth::user()->id;
+
+        $data['user_id'] = $user_id;
 
 
         BlogCategory::create($data);
@@ -114,7 +122,17 @@ class BlogCategeoryController extends Controller
         ]);
 
         $data = $request->all();
-        $data['category_img']='rentnhop';
+
+
+        if (isset($data['category_img'])) {
+            $imageName = $request->file('category_img')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->category_img->move(public_path('images'), $imageName);
+            $data['category_img']=$imageName;
+        }else{
+            $data['category_img']=$BlogCategory['category_img'];
+        }
+
 
        $update_data= $BlogCategory->update($data);
 

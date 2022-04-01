@@ -39,7 +39,7 @@
                                 @foreach ($category as $data)
 
                                     <tr>
-                                        <td>{{ $data->category_img }}</td>
+                                        <td><img src="/images/{{$data->category_img}}" width="130" height="120"></td>
                                         <td>{{ $data->category_name }}</td>
                                         <td>{{ $data->category_slug }}</td>
                                         <td>{{ $data->status }}</td>

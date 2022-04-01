@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form action="{{ route('admin.blog-category.store') }}" method="POST"
+                                <form action="{{ route('admin.blog-category.store') }}" method="POST" enctype="multipart/form-data"
                                       class="row g-3 needs-validation"
                                       novalidate>
                                     @csrf
@@ -46,7 +46,7 @@
                                     <div class="col-md-4">
                                         <label for="pk-slug" class="form-label">Slug*</label>
                                         <div class="input-group has-validation">
-                                            <input type="text" name="category_slug"
+                                            <input type="text" name="category_slug" value="{{ old('category_slug') }}"
                                                    class="form-control  @error('category_slug') is-invalid @enderror" id="pk-slug"
                                                    required>
 

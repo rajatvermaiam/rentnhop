@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
-                                <form action="{{ route('admin.blog-posts.store') }}" method="POST"
+                                <form action="{{ route('admin.blog-posts.store') }}" method="POST" enctype="multipart/form-data"
                                       class="row g-3 needs-validation"
                                       novalidate>
                                     @csrf

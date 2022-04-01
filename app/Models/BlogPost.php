@@ -19,6 +19,7 @@ class BlogPost extends Model
         'post_title',
         'post_slug',
         'post_images',
+        'user_id',
         'description',
         'status',
         'meta_robots',

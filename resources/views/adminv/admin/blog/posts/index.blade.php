@@ -39,7 +39,7 @@
                                 @foreach ($post as $data)
 
                                     <tr>
-                                        <td>{{ $data->post_images }}</td>
+                                        <td><img src="/images/{{$data->post_images}}" width="130" height="120"></td>
                                         <td>{{ $data->post_title }}</td>
                                         <td>{{ $data->post_slug }}</td>
                                         <td>{{ $data->status }}</td>
