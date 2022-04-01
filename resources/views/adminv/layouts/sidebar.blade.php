@@ -48,7 +48,7 @@
             </li>
 
             <li><a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class='lni lni-map-marker'></i></div>
+                    <div class="parent-icon"><i class='lni lni-investment'></i></div>
                     <div class="menu-title">Prices</div>
                 </a>
                 <ul>
