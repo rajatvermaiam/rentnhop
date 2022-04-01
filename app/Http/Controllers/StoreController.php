@@ -54,10 +54,12 @@ class StoreController extends Controller
     {
 
         $vehicle_id = $request->input('vehicle_id');
-        $Vehicle = Vehicle::with('locations')->where('id', $vehicle_id)->get();
 
 
-        $data = View('front.product-list-page-modal', $Vehicle)->render();
+        $vehicle['vehicle'] = Vehicle::with('prices')->where('id', $vehicle_id)->first();
+
+
+        $data = View('front.product-list-page-modal', $vehicle)->render();
 
         $message = [
             "StatusCode" => 0,

@@ -722,9 +722,7 @@
             data: {
                 'vehicle_id': id
             },
-            contentType: false,
             cache: false,
-            processData: false,
             success: function (resp) {
                 if (resp.StatusCode == 0) {
                     $("[rentn-modal]").html(resp.data);
