@@ -7,6 +7,13 @@ Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index']);
 Route::get('/store/result', [\App\Http\Controllers\StoreController::class, 'result']);
 Route::post('/store/product-list-modal', [\App\Http\Controllers\StoreController::class, 'product_list_modal']);
 
+/** payment routes start*/
+
+Route::get('/payment', [\App\Http\Controllers\PaymentController::class, 'index']);
+
+Route::post('/payment/payment-status', [\App\Http\Controllers\PaymentController::class, 'payment_status']);
+
+/** payment routes end*/
 
 /** customer routes start */
 
@@ -21,6 +28,8 @@ Route::post('/customer/resend-otp', [\App\Http\Controllers\CustomerController::c
 
 Route::post('/cart/add-cart', [\App\Http\Controllers\CartController::class, 'add_cart']);
 Route::post('/cart/cart-delete-item', [\App\Http\Controllers\CartController::class, 'deleteItem']);
+Route::get('/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkout']);
+Route::post('/cart/update-cart', [\App\Http\Controllers\CartController::class, 'update_cart']);
 
 /** cart routes end*/
 

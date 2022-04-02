@@ -7,8 +7,8 @@
                  alt="cart_img"/></div>
         <div class="cc_cart_cont_wrapper">
             <h4><a>{{ $data['name'] }}</a></h4>
-            <p>Quantity : {{ $data['qty'] }} × ${{ ($data['selling_price'])/($data['qty']) }}</p>
-            <h5>${{ $data['selling_price'] }}</h5>
+            <p>Quantity : {{ $data['qty'] }} × ₹{{ ($data['selling_price'])/($data['qty']) }}</p>
+            <h5>₹{{ $data['selling_price'] }}</h5>
             @if( $data['vehicle_id'])
                 <button type="button" class="close" rent-cart-common="true" data-method="POST"
                         data-href="{{ url('cart/cart-delete-item') }}"
@@ -19,6 +19,6 @@
     </div>
     @endforeach
     <div class="cc_cart_wrapper1 cc_cart_wrapper2">
-        <div class="checkout_btn_resto"><a href="car_checkout.html">Checkout</a></div>
+        <div class="checkout_btn_resto"><a href="{{ url('cart/checkout')  }}">Checkout</a></div>
     </div>
 @endif

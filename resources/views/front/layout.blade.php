@@ -47,6 +47,174 @@
             width: 100%;
         }
     </style>
+
+
+    <style>
+        #navbar1 {
+            background-color: #333;
+            position: fixed;
+            top: -64px;
+            left: 0px;
+            width: 100%;
+            z-index:9999;
+            display: block;
+            transition: top 0.6s;
+        }
+
+        #navbar1 a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        #navbar1 a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+
+
+
+        .st-home-desktop .searchBarContainerV1 {
+            background: #fff;
+            margin-top: 30px;
+            padding: 40px 50px 0;
+            border-radius: 14px;
+            box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
+            background-color: #fff;
+            width: 530px;
+        }
+        .st-not-selected {
+            height: 490px!important;
+        }
+        .productTypeTabDivRental {
+            margin: 0 0 32px;
+            border-radius: 18px;
+            border: 4px solid #49a6ba;
+            background-color: #49a6ba;
+            height: 78px;
+        }
+        .productTypeTabRental1 {
+            box-shadow: 0 7px 6px 0 rgb(0 0 0 / 16%);
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 10px;
+            margin: 4px 5px 0;
+            cursor: pointer;
+        }
+        .chooseProductTabHRental1, .chooseProductTabHRental2 {
+            font-family: Poppins;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .chooseProductTabDRental1, .chooseProductTabDRental2 {
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            text-align: center;
+            margin: 0;
+        }
+        .arrow-downRental {
+            width: 50px;
+            height: 25px;
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            overflow: hidden;
+        }
+        .arrow-downRental:after {
+            border-radius: 2px;
+            content: "";
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            -webkit-transform: translateX(-50%) translateY(-50%) rotate(
+                45deg);
+            transform: translateX(-50%) translateY(-50%) rotate(
+                45deg);
+            top: -3px;
+            left: 50%;
+            box-shadow: 2px 2px 2px 0 rgb(0 0 0 / 7%);
+        }
+        .logo-rental {
+            height: 28px;
+            width: 100%;
+            object-fit: contain;
+            margin-bottom: 11px;
+        }
+        .rentalHomeHeading {
+            font-family: Poppins;
+            font-size: 18px;
+            font-weight: 400;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.83;
+            letter-spacing: normal;
+            text-align: center;
+            color: #5a5254;
+            margin-bottom: 30px;
+            line-height: 1;
+        }
+
+
+
+
+
+        .search-sec{
+            padding: .5rem;
+        }
+        .search-slt{
+            display: block;
+            width: 100%;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #55595c;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            height: calc(3rem + 2px) !important;
+            border-radius:0;
+        }
+        .wrn-btn{
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: capitalize;
+            height: calc(3rem + 2px) !important;
+            border-radius:0;
+        }
+
+
+
+        li.sub a {
+            border: 1px solid;
+
+            border-radius: 4px;
+        }
+
+    </style>
+{{--    <script>
+        // When the user scrolls down 20px from the top of the document, slide down the navbar
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("navbar1").style.top = "64px";
+            } else {
+                document.getElementById("navbar1").style.top = "0px";
+            }
+        }
+    </script>--}}
 </head>
 
 <body>
@@ -66,7 +234,7 @@
                     <div class="dropdown-wrapper menu-button menu_button_end ">
                         <a class="menu-button" >
                             <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                            <span header-cart-count="true">@if($cartProducts = session('cartProducts')) {{ count($cartProducts) }} @else {{ 0 }} @endif</span>
+                            <span header-cart-count="true"> @if($cartProducts = session('cartProducts')) {{ count($cartProducts) }} @else {{ 0 }} @endif</span>
                         </a>
                         <div class="drop-menu" header-cart-dropdown="true">
                             @if($cartProducts)
@@ -78,8 +246,8 @@
                                              alt="cart_img"/></div>
                                     <div class="cc_cart_cont_wrapper">
                                         <h4><a>{{ $data['name'] }}</a></h4>
-                                        <p>Quantity : {{ $data['qty'] }} × ${{ ($data['selling_price'])/($data['qty']) }}</p>
-                                        <h5>${{ $data['selling_price'] }}</h5>
+                                        <p>Quantity : {{ $data['qty'] }} × ₹{{ ($data['selling_price'])/($data['qty']) }}</p>
+                                        <h5>₹{{ $data['selling_price'] }}</h5>
                                         @if( $data['vehicle_id'])
                                             <button type="button" class="close" rent-cart-common="true" data-method="POST"
                                                     data-href="{{ url('cart/cart-delete-item') }}"
@@ -90,7 +258,7 @@
                                 </div>
                                 @endforeach
                                 <div class="cc_cart_wrapper1 cc_cart_wrapper2">
-                                    <div class="checkout_btn_resto"><a href="car_checkout.html">Checkout</a></div>
+                                    <div class="checkout_btn_resto"><a href="{{ url('cart/checkout')  }}">Checkout</a></div>
                                 </div>
                             @endif
                         </div>
@@ -102,12 +270,16 @@
                         <!-- <li class="sub"><a href="#"> Login </a> </li>-->
 
                         </li>
+                        @if($users =  Auth::user())
                         <li>
-
+                                <a  style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"> <strong>&nbsp; @if($users) {{ $users->name }} @else {{ 'Rider' }} @endif </strong></a>
+                        </li>
+                        @else
+                            <li>
                                 <a href="#" style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"
                                    data-toggle="modal" data-target="#loginModal"> <strong>&nbsp; Login </strong></a>
-
-                        </li>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
                 <header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
@@ -647,6 +819,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+
+<script type="text/javascript" language="javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/6.0.0-beta2/js/tempus-dominus.esm.js"></script>
+
+
 <script>
     baguetteBox.run('.tz-gallery');
 </script>
@@ -706,6 +883,140 @@
     $('.form_datetime').datetimepicker('setHoursDisabled', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 21, 22, 23, 24, 25]);
 </script>
 
+
+
+<script>
+    var padding_apply = false;
+    var nav_init_pos = 0;
+
+    function set_nav_pos() {
+        nav_init_pos = $('#action-call').innerHeight() - $('header').innerHeight();
+    }
+
+    $(document).ready(function () {
+        set_nav_pos(); // initialize scroll triggering position
+        $(window).on('resize', function () {
+            set_nav_pos(); // re-initialize the position if your header block height change with the resize action
+            $(window).trigger('scroll'); // We force update the body padding with the scroll event callback.
+
+        });
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > nav_init_pos) {
+                if (!padding_apply) {
+                    $('nav').addClass('fixed');
+                    $('body').css('padding-top', $('nav').innerHeight());
+                    padding_apply = true;
+                }
+            } else {
+                if (padding_apply) {
+                    $('nav').removeClass('fixed');
+                    $('body').css('padding-top', 0);
+                    padding_apply = false;
+                }
+            }
+        });
+    });
+
+</script>
+<script>
+    // Linked date and time picker
+    // start date date and time picker
+    $('#datepicker-start').datetimepicker();
+
+    // End date date and time picker
+    $('#datepicker-end').datetimepicker({
+        useCurrent: false
+    });
+
+    // start date picke on chagne event [select minimun date for end date datepicker]
+    $("#datepicker-start").on("dp.change", function (e) {
+        $('#datepicker-end').data("DateTimePicker").minDate(e.date);
+    });
+    // Start date picke on chagne event [select maxmimum date for start date datepicker]
+    $("#datepicker-end").on("dp.change", function (e) {
+        $('#datepicker-start').data("DateTimePicker").maxDate(e.date);
+    });
+</script>
+
+<script>
+
+    $('.btn-number').click(function (e) {
+        e.preventDefault();
+
+        fieldName = $(this).attr('data-field');
+        type = $(this).attr('data-type');
+        var input = $("input[name='" + fieldName + "']");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            if (type == 'minus') {
+
+                if (currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('min')) {
+
+                    setTimeout(function() {
+                        $(this).attr('disabled', true);
+                    }, 10);
+                }
+
+            } else if (type == 'plus') {
+
+                if (currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('max')) {
+                    setTimeout(function() {
+                        $(this).attr('disabled', true);
+                    }, 10);
+                }
+
+            }
+        } else {
+            input.val(0);
+        }
+    });
+    $('.input-number').focusin(function () {
+        $(this).data('oldValue', $(this).val());
+    });
+    $('.input-number').change(function () {
+
+        minValue = parseInt($(this).attr('min'));
+        maxValue = parseInt($(this).attr('max'));
+        valueCurrent = parseInt($(this).val());
+
+        name = $(this).attr('name');
+        if (valueCurrent >= minValue) {
+            $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the minimum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        if (valueCurrent <= maxValue) {
+            $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the maximum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+
+
+    });
+    $(".input-number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+            // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+</script>
 
 </body>
 </html>

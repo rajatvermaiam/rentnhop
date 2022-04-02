@@ -6,10 +6,12 @@ namespace App\Http\Controllers;
 use App\Models\Cities;
 use App\Models\Coupon;
 
+use App\Models\User;
 use App\Models\Vehicle;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 
@@ -22,8 +24,9 @@ class StoreController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+        //$request->session()->flush();
 
         $cities = Cities::latest()->where('parent_id',null)->get();
         $coupon = Coupon::latest()->where('status', 'active')->get();
@@ -86,6 +89,7 @@ class StoreController extends Controller
 
         return response()->json($message)->withCallback($request->input('callback'));
     }
+
 
 
 }

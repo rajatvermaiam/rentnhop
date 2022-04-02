@@ -164,6 +164,7 @@ class CartController extends Controller
 
     public function postCheckout(Request $request)
     {
+
         $cartProducts = session('cartProducts');
 
         if ($cartProducts) {

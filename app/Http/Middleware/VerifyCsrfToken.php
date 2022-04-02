@@ -15,6 +15,8 @@ class VerifyCsrfToken extends Middleware
         'store/resend-otp',
         'store/product-list-modal',
         'cart/add-cart',
-        'cart/cart-delete-item'
+        'cart/cart-delete-item',
+        'cart/update-cart',
+        'payment/payment-status'
     ];
 }

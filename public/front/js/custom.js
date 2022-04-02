@@ -176,9 +176,9 @@ function get_city(city){
 $(document).on("click", "[rent-cart-common='true']", function(e) {
     e.preventDefault();
 
-    var method = $(this).attr('data-method');
-    var url = $(this).attr('data-href');
-    var data_reference_id = $(this).attr('data-reference-id');
+    let method = $(this).attr('data-method');
+    let url = $(this).attr('data-href');
+    let data_reference_id = $(this).attr('data-reference-id');
     $("[data-message]").removeClass().html("");
     var buttontxt;
 
@@ -194,6 +194,10 @@ $(document).on("click", "[rent-cart-common='true']", function(e) {
             if (resp.StatusCode == 1) {
 
             } else if (resp.StatusCode == 0) {
+
+                if (resp.redirect_url){
+                    location.replace(resp.redirect_url);
+                }
 
                 $("[header-cart-dropdown]").html('');
                 $("[header-cart-count]").html(resp.header_cart_count);
@@ -214,3 +218,42 @@ $(document).on("click", "[rent-cart-common='true']", function(e) {
 
 
 });
+
+$(document).on("click", "[rent-cart-update='true']", function(e) {
+    e.preventDefault();
+    $("[data-message]").removeClass().html("");
+    let method = $(this).attr('data-method');
+    let url = $(this).attr('data-href');
+    let data_vehicle_id = $(this).attr('data-vehicle-id');
+
+    let qty = $("[rent-qty]").val();
+
+    $.ajax({
+        url: url,
+        method: method,
+        data:{
+            data_vehicle_id: data_vehicle_id,
+            'qty':qty
+        },
+        cache: false,
+        success: function(resp) {
+
+            if (resp.StatusCode == 1) {
+
+            } else if (resp.StatusCode == 0) {
+                $("[data-message]").addClass(resp.Class).attr('onClick', "this.classList.add('hide')").html(resp.Message);
+                window.location.reload();
+            } else {
+                $("[data-message]").addClass(resp.Class).attr('onClick', "this.classList.add('hide')").html(resp.Message);
+            }
+
+        },
+        error: function(res) {
+            alert("Unexpected error! Try again.");
+            // price.reload();
+        }
+    });
+
+
+});
+
