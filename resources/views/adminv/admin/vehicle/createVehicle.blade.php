@@ -74,20 +74,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label for="gears" class="form-label">Gears*</label>
-                                        <div class="input-group has-validation">
-                                            <input type="number" name="gears" value="{{ old('gears') }}"
-                                                   class="form-control  @error('gears') is-invalid @enderror" id="gears"
-                                                   required>
 
-                                        </div>
-                                        @error('gears')
-                                        <span class="invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
 
                                     <div class="col-md-4">
                                         <label for="fuel_capacity" class="form-label">Fuel Capacity*</label>
@@ -128,10 +115,25 @@
                                             <option value="" selected>vehicle type</option>
 
                                             <option value="With Gear">With Gear</option>
-                                            <option value="With Gear">Gear less</option>
+                                            <option value="Gear less">Gear less</option>
 
                                         </select>
                                         @error('type')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="gears" class="form-label">Gears*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="number" name="gears" value="{{ old('gears') }}"
+                                                   class="form-control  @error('gears') is-invalid @enderror" id="gears"
+                                                   required>
+
+                                        </div>
+                                        @error('gears')
                                         <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>
                                             </span>

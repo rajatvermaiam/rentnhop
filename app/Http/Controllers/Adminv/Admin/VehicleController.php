@@ -19,7 +19,7 @@ class VehicleController extends Controller
     {
 
         $vehicles = Vehicle::with('prices')->get();
-        return view('adminv.admin.vehicle.index',compact('vehicles'));
+        return view('adminv.admin.vehicle.index', compact('vehicles'));
     }
 
     /**
@@ -35,27 +35,27 @@ class VehicleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-       $request->validate([
-           'images' => 'required|image|mimes:jpg,png,jpeg,svg|max:1024',
+        $request->validate([
+            'images' => 'required|image|mimes:jpg,png,jpeg,svg|max:1024',
             'name' => ['required', 'string', 'max:255'],
             'model' => ['required', 'string', 'max:255'],
-           'category' => ['required', 'string', 'max:255'],
-           'top_speed' => ['required', 'numeric'],
-           'fuel_capacity' => ['required', 'numeric'],
-           'type' => ['required', 'string', 'max:255'],
-           'engine_cc' => ['required', 'numeric'],
-           'gears' => ['required', 'numeric'],
+            'category' => ['required', 'string', 'max:255'],
+            'top_speed' => ['required', 'numeric'],
+            'fuel_capacity' => ['required', 'numeric'],
+            'type' => ['required', 'string', 'max:255'],
+            'engine_cc' => ['required', 'numeric'],
+            'gears' => ['required', 'numeric'],
             'description' => 'required',
             'terms_conditions' => 'required',
-           'meta_robots' => ['required'],
-           'meta_title' => ['required'],
-           'meta_keyword' => ['required'],
-           'meta_description' => ['required'],
+            'meta_robots' => ['required'],
+            'meta_title' => ['required'],
+            'meta_keyword' => ['required'],
+            'meta_description' => ['required'],
 
         ]);
         $user_id = $role = Auth::user()->id;
@@ -65,11 +65,11 @@ class VehicleController extends Controller
         $data['user_id'] = $user_id;
 
         $imageName = $request->file('images')->getClientOriginalName();
-        $imageName = time().$imageName;
+        $imageName = time() . $imageName;
         $request->images->move(public_path('images'), $imageName);
 
 
-        $data['images']=$imageName;
+        $data['images'] = $imageName;
 
 
         Vehicle::create($data);
@@ -80,7 +80,7 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -91,19 +91,19 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $vehicle
+     * @param int $vehicle
      * @return \Illuminate\Http\Response
      */
     public function edit(Vehicle $vehicle)
     {
-        return view('adminv.admin.vehicle.editVehicle',compact('vehicle'));
+        return view('adminv.admin.vehicle.editVehicle', compact('vehicle'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $vehicle
+     * @param \Illuminate\Http\Request $request
+     * @param int $vehicle
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Vehicle $vehicle)
@@ -115,7 +115,6 @@ class VehicleController extends Controller
             'top_speed' => ['required', 'numeric'],
             'fuel_capacity' => ['required', 'numeric'],
             'type' => ['required', 'string', 'max:255'],
-
 
             'engine_cc' => ['required', 'numeric'],
             'gears' => ['required', 'numeric'],
@@ -134,10 +133,11 @@ class VehicleController extends Controller
             $imageName = $request->file('images')->getClientOriginalName();
             $imageName = time() . $imageName;
             $request->images->move(public_path('images'), $imageName);
-            $data['images']=$imageName;
-        }else{
-            $data['images']=$vehicle['images'];
+            $data['images'] = $imageName;
+        } else {
+            $data['images'] = $vehicle['images'];
         }
+
 
         $vehicle->update($data);
 
@@ -149,7 +149,7 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $vehicle
+     * @param int $vehicle
      * @return \Illuminate\Http\Response
      */
     public function destroy(Vehicle $vehicle)

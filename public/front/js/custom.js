@@ -172,3 +172,45 @@ function get_city(city){
     let cityModal = new bootstrap.Modal(document.getElementById('cityModal'));
     cityModal.hide();
 }
+
+$(document).on("click", "[rent-cart-common='true']", function(e) {
+    e.preventDefault();
+
+    var method = $(this).attr('data-method');
+    var url = $(this).attr('data-href');
+    var data_reference_id = $(this).attr('data-reference-id');
+    $("[data-message]").removeClass().html("");
+    var buttontxt;
+
+    $.ajax({
+        url: url,
+        method: method,
+        data:{
+            data_reference_id: data_reference_id
+        },
+        cache: false,
+        success: function(resp) {
+
+            if (resp.StatusCode == 1) {
+
+            } else if (resp.StatusCode == 0) {
+
+                $("[header-cart-dropdown]").html('');
+                $("[header-cart-count]").html(resp.header_cart_count);
+                $("[header-cart-dropdown]").html(resp.header_cart_dropdown);
+
+
+                $("[data-message]").addClass(resp.Class).attr('onClick', "this.classList.add('hide')").html(resp.Message);
+            } else {
+                $("[data-message]").addClass(resp.Class).attr('onClick', "this.classList.add('hide')").html(resp.Message);
+            }
+
+        },
+        error: function(res) {
+            alert("Unexpected error! Try again.");
+            // price.reload();
+        }
+    });
+
+
+});

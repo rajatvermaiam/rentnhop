@@ -35,7 +35,7 @@ class PriceController extends Controller
         $city =  Cities::with('childrens')->where('parent_id',null)->get();
         $vehicles = Vehicle::latest()->get();
         $user = User::latest()->whereIn('role_id',[1, 2])->get();
-        return view('adminv.admin.price.createprice',compact('city','user','vehicles'));
+        return view('adminv.admin.price.createPrice',compact('city','user','vehicles'));
     }
 
     /**

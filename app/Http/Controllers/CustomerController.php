@@ -86,7 +86,7 @@ class CustomerController extends Controller
                     $message = [
                         "StatusCode" => 0,
                         "Message" => 'Logged in successfully',
-                        "Class" => "error_popup", "Reload" => "true0",
+                        "Class" => "success_popup", "Reload" => "true",
                         "OtpField" => "true",
                         "otp" => $otp
                     ];

@@ -29,7 +29,7 @@
                                     <p class="flex items-center nb__1-zWq">
                                         <img src="https://assets.nobroker.in/nb-new/public/Property-Details/verifiedAvailabilityTick.svg"
                                             alt="verified"><span>{{$data->quantity}} Left</span></p>
-                                    <a href="#" class="admb" style="    background: #49a6ba;
+                                    <a rent-cart-common="true" data-method="POST" data-href="{{ url('cart/add-cart') }}" data-reference-id="{{$vehicle->id.'-'.$data->id.'-'.$data->user_id }}" class="admb" style="    background: #49a6ba;
     color: #fff;
     border-radius: 20px;
     font-size: 16px;

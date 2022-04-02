@@ -27,7 +27,7 @@ class CreateVehiclesTable extends Migration
             $table->longText('description');
             $table->longText('terms_conditions');
             $table->bigInteger('user_id');
-            $table->bigInteger('gears');
+            $table->bigInteger('gears')->nullable();;
             $table->bigInteger('engine_cc');
             $table->string('meta_robots');
             $table->string('meta_title');

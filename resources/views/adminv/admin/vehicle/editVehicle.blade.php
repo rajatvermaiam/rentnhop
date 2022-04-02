@@ -73,20 +73,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label for="model" class="form-label">Gears*</label>
-                                        <div class="input-group has-validation">
-                                            <input type="number" name="gears" value="{{ $vehicle->gears }}"
-                                                   class="form-control  @error('gears') is-invalid @enderror" id="gears"
-                                                   required>
 
-                                        </div>
-                                        @error('gears')
-                                        <span class="invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
 
                                     <div class="col-md-4">
                                         <label for="fuel_capacity" class="form-label">Fuel Capacity*</label>
@@ -127,10 +114,25 @@
                                             <option value="" selected>vehicle type</option>
 
                                             <option value="With Gear" {{$vehicle->type=="With Gear" ? 'selected':''}}>With Gear</option>
-                                            <option value="With Gear" {{$vehicle->type=="With Gear" ? 'selected':''}}>Gear less</option>
+                                            <option value="Gear less" {{$vehicle->type=="With Gear" ? 'selected':''}}>Gear less</option>
 
                                         </select>
                                         @error('type')
+                                        <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="model" class="form-label">Gears*</label>
+                                        <div class="input-group has-validation">
+                                            <input type="number" name="gears" value="{{ $vehicle->gears }}"
+                                                   class="form-control  @error('gears') is-invalid @enderror" id="gears"
+                                                   required>
+
+                                        </div>
+                                        @error('gears')
                                         <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>
                                             </span>

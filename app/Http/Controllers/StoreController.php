@@ -8,6 +8,7 @@ use App\Models\Coupon;
 
 use App\Models\Vehicle;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -23,6 +24,7 @@ class StoreController extends Controller
 
     public function index()
     {
+
         $cities = Cities::latest()->where('parent_id',null)->get();
         $coupon = Coupon::latest()->where('status', 'active')->get();
         return view('front.index', compact('cities', 'coupon'));
@@ -36,11 +38,25 @@ class StoreController extends Controller
         $from = $request->input('from');
         $to = $request->input('to');
 
+       // $total_days = Carbon::parse($from)->diffInDays($to);
+
+
+        $date_from = Carbon::create($from);
+        $date_to = Carbon::create($to);
+
+        $total_days = $date_from->diffInDays($date_to);
+
+        $weekends = $date_from->diffInWeekendDays($date_to);
+        $weekdays = $date_from->diffInWeekdays($date_to);
+
         $search_data = [
             'city' => $city,
             'city_id' => $city_id,
             'from' => $from,
-            'to' => $to
+            'to' => $to,
+            'total_days'=>$total_days,
+            'weekends'=>$weekends,
+            'weekdays'=>$weekdays
         ];
         $request->session()->put('search_data', $search_data);
 

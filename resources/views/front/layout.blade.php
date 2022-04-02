@@ -63,40 +63,36 @@
             </div>
             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
                 <div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
-                    <div class="dropdown-wrapper menu-button menu_button_end "><a class="menu-button" href="#"> <i
-                                class="fa fa-motorcycle" aria-hidden="true"></i><span>3</span></a>
-                        <div class="drop-menu">
-                            <div class="cc_cart_wrapper1">
-                                <div class="cc_cart_img_wrapper"><img src="{{asset('front/images/cart_img.jpg')}}"
-                                                                      alt="cart_img"/></div>
-                                <div class="cc_cart_cont_wrapper">
-                                    <h4><a href="#">Car</a></h4>
-                                    <p>Quantity : 2 × $45</p>
-                                    <h5>$90</h5>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="dropdown-wrapper menu-button menu_button_end ">
+                        <a class="menu-button" >
+                            <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                            <span header-cart-count="true">@if($cartProducts = session('cartProducts')) {{ count($cartProducts) }} @else {{ 0 }} @endif</span>
+                        </a>
+                        <div class="drop-menu" header-cart-dropdown="true">
+                            @if($cartProducts)
+                                @foreach($cartProducts as $key=>$data)
+
+                                <div class="cc_cart_wrapper1  @if($key!=0) {{ 'cc_cart_wrapper2' }} @endif">
+                                    <div class="cc_cart_img_wrapper">
+                                        <img src="/images/{{ $data['image'] }}" height="100" width="100"
+                                             alt="cart_img"/></div>
+                                    <div class="cc_cart_cont_wrapper">
+                                        <h4><a>{{ $data['name'] }}</a></h4>
+                                        <p>Quantity : {{ $data['qty'] }} × ${{ ($data['selling_price'])/($data['qty']) }}</p>
+                                        <h5>${{ $data['selling_price'] }}</h5>
+                                        @if( $data['vehicle_id'])
+                                            <button type="button" class="close" rent-cart-common="true" data-method="POST"
+                                                    data-href="{{ url('cart/cart-delete-item') }}"
+                                                    data-reference-id="{{ $key }}">&times;
+                                            </button>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="cc_cart_wrapper1 cc_cart_wrapper2">
-                                <div class="cc_cart_img_wrapper"><img src="{{asset('front/images/cart_img.jpg')}}"
-                                                                      alt="cart_img"/></div>
-                                <div class="cc_cart_cont_wrapper">
-                                    <h4><a href="#">Car</a></h4>
-                                    <p>Quantity : 2 × $45</p>
-                                    <h5>$90</h5>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                @endforeach
+                                <div class="cc_cart_wrapper1 cc_cart_wrapper2">
+                                    <div class="checkout_btn_resto"><a href="car_checkout.html">Checkout</a></div>
                                 </div>
-                            </div>
-                            <div class="cc_cart_wrapper1">
-                                <div class="cc_cart_img_wrapper"><img src="{{asset('front/images/cart_img.jpg')}}"
-                                                                      alt="cart_img"/></div>
-                                <div class="cc_cart_cont_wrapper">
-                                    <h4><a href="#">Car</a></h4>
-                                    <p>Quantity : 2 × $45</p>
-                                    <h5>$90</h5>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="checkout_btn_resto"><a href="car_checkout.html">Checkout</a></div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
