@@ -32,7 +32,11 @@ $(document).on("submit", "[rent-form='true']", function(e) {
                 $.each(resp.ErrorMessage, function(key, val) {
                     $('[name="' + key + '"],[textarea="' + key + '"]', form).after('<span class="error-message">'+val+'</span>');
                 });
-            } else if (resp.StatusCode == 0) {
+            }else if(resp.StatusCode == 4) {
+
+                location.replace(resp.url);
+
+            }else if (resp.StatusCode == 0) {
 
                 if (resp.Reload && resp.Reload == 'false') {
                     if (resp.loadurl) {

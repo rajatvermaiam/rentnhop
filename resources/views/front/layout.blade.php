@@ -14,18 +14,18 @@
     <link href="{{asset('front/css/xpedia.css')}}" rel="stylesheet"/>
     <link href="{{asset('front/css/rdx.css')}}" rel="stylesheet"/>
 
-   {{-- <link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet"/>--}}
+    {{-- <link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet"/>--}}
     {{--<link href="{{asset('front/css/style.css')}}" rel="stylesheet"/>
     <link href="{{asset('front/css/responsive.css')}}" rel="stylesheet"/>
     <link href="{{asset('front/css/reset.css')}}" rel="stylesheet"/>--}}
     {{--<link href="{{asset('front/css/owl.carousel.css')}}" rel="stylesheet"/>
     <link href="{{asset('front/css/owl.theme.default.css')}}" rel="stylesheet"/>--}}
     {{--<link href="{{asset('front/css/nice-select.css')}}" rel="stylesheet"/>--}}
-   {{-- <link href="{{asset('front/css/magnific-popup.css')}}" rel="stylesheet"/>--}}
+    {{-- <link href="{{asset('front/css/magnific-popup.css')}}" rel="stylesheet"/>--}}
     {{--<link href="{{asset('front/css/fonts.css')}}" rel="stylesheet"/>--}}
     {{--<link href="{{asset('front/css/font-awesome.css')}}" rel="stylesheet"/>--}}
     {{--<link href="{{asset('front/css/flaticon.css')}}" rel="stylesheet"/>--}}
-   {{-- <link href="{{asset('front/css/animate.css')}}" rel="stylesheet"/>--}}
+    {{-- <link href="{{asset('front/css/animate.css')}}" rel="stylesheet"/>--}}
     <link href="{{asset('front/dist/bootstrap-datetimepicker.min.css')}}" media="screen"/>
 
 
@@ -33,7 +33,8 @@
     <link rel="shortcut icon" href="{{asset('front/images/fevicon1.png')}}" type="image/png"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/6.0.0-beta2/css/tempus-dominus.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/6.0.0-beta2/css/tempus-dominus.min.css"/>
 
 
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
@@ -56,7 +57,7 @@
             top: -64px;
             left: 0px;
             width: 100%;
-            z-index:9999;
+            z-index: 9999;
             display: block;
             transition: top 0.6s;
         }
@@ -77,9 +78,6 @@
         }
 
 
-
-
-
         .st-home-desktop .searchBarContainerV1 {
             background: #fff;
             margin-top: 30px;
@@ -89,9 +87,11 @@
             background-color: #fff;
             width: 530px;
         }
+
         .st-not-selected {
-            height: 490px!important;
+            height: 490px !important;
         }
+
         .productTypeTabDivRental {
             margin: 0 0 32px;
             border-radius: 18px;
@@ -99,6 +99,7 @@
             background-color: #49a6ba;
             height: 78px;
         }
+
         .productTypeTabRental1 {
             box-shadow: 0 7px 6px 0 rgb(0 0 0 / 16%);
             background-color: #fff;
@@ -107,6 +108,7 @@
             margin: 4px 5px 0;
             cursor: pointer;
         }
+
         .chooseProductTabHRental1, .chooseProductTabHRental2 {
             font-family: Poppins;
             font-size: 20px;
@@ -114,6 +116,7 @@
             text-align: center;
             line-height: 1.4;
         }
+
         .chooseProductTabDRental1, .chooseProductTabDRental2 {
             font-family: Poppins;
             font-size: 14px;
@@ -122,6 +125,7 @@
             text-align: center;
             margin: 0;
         }
+
         .arrow-downRental {
             width: 50px;
             height: 25px;
@@ -131,6 +135,7 @@
             transform: translateX(-50%);
             overflow: hidden;
         }
+
         .arrow-downRental:after {
             border-radius: 2px;
             content: "";
@@ -146,12 +151,14 @@
             left: 50%;
             box-shadow: 2px 2px 2px 0 rgb(0 0 0 / 7%);
         }
+
         .logo-rental {
             height: 28px;
             width: 100%;
             object-fit: contain;
             margin-bottom: 11px;
         }
+
         .rentalHomeHeading {
             font-family: Poppins;
             font-size: 18px;
@@ -167,13 +174,11 @@
         }
 
 
-
-
-
-        .search-sec{
+        .search-sec {
             padding: .5rem;
         }
-        .search-slt{
+
+        .search-slt {
             display: block;
             width: 100%;
             font-size: 0.875rem;
@@ -183,17 +188,17 @@
             background-image: none;
             border: 1px solid #ccc;
             height: calc(3rem + 2px) !important;
-            border-radius:0;
+            border-radius: 0;
         }
-        .wrn-btn{
+
+        .wrn-btn {
             width: 100%;
             font-size: 16px;
             font-weight: 400;
             text-transform: capitalize;
             height: calc(3rem + 2px) !important;
-            border-radius:0;
+            border-radius: 0;
         }
-
 
 
         li.sub a {
@@ -203,18 +208,18 @@
         }
 
     </style>
-{{--    <script>
-        // When the user scrolls down 20px from the top of the document, slide down the navbar
-        window.onscroll = function() {scrollFunction()};
+    {{--    <script>
+            // When the user scrolls down 20px from the top of the document, slide down the navbar
+            window.onscroll = function() {scrollFunction()};
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("navbar1").style.top = "64px";
-            } else {
-                document.getElementById("navbar1").style.top = "0px";
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("navbar1").style.top = "64px";
+                } else {
+                    document.getElementById("navbar1").style.top = "0px";
+                }
             }
-        }
-    </script>--}}
+        </script>--}}
 </head>
 
 <body>
@@ -232,33 +237,37 @@
             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
                 <div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
                     <div class="dropdown-wrapper menu-button menu_button_end ">
-                        <a class="menu-button" >
+                        <a class="menu-button">
                             <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                            <span header-cart-count="true"> @if($cartProducts = session('cartProducts')) {{ count($cartProducts) }} @else {{ 0 }} @endif</span>
+                            <span
+                                header-cart-count="true"> @if($cartProducts = session('cartProducts')) {{ count($cartProducts) }} @else {{ 0 }} @endif</span>
                         </a>
                         <div class="drop-menu" header-cart-dropdown="true">
                             @if($cartProducts)
                                 @foreach($cartProducts as $key=>$data)
 
-                                <div class="cc_cart_wrapper1  @if($key!=0) {{ 'cc_cart_wrapper2' }} @endif">
-                                    <div class="cc_cart_img_wrapper">
-                                        <img src="/images/{{ $data['image'] }}" height="100" width="100"
-                                             alt="cart_img"/></div>
-                                    <div class="cc_cart_cont_wrapper">
-                                        <h4><a>{{ $data['name'] }}</a></h4>
-                                        <p>Quantity : {{ $data['qty'] }} × ₹{{ ($data['selling_price'])/($data['qty']) }}</p>
-                                        <h5>₹{{ $data['selling_price'] }}</h5>
-                                        @if( $data['vehicle_id'])
-                                            <button type="button" class="close" rent-cart-common="true" data-method="POST"
-                                                    data-href="{{ url('cart/cart-delete-item') }}"
-                                                    data-reference-id="{{ $key }}">&times;
-                                            </button>
-                                        @endif
+                                    <div class="cc_cart_wrapper1  @if($key!=0) {{ 'cc_cart_wrapper2' }} @endif">
+                                        <div class="cc_cart_img_wrapper">
+                                            <img src="/images/{{ $data['image'] }}" height="100" width="100"
+                                                 alt="cart_img"/></div>
+                                        <div class="cc_cart_cont_wrapper">
+                                            <h4><a>{{ $data['name'] }}</a></h4>
+                                            <p>Quantity : {{ $data['qty'] }} ×
+                                                ₹{{ ($data['selling_price'])/($data['qty']) }}</p>
+                                            <h5>₹{{ $data['selling_price'] }}</h5>
+                                            @if( $data['vehicle_id'])
+                                                <button type="button" class="close" rent-cart-common="true"
+                                                        data-method="POST"
+                                                        data-href="{{ url('cart/cart-delete-item') }}"
+                                                        data-reference-id="{{ $key }}">&times;
+                                                </button>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
                                 @endforeach
                                 <div class="cc_cart_wrapper1 cc_cart_wrapper2">
-                                    <div class="checkout_btn_resto"><a href="{{ url('cart/checkout')  }}">Checkout</a></div>
+                                    <div class="checkout_btn_resto"><a href="{{ url('cart/checkout')  }}">Checkout</a>
+                                    </div>
                                 </div>
                             @endif
                         </div>
@@ -271,13 +280,15 @@
 
                         </li>
                         @if($users =  Auth::user())
-                        <li>
-                                <a  style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"> <strong>&nbsp; @if($users) {{ $users->name }} @else {{ 'Rider' }} @endif </strong></a>
-                        </li>
+                            <li>
+                                <a style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
+                                    <strong>&nbsp; @if($users) {{ $users->name }} @else {{ 'Rider' }} @endif </strong></a>
+                            </li>
                         @else
                             <li>
-                                <a href="#" style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"
-                                   data-toggle="modal" data-target="#loginModal"> <strong>&nbsp; Login </strong></a>
+                                <a
+                                    style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"
+                                    data-toggle="modal" data-target="#loginModal"> <strong>&nbsp; Login </strong></a>
                             </li>
                         @endif
                     </ul>
@@ -501,7 +512,8 @@
 @yield('content')
 
 @if(session('Message'))
-    <div class="message {{ $message = session('Message')['Class']  }}" onclick="this.classList.add('hide');">{{ $message = session('Message')['Message'] }}</div>
+    <div class="message {{ $message = session('Message')['Class']  }}"
+         onclick="this.classList.add('hide');">{{ $message = session('Message')['Message'] }}</div>
 @endif
 <div data-message="true"></div>
 
@@ -757,7 +769,8 @@
                                         <header>Login</header>
                                         <div class="form-group">
                                             <label for="OTP" class="form-label pr-4 float-right"
-                                                   style="cursor: pointer;"><a href="#" rent-back="true"> Back </a></label>
+                                                   style="cursor: pointer;"><a href="#" rent-back="true">
+                                                    Back </a></label>
                                             <input class="myInput" name="OTP" placeholder="Please Enter OTP"
                                                    type="text" id="otp" required>
                                             <label for="OTP" class="form-label pr-4 float-right"
@@ -792,8 +805,75 @@
 </div>
 
 
-
 {{--login model end--}}
+
+
+{{--payment modal start--}}
+
+<!-- Modal -->
+
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Proceed to payment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url('cart/proceed-payment') }}" method="post" rent-form="true">
+                    @csrf
+
+                    <div class="row">
+                        <div class="form-group col-md-6 pb-2">
+                            <label>Rider Name<span>*</span></label>
+                            <input name="name" placeholder="Enter Rider Name" class="form-control" type="text" value="">
+                        </div>
+                        <div class="form-group col-md-6 pb-2">
+                            <label>Rider Mobile no<span>*</span></label>
+                            <input name="mobile" maxlength="10"
+                                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                   placeholder="Enter Rider Mobile no"
+                                   class="form-control" type="number">
+                        </div>
+                        <div class="form-group col-md-6 pb-2">
+                            <label>Rider Email Id<span>*</span></label>
+                            <input name="email" placeholder="Rider Email Id" class="form-control" type="text" value="">
+                        </div>
+                        @if($users)
+                            @if($users->role->alias=='admin')
+                                <div class="form-group col-md-6 pb-2">
+                                    <label>Rent Paid<span></span></label>
+                                    <input name="rent_paid" placeholder="Rent paid" class="form-control" type="text"
+                                           value="">
+                                </div>
+                            @endif
+                        @else
+                            <div class="form-group col-md-6 pb-2">
+                                <label>Advance Payment (20 %)<span></span></label>
+                                <input name="rent_paid" placeholder="Rent paid" class="form-control" type="text"
+                                       value="@if(isset($price_breakup)) {{ $price_breakup['partially_amount'] }} @endif" disabled>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" value="Proceed now" class="btn btn-default"
+                                style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">Proceed
+                            now
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{--payment modal end--}}
 
 <input type="hidden" id="url" value="<?php echo url('/');?>">
 
@@ -801,7 +881,6 @@
 <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('front/js/modernizr.js') }}"></script>
 <script src="{{ asset('front/js/select2.min.js') }}"></script>
-
 
 
 <script type="text/javascript" src="{{ asset('front/dist/bootstrap-datetimepicker.min.js') }}" charset="UTF-8"></script>
@@ -884,7 +963,6 @@
 </script>
 
 
-
 <script>
     var padding_apply = false;
     var nav_init_pos = 0;
@@ -955,7 +1033,7 @@
                 }
                 if (parseInt(input.val()) == input.attr('min')) {
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $(this).attr('disabled', true);
                     }, 10);
                 }
@@ -966,7 +1044,7 @@
                     input.val(currentVal + 1).change();
                 }
                 if (parseInt(input.val()) == input.attr('max')) {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $(this).attr('disabled', true);
                     }, 10);
                 }

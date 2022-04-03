@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Booking;
 use App\Models\Cities;
 use App\Models\Coupon;
 
@@ -28,7 +29,7 @@ class StoreController extends Controller
     {
         //$request->session()->flush();
 
-        $cities = Cities::latest()->where('parent_id',null)->get();
+        $cities = Cities::latest()->where('parent_id', null)->get();
         $coupon = Coupon::latest()->where('status', 'active')->get();
         return view('front.index', compact('cities', 'coupon'));
     }
@@ -41,7 +42,7 @@ class StoreController extends Controller
         $from = $request->input('from');
         $to = $request->input('to');
 
-       // $total_days = Carbon::parse($from)->diffInDays($to);
+        // $total_days = Carbon::parse($from)->diffInDays($to);
 
 
         $date_from = Carbon::create($from);
@@ -57,9 +58,9 @@ class StoreController extends Controller
             'city_id' => $city_id,
             'from' => $from,
             'to' => $to,
-            'total_days'=>$total_days,
-            'weekends'=>$weekends,
-            'weekdays'=>$weekdays
+            'total_days' => $total_days,
+            'weekends' => $weekends,
+            'weekdays' => $weekdays
         ];
         $request->session()->put('search_data', $search_data);
 
@@ -90,6 +91,12 @@ class StoreController extends Controller
         return response()->json($message)->withCallback($request->input('callback'));
     }
 
+    public function voucher(Request $request)
+    {
+        $id = rent_decode($mobile = $request->session()->get('booking_id'));
+        $booking_data = Booking::where('id', $id)->first();
 
+        prd($booking_data);
+    }
 
 }

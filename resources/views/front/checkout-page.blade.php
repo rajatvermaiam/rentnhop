@@ -536,7 +536,7 @@
 
                             </table>
                             <div class="col-md-12 crtbtn">
-                                <a href="#"
+                                <a data-toggle="modal" data-target="#paymentModal"
                                    style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
                                     <strong>Login to Pay / Proceed to Payment </strong>
                                 </a>

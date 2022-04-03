@@ -64,3 +64,56 @@ function send_sms($to, $msg, $sms_type, $company_info,$template_id="")
     return $sms_data;
 
 }
+
+/**
+ * -------------------------------------
+ * Encode Function
+ * -------------------------------------
+ */
+if (!function_exists('rent_encode')) {
+    function rent_encode($string, $key = "", $url_safe = true)
+    {
+        if ($key == null || $key == "") {
+            $key = "rentnhop.com";
+        }
+
+        $ret = base64_encode($string);
+        if ($url_safe) {
+            $ret = strtr(
+                $ret,
+                array(
+                    '+' => '.',
+                    '=' => '-',
+                    '/' => '~',
+                )
+            );
+        }
+        return $ret;
+    }
+}
+
+/**
+ * -------------------------------------
+ * Decode  Function
+ * -------------------------------------
+ */
+
+if (!function_exists('rent_decode')) {
+    function rent_decode($string, $key = "")
+    {
+        if ($key == null || $key == "") {
+            $key = "rentnhop.com";
+        }
+
+        $string = strtr(
+            $string,
+            array(
+                '.' => '+',
+                '-' => '=',
+                '~' => '/',
+            )
+        );
+
+        return base64_decode($string);
+    }
+}
