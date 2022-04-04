@@ -38,7 +38,16 @@ class PaymentController extends Controller
 
             $return_data = $api->order->create($postdata);
 
+            $booking_data = Booking::where('id',$booking_id)->first();
+
+
             $user = Auth::user();
+
+            $user_id=null;
+            if($user){
+                $user_id = $user->id;
+            }
+
             $udf1 = null;
             $udf2 = $booking_id;
             $udf3 = null;
@@ -46,11 +55,11 @@ class PaymentController extends Controller
             $razor_details = [
                 'ID' => $return_data['id'],
                 "ORDER_ID" => $order_txn,
-                "customer_id" => $user->id,
-                "name" => $user->name,
-                "email" => $user->email,
-                "contact" => $user->mobile,
-                "extraparmeter" => $udf1 . "#" . $udf2 . "#" . $tnx_amount . "#" . $return_data['id'] . "#" . $udf3 . "#" . $udf4 . "#" . $user->id,
+                "customer_id" => $user_id,
+                "name" => $booking_data->name,
+                "email" => $booking_data->email,
+                "contact" => $booking_data->mobile,
+                "extraparmeter" => $udf1 . "#" . $udf2 . "#" . $tnx_amount . "#" . $return_data['id'] . "#" . $udf3 . "#" . $udf4 . "#" . $user_id,
                 "key" => env('RAZORPAY_KEY'),
                 "amount" => $tnx_amount,
 
@@ -125,18 +134,16 @@ class PaymentController extends Controller
 
                 /*bike availability code here*/
 
-
-
-
-                $booking_data = Booking::where('id',$booking_id);
-
-                $booking_id = rent_encode($booking_id);
-
                 $data = [
                     'payment_status'=>$payment_status,
                     'booking_status'=>'Success',
                     'razorpay_response'=> json_encode($response)
                 ];
+
+                $booking_data = Booking::where('id',$booking_id);
+
+                $booking_id = rent_encode($booking_id);
+
 
                 $booking_data->update($data);
 

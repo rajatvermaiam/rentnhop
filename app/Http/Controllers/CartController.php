@@ -218,7 +218,7 @@ class CartController extends Controller
     public function proceed_payment(Request $request)
     {
 
-        $data = $request->all();
+        $post_data = $request->all();
 
         $validator = \Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
@@ -245,37 +245,87 @@ class CartController extends Controller
             $search_data =  session()->get('search_data');
 
 
+            $payable_rent = $price_breakup['partially_amount'];
+            $remaining_rent = $price_breakup['remaining_amount'];
+            $security_rent = $price_breakup['security_price'];
+
+            $mobile = $post_data['mobile'];
+            $email = $post_data['email'];
+            $name = $post_data['name'];
+
+            $role=null;
+            $user_id=null;
             $user = Auth::user();
-            if ($user->role->alias == 'admin') {
+            if ($user){
+               $role =  $user->role->alias;
+               $user_id = $user->id;
+            }else{
+                $role = 'user';
+            }
 
-            } else {
+            /*admin payment error*/
 
-                $payable_rent = $price_breakup['partially_amount'];
-                $remaining_rent = $price_breakup['remaining_amount'];
-                $security_rent = $price_breakup['security_price'];
-                $booking_data = [
+            if ($role == 'admin') {
+
+                $admin_booking_data = [
                     'cart_data'=>json_encode($cartProducts),
                     'price_breakup'=>json_encode($price_breakup),
                     'from'=>$search_data['from'],
                     'to'=>$search_data['to'],
-                    'mobile'=>$user->mobile,
-                    'email'=>$user->email,
-                    'name'=>$user->name,
-                    'payment_status'=>'pending',
-                    'booking_status'=>'pending',
-                    'user_id'=>$user->id,
-                    'role'=>$user->role->alias,
+                    'mobile'=>$mobile,
+                    'email'=>$email,
+                    'name'=>$name,
+                    'payment_status'=>'Paid to Admin',
+                    'booking_status'=>'Success',
+                    'user_id'=> $user_id,
+                    'role'=>$role,
                     'paid_rent'=>$payable_rent,
                     'remaining_rent'=>$remaining_rent,
                     'security_rent'=>$security_rent,
-                    'razorpay_response'=>''
+                    'razorpay_response'=>'',
+                    'payment_mode'=>'Offline'
                 ];
 
-                $booking_insert = Booking::create($booking_data);
+                $booking_insert = Booking::create($admin_booking_data);
+                $booking_id = rent_encode($booking_insert->id);
+
+                $request->session()->put('booking_id', $booking_id);
+
+                $url = url('store/voucher');
+
+                $message = [
+                    "StatusCode" => 4,
+                    'url'=>$url
+                ];
+                return response()->json($message)->withCallback($request->input('callback'));
+
+            } else {
+
+
+                $customer_booking_data = [
+                    'cart_data'=>json_encode($cartProducts),
+                    'price_breakup'=>json_encode($price_breakup),
+                    'from'=>$search_data['from'],
+                    'to'=>$search_data['to'],
+                    'mobile'=>$mobile,
+                    'email'=>$email,
+                    'name'=>$name,
+                    'payment_status'=>'pending',
+                    'booking_status'=>'pending',
+                    'user_id'=>$user_id,
+                    'role'=>$role,
+                    'paid_rent'=>$payable_rent,
+                    'remaining_rent'=>$remaining_rent,
+                    'security_rent'=>$security_rent,
+                    'razorpay_response'=>'',
+                    'payment_mode'=>'Online'
+
+                ];
+
+                $booking_insert = Booking::create($customer_booking_data);
 
                 $booking_id = $booking_insert->id;
 
-               // $booking_id = rent_encode($booking_id);
 
                 $final_key = rent_encode('developer@rentnhop'."#".$booking_id);
 
