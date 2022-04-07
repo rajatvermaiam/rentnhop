@@ -3,6 +3,7 @@
 use App\Http\Controllers\Adminv\Admin\AdminController;
 use App\Http\Controllers\Adminv\Admin\BlogCategeoryController;
 use App\Http\Controllers\Adminv\Admin\BlogPostController;
+use App\Http\Controllers\Adminv\Admin\BookingController;
 use App\Http\Controllers\Adminv\Admin\CitiesController;
 use App\Http\Controllers\Adminv\Admin\CouponController;
 use App\Http\Controllers\Adminv\Admin\LocalityController;
@@ -27,4 +28,9 @@ Route::resource('coupon', CouponController::class);
 Route::resource('cities', CitiesController::class);
 
 Route::resource('locality', LocalityController::class);
+
+/*booking route start*/
+Route::get('/bookings', [BookingController::class, 'index']);
+Route::get('/invoice', [BookingController::class, 'invoice']);
+/*booking route end*/
 
