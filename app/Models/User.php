@@ -21,8 +21,23 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+
         'mobile',
-        'country_code'
+        'country_code',
+        'company_name',
+        'other_mobile',
+        'other_email',
+        'pan_no',
+        'gst_no',
+        'shop_image',
+        'agreement_image',
+        'address',
+        'city',
+        'state',
+        'country',
+        'pin_code',
+        'google_location',
+
     ];
 
     /**

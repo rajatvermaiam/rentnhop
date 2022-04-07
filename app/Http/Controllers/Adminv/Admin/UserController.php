@@ -48,12 +48,28 @@ class UserController extends Controller
             'role_id' => 'required',
         ]);
 
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'role_id'=>$request['role_id'],
-            'password' => Hash::make($request['password'])
-            ]);
+        $data = $request->all();
+
+
+
+        $data['password'] =Hash::make($data['password']);
+
+
+        if ($data['shop_image']) {
+            $imageName = $request->file('shop_image')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->shop_image->move(public_path('shop_image'), $imageName);
+            $data['shop_image'] = $imageName;
+        }
+        if ($data['agreement_image']) {
+            $imageName = $request->file('agreement_image')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->agreement_image->move(public_path('agreement_image'), $imageName);
+            $data['agreement_image'] = $imageName;
+        }
+
+
+        User::create($data);
 
         return redirect(route('admin.user.index'))->with('success', 'User Has Been created');
     }
@@ -93,13 +109,30 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request['email'], 'email')],
-            'password' => ['required', 'string', 'min:8'],
             'role_id' => 'required',
         ]);
 
+        $data = $request->all();
 
-        $user->update($request->all());
+        if (isset($data['shop_image'])) {
+            $imageName = $request->file('shop_image')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->shop_image->move(public_path('shop_image'), $imageName);
+            $data['shop_image'] = $imageName;
+        } else {
+            $data['shop_image'] = $user['shop_image'];
+        }
 
+        if (isset($data['agreement_image'])) {
+            $imageName = $request->file('agreement_image')->getClientOriginalName();
+            $imageName = time() . $imageName;
+            $request->agreement_image->move(public_path('agreement_image'), $imageName);
+            $data['agreement_image'] = $imageName;
+        } else {
+            $data['agreement_image'] = $user['agreement_image'];
+        }
+
+        $user->update($data);
 
         return redirect(route('admin.user.index'))->with('success', 'User Has Been updated');
     }

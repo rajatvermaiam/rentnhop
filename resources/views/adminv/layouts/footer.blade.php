@@ -100,11 +100,10 @@
 <script src="{{asset('adminv/admin/plugins/simplebar/js/simplebar.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
-{{--<script src="{{asset('adminv/admin/plugins/chartjs/js/Chart.min.js')}}"></script>--}}
+
 <script src="{{asset('adminv/admin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-{{--<script src="{{asset('adminv/admin/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
-<script src="{{asset('adminv/admin/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>--}}
+
 <script src="{{asset('adminv/admin/plugins/jquery-knob/excanvas.js')}}"></script>
 <script src="{{asset('adminv/admin/plugins/jquery-knob/jquery.knob.js')}}"></script>
 
@@ -113,6 +112,17 @@
 <script src="{{asset('adminv/admin/js/dataTables.bootstrap5.min.js')}}"></script>
 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script>
+    $(document).on("change", "[rentn-user]", function(e) {
+        if (this.value == 2){
+            $("[rentn-disply]").removeClass('dnone');
+        }else {
+            $("[rentn-disply]").addClass('dnone');
+        }
+    });
+</script>
+
 <script>
 
 
