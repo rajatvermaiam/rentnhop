@@ -766,19 +766,57 @@
                                     <form class="myForm text-center" name="otpForm" rent-form="true" method="POST"
                                           action="{{ url('customer/otp-login') }}">
                                         @csrf
-                                        <header>Login</header>
+                                        {{-- <header>Login</header>
+                                         <div class="form-group">
+                                             <label for="OTP" class="form-label pr-4 float-right"
+                                                    style="cursor: pointer;"><a href="#" rent-back="true">
+                                                     Back </a></label>
+                                             <input class="myInput" name="OTP" placeholder="Please Enter OTP"
+                                                    type="text" id="otp" required>
+                                             <label for="OTP" class="form-label pr-4 float-right"
+                                                    style="cursor: pointer;">
+                                                 <a href="#" rent-resent="true" id="resend">Resend OTP</a>
+                                             </label>
+                                         </div>
+                                         <input type="submit" class="butt" value="Submit">--}}
+
+                                        <header> OTP Verification</header>
                                         <div class="form-group">
-                                            <label for="OTP" class="form-label pr-4 float-right"
-                                                   style="cursor: pointer;"><a href="#" rent-back="true">
-                                                    Back </a></label>
-                                            <input class="myInput" name="OTP" placeholder="Please Enter OTP"
-                                                   type="text" id="otp" required>
-                                            <label for="OTP" class="form-label pr-4 float-right"
-                                                   style="cursor: pointer;">
-                                                <a href="#" rent-resent="true" id="resend">Resend OTP</a>
-                                            </label>
+                                            <div class="card p-2 text-center">
+                                                <h6>Please enter the one time password <br> to verify your account
+                                                </h6>
+                                                <br>
+                                                <div><span>A code has been sent to</span> <small
+                                                        rentn-sent-to-otp="true">*******9897</small>
+                                                </div>
+                                                <br>
+                                                <div id="otp"
+                                                     class="inputs d-flex flex-row justify-content-center mt-2">
+                                                    <input
+                                                        class="m-2 text-center form-control rounded" type="text"
+                                                        id="first" name="first" maxlength="1"/> <input
+                                                        class="m-2 text-center form-control rounded" type="text"
+                                                        id="second" name="second" maxlength="1"/> <input
+                                                        class="m-2 text-center form-control rounded" type="text"
+                                                        id="third" name="third" maxlength="1"/> <input
+                                                        class="m-2 text-center form-control rounded" type="text"
+                                                        id="fourth" name="fourth" maxlength="1"/>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <input type="submit" class="butt" value="Validate">
+                                                </div>
+                                                <div class="card-2" style="padding-top:20px;">
+                                                    <div
+                                                        class="content d-flex justify-content-center align-items-center">
+                                                        <span>Didn't get the code </span>
+                                                        <a class="text-decoration-none ms-3" rent-resent="true" id="resend" style="color:#F00; font-weight:600;">&nbsp;
+                                                            Resend
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                        <input type="submit" class="butt" value="Submit">
                                     </form>
 
 
@@ -855,7 +893,8 @@
                             <div class="form-group col-md-6 pb-2">
                                 <label>Advance Payment (20 %)<span></span></label>
                                 <input name="rent_paid" placeholder="Rent paid" class="form-control" type="text"
-                                       value="@if(isset($price_breakup)) {{ $price_breakup['partially_amount'] }} @endif" disabled>
+                                       value="@if(isset($price_breakup)) {{ $price_breakup['partially_amount'] }} @endif"
+                                       disabled>
                             </div>
                         @endif
                     </div>

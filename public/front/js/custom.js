@@ -5,6 +5,7 @@ $(document).on("submit", "[rent-form='true']", function(e) {
     var method = form.attr('method');
     var name = form.attr('name');
     $("[data-message]").removeClass().html("");
+
     var buttontxt;
     if ($("input[type=submit]", form).attr('value')) {
         buttontxt = $("input[type=submit]", form).attr('value');
@@ -32,6 +33,10 @@ $(document).on("submit", "[rent-form='true']", function(e) {
                 $.each(resp.ErrorMessage, function(key, val) {
                     $('[name="' + key + '"],[textarea="' + key + '"]', form).after('<span class="error-message">'+val+'</span>');
                 });
+            }else if(resp.StatusCode == 7) {
+
+                $("#otp").after().html(resp.ErrorMessage);
+
             }else if(resp.StatusCode == 4) {
 
                 location.replace(resp.url);
@@ -221,6 +226,10 @@ $(document).on("click", "[rent-cart-common='true']", function(e) {
     });
 
 
+});
+
+$(document).on("click" ,".error-message",function (e){
+    $('.error-message').remove();
 });
 
 $(document).on("click", "[rent-cart-update='true']", function(e) {

@@ -106,13 +106,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request['email'], 'email')],
-            'role_id' => 'required',
-        ]);
-
         $data = $request->all();
+       /* $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            //'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($data['email'], 'email')],
+            'role_id' => 'required',
+        ]);*/
+
+
 
         if (isset($data['shop_image'])) {
             $imageName = $request->file('shop_image')->getClientOriginalName();
