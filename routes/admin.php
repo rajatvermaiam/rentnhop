@@ -31,6 +31,6 @@ Route::resource('locality', LocalityController::class);
 
 /*booking route start*/
 Route::get('/bookings', [BookingController::class, 'index']);
-Route::get('/invoice', [BookingController::class, 'invoice']);
+Route::get('/invoice/{id}', [BookingController::class, 'invoice']);
 /*booking route end*/
 

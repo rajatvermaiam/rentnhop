@@ -13,4 +13,15 @@ class BookingController extends Controller
 
         return view('adminv.admin.booking.index',compact('bookings'));
     }
+
+    public function invoice(Request $request){
+
+        $id = rent_decode(\Request::segment(3));
+
+
+        $booking_data = Booking::where('id', $id)->first();
+
+
+        return view('common.invoice',compact('booking_data'));
+    }
 }

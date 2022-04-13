@@ -105,7 +105,7 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">
                                                 <a class="dropdown-item"
-                                                   href="{{ url('admin.bookings.invoice',$data->id) }}">Invoice</a>
+                                                   href="{{ url('admin/invoice',rent_encode($data->id)) }}" target="_blank">Invoice</a>
                                                 <div class="dropdown-divider"></div>
                                             </div>
                                         </td>

@@ -96,7 +96,7 @@ class StoreController extends Controller
         $id = rent_decode($mobile = $request->session()->get('booking_id'));
         $booking_data = Booking::where('id', $id)->first();
 
-        prd($booking_data);
+        return view('common.invoice',compact('booking_data'));
     }
 
 }
