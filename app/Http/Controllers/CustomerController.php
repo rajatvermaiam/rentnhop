@@ -56,7 +56,8 @@ class CustomerController extends Controller
 
                 $message = [
                     "StatusCode" => 0,
-                    "Message" => "OTP Successfully sent on $mobile",
+                    "Message" => "A code has been sent to $mobile",
+                    "mobile"=> $mobile,
                     "Class" => "success_popup", "Reload" => "false",
                     "OtpField" => "true",
                    /* "otp" => $otp*/
@@ -81,8 +82,6 @@ class CustomerController extends Controller
             ]);
 
             if ($validator->fails()) {
-                $errors = $validator->errors();
-
 
                 $data_validation = array("StatusCode" => 7, "ErrorMessage" => '<span class="error-message">Please enter valid otp</span>');
                 return response()->json($data_validation)->withCallback($request->input('callback'));
@@ -164,7 +163,8 @@ class CustomerController extends Controller
 
                 $message = [
                     "StatusCode" => 0,
-                    "Message" => "OTP Successfully sent on $mobile",
+                    "Message" => "A code has been resent to $mobile",
+                    "mobile"=> $mobile,
                     "Class" => "success_popup",
                     "Reload" => "false",
                     "OtpField" => "true",

@@ -35,7 +35,7 @@ $(document).on("submit", "[rent-form='true']", function(e) {
                 });
             }else if(resp.StatusCode == 7) {
 
-                $("#otp").after().html(resp.ErrorMessage);
+                $("#validate-error").after().html(resp.ErrorMessage);
 
             }else if(resp.StatusCode == 4) {
 
@@ -71,6 +71,7 @@ $(document).on("submit", "[rent-form='true']", function(e) {
                 }
 
                 if(resp.OtpField){
+                    $("[rentn-sent-to-otp]").html(resp.mobile);
                     if (resp.OtpField == 'true') {
                         $("#loginForm").addClass('hide');
                         $("#otpForm").removeClass('hide');
@@ -118,6 +119,8 @@ $(document).on("click", "[rent-resent='true']", function(e) {
                     $('[name="' + key + '"],[textarea="' + key + '"]', form).after('<span class="error-message">'+val+'</span>');
                 });
             } else if (resp.StatusCode == 0) {
+
+                $("[rentn-sent-to-otp]").html(resp.mobile);
 
                 if (resp.Reload && resp.Reload == 'false') {
                     if (resp.loadurl) {

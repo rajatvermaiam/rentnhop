@@ -41,6 +41,9 @@
 
 
     <style>
+        .hide{
+            display: none;
+        }
 
         .plp-value-prop-card {
             padding-left: 0;
@@ -766,19 +769,6 @@
                                     <form class="myForm text-center" name="otpForm" rent-form="true" method="POST"
                                           action="{{ url('customer/otp-login') }}">
                                         @csrf
-                                        {{-- <header>Login</header>
-                                         <div class="form-group">
-                                             <label for="OTP" class="form-label pr-4 float-right"
-                                                    style="cursor: pointer;"><a href="#" rent-back="true">
-                                                     Back </a></label>
-                                             <input class="myInput" name="OTP" placeholder="Please Enter OTP"
-                                                    type="text" id="otp" required>
-                                             <label for="OTP" class="form-label pr-4 float-right"
-                                                    style="cursor: pointer;">
-                                                 <a href="#" rent-resent="true" id="resend">Resend OTP</a>
-                                             </label>
-                                         </div>
-                                         <input type="submit" class="butt" value="Submit">--}}
 
                                         <header> OTP Verification</header>
                                         <div class="form-group">
@@ -786,8 +776,9 @@
                                                 <h6>Please enter the one time password <br> to verify your account
                                                 </h6>
                                                 <br>
-                                                <div><span>A code has been sent to</span> <small
-                                                        rentn-sent-to-otp="true">*******9897</small>
+                                                <div>
+                                                    <span>A code has been sent to</span> <small
+                                                        rentn-sent-to-otp="true" ></small>
                                                 </div>
                                                 <br>
                                                 <div id="otp"
@@ -801,6 +792,9 @@
                                                         id="third" name="third" maxlength="1"/> <input
                                                         class="m-2 text-center form-control rounded" type="text"
                                                         id="fourth" name="fourth" maxlength="1"/>
+                                                </div>
+                                                <div id="validate-error">
+
                                                 </div>
                                                 <div class="mt-4">
                                                     <input type="submit" class="butt" value="Validate">

@@ -366,7 +366,8 @@
                                                     <div class="input-group" style="width: 60%;">
                                               <span class="input-group-btn">
                                                   <button type="button" class="btn btn-default btn-number"
-                                                          data-type="minus" data-field="quant[1]" rent-cart-update="true" data-method="POST"
+                                                          data-type="minus" data-field="quant[1]"
+                                                          rent-cart-update="true" data-method="POST"
                                                           data-href="{{ url('cart/update-cart') }}"
                                                           data-vehicle-id="{{ $data['vehicle_data']['vehicle_details']['id'] }}">
                                                    <i class="fa fa-minus" aria-hidden="true"></i>
@@ -374,10 +375,11 @@
                                               </span>
                                                         <input type="text" name="quant[1]"
                                                                class="form-control input-number"
-                                                               value="{{ $data['qty'] }}" rent-qty="true" min="1" max="5" readonly>
+                                                               value="{{ $data['qty'] }}" rent-qty="true" min="1"
+                                                               max="5" readonly>
                                                         <span class="input-group-btn">
                                               <button type="button" class="btn btn-default btn-number" data-type="plus"
-                                                      data-field="quant[1]"  rent-cart-update="true" data-method="POST"
+                                                      data-field="quant[1]" rent-cart-update="true" data-method="POST"
                                                       data-href="{{ url('cart/update-cart') }}"
                                                       data-vehicle-id="{{ $data['vehicle_data']['vehicle_details']['id'] }}">
                                                <i class="fa fa-plus" aria-hidden="true"></i>
@@ -529,7 +531,9 @@
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>Payment at Pickup (Including Rs.{{ $price_breakup['security_price'] }} Refundable Security Deposit )</td>
+                                    <td>Payment at Pickup (Including Rs.{{ $price_breakup['security_price'] }}
+                                        Refundable Security Deposit )
+                                    </td>
                                     <td>Rs. {{$price_breakup['remaining_amount']+$price_breakup['security_price']}}</td>
                                 </tr>
                                 </tbody>
@@ -543,19 +547,21 @@
                                             <strong> Proceed to Payment </strong>
                                         </a>
                                     @elseif($users->role->alias=='user')
-                                        <form action="{{ url('cart/customer-proceed-payment') }}" id="customer-proceed-payment" method="post" rent-form="true" >
+                                        <form action="{{ url('cart/customer-proceed-payment') }}"
+                                              id="customer-proceed-payment" method="post" rent-form="true">
                                             @csrf
 
                                             <button type="submit" value="Proceed now" class="btn btn-default"
-                                                    style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"><strong>Proceed to Payment </strong>
+                                                    style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
+                                                <strong>Proceed to Payment </strong>
                                             </button>
                                         </form>
-                                    @else
-                                        <a data-toggle="modal" data-target="#loginModal"
-                                           style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
-                                            <strong>Login to Pay / Proceed to Payment </strong>
-                                        </a>
                                     @endif
+                                @else
+                                    <a data-toggle="modal" data-target="#loginModal"
+                                       style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
+                                        <strong>Login to Pay / Proceed to Payment </strong>
+                                    </a>
                                 @endif
                             </div>
                         </div>
