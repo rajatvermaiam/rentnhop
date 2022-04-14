@@ -536,10 +536,27 @@
 
                             </table>
                             <div class="col-md-12 crtbtn">
-                                <a data-toggle="modal" data-target="#paymentModal"
-                                   style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
-                                    <strong>Login to Pay / Proceed to Payment </strong>
-                                </a>
+                                @if($users=Auth::user())
+                                    @if($users->role->alias=='admin')
+                                        <a data-toggle="modal" data-target="#paymentModal"
+                                           style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
+                                            <strong> Proceed to Payment </strong>
+                                        </a>
+                                    @elseif($users->role->alias=='user')
+                                        <form action="{{ url('cart/customer-proceed-payment') }}" id="customer-proceed-payment" method="post" rent-form="true" >
+                                            @csrf
+
+                                            <button type="submit" value="Proceed now" class="btn btn-default"
+                                                    style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;"><strong>Proceed to Payment </strong>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <a data-toggle="modal" data-target="#loginModal"
+                                           style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
+                                            <strong>Login to Pay / Proceed to Payment </strong>
+                                        </a>
+                                    @endif
+                                @endif
                             </div>
                         </div>
                     </div>

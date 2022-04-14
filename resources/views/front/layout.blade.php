@@ -230,7 +230,7 @@
     <div class="container">
         <div class="row">
             <div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block"><a href="{{url('store')}}"> <img
+                <div class="hs_logo_wrapper d-none d-sm-none d-xs-none d-md-block"><a href="{{url('/')}}"> <img
                             src="{{asset('front/img/logo.png')}}" class="img-responsive" alt="logo" title="Logo"/> </a>
                 </div>
             </div>
@@ -282,7 +282,7 @@
                         @if($users =  Auth::user())
                             <li>
                                 <a style="background: #49a6ba;color: #fff; border-radius: 10px; font-weight: 300;">
-                                    <strong>&nbsp; @if($users) {{ $users->name }} @else {{ 'Rider' }} @endif </strong></a>
+                                    <strong>&nbsp; @if($users->name) {{ $users->name }} @else {{ 'Hello Rider' }} @endif </strong></a>
                             </li>
                         @else
                             <li>
@@ -862,7 +862,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('cart/proceed-payment') }}" method="post" rent-form="true">
+                <form action="{{ url('cart/admin-proceed-payment') }}" method="post" rent-form="true">
                     @csrf
 
                     <div class="row">

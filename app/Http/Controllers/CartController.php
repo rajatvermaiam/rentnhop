@@ -215,7 +215,7 @@ class CartController extends Controller
         return view('front.checkout-page', compact('price_breakup', 'price_breakup'));
     }
 
-    public function proceed_payment(Request $request)
+    public function admin_proceed_payment(Request $request)
     {
 
         $post_data = $request->all();
@@ -242,7 +242,7 @@ class CartController extends Controller
 
             $cartProducts = session('cartProducts');
             $price_breakup = session('price_breakup');
-            $search_data =  session()->get('search_data');
+            $search_data = session()->get('search_data');
 
 
             $payable_rent = $price_breakup['partially_amount'];
@@ -253,13 +253,13 @@ class CartController extends Controller
             $email = $post_data['email'];
             $name = $post_data['name'];
 
-            $role=null;
-            $user_id=null;
+            $role = null;
+            $user_id = null;
             $user = Auth::user();
-            if ($user){
-               $role =  $user->role->alias;
-               $user_id = $user->id;
-            }else{
+            if ($user) {
+                $role = $user->role->alias;
+                $user_id = $user->id;
+            } else {
                 $role = 'user';
             }
 
@@ -268,22 +268,22 @@ class CartController extends Controller
             if ($role == 'admin') {
 
                 $admin_booking_data = [
-                    'cart_data'=>json_encode($cartProducts),
-                    'price_breakup'=>json_encode($price_breakup),
-                    'from'=>$search_data['from'],
-                    'to'=>$search_data['to'],
-                    'mobile'=>$mobile,
-                    'email'=>$email,
-                    'name'=>$name,
-                    'payment_status'=>'Paid to Admin',
-                    'booking_status'=>'Success',
-                    'user_id'=> $user_id,
-                    'role'=>$role,
-                    'paid_rent'=>$payable_rent,
-                    'remaining_rent'=>$remaining_rent,
-                    'security_rent'=>$security_rent,
-                    'razorpay_response'=>'',
-                    'payment_mode'=>'Offline'
+                    'cart_data' => json_encode($cartProducts),
+                    'price_breakup' => json_encode($price_breakup),
+                    'from' => $search_data['from'],
+                    'to' => $search_data['to'],
+                    'mobile' => $mobile,
+                    'email' => $email,
+                    'name' => $name,
+                    'payment_status' => 'Paid to Admin',
+                    'booking_status' => 'Success',
+                    'user_id' => $user_id,
+                    'role' => $role,
+                    'paid_rent' => $payable_rent,
+                    'remaining_rent' => $remaining_rent,
+                    'security_rent' => $security_rent,
+                    'razorpay_response' => '',
+                    'payment_mode' => 'Offline'
                 ];
 
                 $booking_insert = Booking::create($admin_booking_data);
@@ -295,49 +295,83 @@ class CartController extends Controller
 
                 $message = [
                     "StatusCode" => 4,
-                    'url'=>$url
+                    'url' => $url
                 ];
                 return response()->json($message)->withCallback($request->input('callback'));
 
             } else {
-
-
-                $customer_booking_data = [
-                    'cart_data'=>json_encode($cartProducts),
-                    'price_breakup'=>json_encode($price_breakup),
-                    'from'=>$search_data['from'],
-                    'to'=>$search_data['to'],
-                    'mobile'=>$mobile,
-                    'email'=>$email,
-                    'name'=>$name,
-                    'payment_status'=>'pending',
-                    'booking_status'=>'pending',
-                    'user_id'=>$user_id,
-                    'role'=>$role,
-                    'paid_rent'=>$payable_rent,
-                    'remaining_rent'=>$remaining_rent,
-                    'security_rent'=>$security_rent,
-                    'razorpay_response'=>'',
-                    'payment_mode'=>'Online'
-
-                ];
-
-                $booking_insert = Booking::create($customer_booking_data);
-
-                $booking_id = $booking_insert->id;
-
-
-                $final_key = rent_encode('developer@rentnhop'."#".$booking_id);
-
-
-                $url = url('payment').'?q='.$final_key;
-
                 $message = [
                     "StatusCode" => 4,
-                    'url'=>$url
+                    'url' => url('/')
                 ];
                 return response()->json($message)->withCallback($request->input('callback'));
             }
         }
+    }
+
+
+    public function customer_proceed_payment(Request $request)
+    {
+        $cartProducts = session('cartProducts');
+        $price_breakup = session('price_breakup');
+        $search_data = session()->get('search_data');
+
+        $payable_rent = $price_breakup['partially_amount'];
+        $remaining_rent = $price_breakup['remaining_amount'];
+        $security_rent = $price_breakup['security_price'];
+
+
+        $role = null;
+        $user_id = null;
+        $user = Auth::user();
+        if ($user) {
+            $role = $user->role->alias;
+            $user_id = $user->id;
+            $mobile = $user->mobile;
+            $email = $user->email;
+            $name = $user->name;
+        }
+
+        /*admin payment error*/
+
+        if ($role == 'user') {
+
+            $customer_booking_data = [
+                'cart_data' => json_encode($cartProducts),
+                'price_breakup' => json_encode($price_breakup),
+                'from' => $search_data['from'],
+                'to' => $search_data['to'],
+                'mobile' => $mobile,
+                'email' => $email,
+                'name' => $name,
+                'payment_status' => 'pending',
+                'booking_status' => 'pending',
+                'user_id' => $user_id,
+                'role' => $role,
+                'paid_rent' => $payable_rent,
+                'remaining_rent' => $remaining_rent,
+                'security_rent' => $security_rent,
+                'razorpay_response' => '',
+                'payment_mode' => 'Online'
+
+            ];
+
+            $booking_insert = Booking::create($customer_booking_data);
+
+            $booking_id = $booking_insert->id;
+
+
+            $final_key = rent_encode('developer@rentnhop' . "#" . $booking_id);
+
+
+            $url = url('payment') . '?q=' . $final_key;
+
+            $message = [
+                "StatusCode" => 4,
+                'url' => $url
+            ];
+            return response()->json($message)->withCallback($request->input('callback'));
+        }
+
     }
 }

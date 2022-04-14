@@ -26,8 +26,8 @@ Route::post('/customer/resend-otp', [\App\Http\Controllers\CustomerController::c
 
 
 /** cart routes start */
-
-Route::post('/cart/proceed-payment', [\App\Http\Controllers\CartController::class, 'proceed_payment']);
+Route::post('/cart/customer-proceed-payment', [\App\Http\Controllers\CartController::class, 'customer_proceed_payment']);
+Route::post('/cart/admin-proceed-payment', [\App\Http\Controllers\CartController::class, 'admin_proceed_payment']);
 Route::post('/cart/add-cart', [\App\Http\Controllers\CartController::class, 'add_cart']);
 Route::post('/cart/cart-delete-item', [\App\Http\Controllers\CartController::class, 'deleteItem']);
 Route::get('/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkout']);
